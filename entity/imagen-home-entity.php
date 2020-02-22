@@ -3,7 +3,7 @@ class imagenHomeEntity {
 
     public $idImagen;
     public $tituloImagen;
-    public $magen;
+    public $imagen;
     public $flagImagen;
     
     // GETTER

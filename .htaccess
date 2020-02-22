@@ -1,0 +1,12 @@
+Options +FollowSymLinks
+RewriteEngine On
+AddDefaultCharset utf-8
+
+Options All -Indexes
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^view/([a-zA-Z0-9_/-]+)/([-a-zA-Z0-9/]+)$ view/index.php?view=$1&id=$2
+RewriteRule ^view/([a-zA-Z0-9_/-]+)$ view/index.php?view=$1
+#RewriteRule ^view/([a-zA-Z0-9_/-]+)/([a-zA-Z0-9/]+)\-([-a-zA-Z0-9_/]*)$ view/index.php?view=$1&id=$2

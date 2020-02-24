@@ -14,7 +14,42 @@ let productoView = {
     control: {
         txtTiProductoES: "tipoProductoES",
         txtNombreProductoES: "nombreProductoES",
-        txtDescripcionProducto: "descripcionProductoES",
+        txtDescripcionProductoES: "descripcionProductoES",
+        txtDesItemProductoES: "descripcionItemProductoES",
+        txtTituloBeneficioES: "tituloBeneficioES",
+        txtDesBeneficiosES: "descripcionBeneficiosES",
+        txtTituloPrincipiosActivosES: "tituloPrincipiosActivosES",
+        txtDesPrincipiosActivosES: "descripcionPrincipiosActivosES",
+
+        txtTiProductoEN: "tipoProductoEN",
+        txtNombreProductoEN: "nombreProductoEN",
+        txtDescripcionProductoEN: "descripcionProductoEN",
+        txtDesItemProductoEN: "descripcionItemProductoEN",
+        txtTituloBeneficioEN: "tituloBeneficioEN",
+        txtDesBeneficiosEN: "descripcionBeneficiosEN",
+        txtTituloPrincipiosActivosEN: "tituloPrincipiosActivosEN",
+        txtDesPrincipiosActivosEN: "descripcionPrincipiosActivosEN",
+
+        txtTiProductoRU: "tipoProductoRU",
+        txtNombreProductoRU: "nombreProductoRU",
+        txtDescripcionProductoRU: "descripcionProductoRU",
+        txtDesItemProductoRU: "descripcionItemProductoRU",
+        txtTituloBeneficioRU: "tituloBeneficioRU",
+        txtDesBeneficiosRU: "descripcionBeneficiosRU",
+        txtTituloPrincipiosActivosRU: "tituloPrincipiosActivosRU",
+        txtDesPrincipiosActivosRU: "descripcionPrincipiosActivosRU",
+
+        txtTiProductoFR: "tipoProductoFR",
+        txtNombreProductoFR: "nombreProductoFR",
+        txtDescripcionProductoFR: "descripcionProductoFR",
+        txtDesItemProductoFR: "descripcionItemProductoFR",
+        txtTituloBeneficioFR: "tituloBeneficioFR",
+        txtDesBeneficiosFR: "descripcionBeneficiosFR",
+        txtTituloPrincipiosActivosFR: "tituloPrincipiosActivosFR",
+        txtDesPrincipiosActivosFR: "descripcionPrincipiosActivosFR",
+
+        imgProductoResultado: "imagenProductoResultado",
+        txtRutaProductoVideo: "rutaProductoVideo",
 
         frmRegistrarProducto: "formRegistrarProducto",
         idProducto: "idProducto",
@@ -26,59 +61,38 @@ let productoView = {
         const control = obj.control;
         const link = obj.link;
 
-        validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
+        // validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
 
         // sendDataAjax("POST",link.productoController,false,"listarDataProducto=true",obj.listarDataProducto);
         // validarEnviarFormulario(control.formRegistrarImagenProducto,obj.agregarImagenProductoSession);
         
         //====================== SECCION DE EDITAR ================
-        // if(!validarEmptyNullElement(control.idProducto,true)){
-        //     validarEnviarFormulario(control.formRegistrarProducto,obj.registrarProducto);
-        // }else{
-        //     validarEnviarFormulario(control.formActualizarProducto,obj.actualizarProducto);
-        //     control.editarFormulario = true;
-        //     control.idProducto = _id(control.idProducto).value;
-        //     sendDataAjax("POST",link.productoController,false,"idProducto=" + control.idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
-        // }
-        
-        // _id(control.txtPrecioProducto).addEventListener("keypress", (event) => {
-        //     validateDouble(event);
-        // })
-
-        // _id(control.txtCantidadProducto).addEventListener("keypress", (event) =>{
-        //     validateNumber(event);
-        // })
-
-        // _id(control.chkStockProducto).addEventListener("change",() => {
-        //     let checbox = _id(control.chkStockProducto);
-        //     let contenedor = _id(control.contenedorCantidadProducto);
-        //     let cantidadProducto = _id(control.txtCantidadProducto);
-        //     if(checbox.checked === true){
-        //         _removeClass(contenedor,"d-none");
-        //         _addAtrribute(cantidadProducto,"required",true);
-        //     }else{
-        //         _addClass(contenedor,"d-none");
-        //         _removeAttribute(cantidadProducto,"required");
-        //     }
-        // })
+        if(!validarEmptyNullElement(control.idProducto,true)){
+            validarEnviarFormulario(control.formRegistrarProducto,obj.registrarProducto);
+        }else{
+            // validarEnviarFormulario(control.formActualizarProducto,obj.actualizarProducto);
+            control.editarFormulario = true;
+            control.idProducto = _id(control.idProducto).value;
+            sendDataAjax("POST",link.productoController,false,"idProducto=" + control.idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
+        }
     },
 
-    listarDataProducto:function(rpta){
-        const obj = productoView;
-        const control = obj.control;
-        const propiedad = obj.propiedad;
+    // listarDataProducto:function(rpta){
+    //     const obj = productoView;
+    //     const control = obj.control;
+    //     const propiedad = obj.propiedad;
         
-        let lista = rpta.split("^");
-        propiedad.listarCategoria = lista[0];
-        propiedad.listarMarca = lista[1];
-        propiedad.listarColor = lista[2];
+    //     let lista = rpta.split("^");
+    //     propiedad.listarCategoria = lista[0];
+    //     propiedad.listarMarca = lista[1];
+    //     propiedad.listarColor = lista[2];
 
-        crearCombobox(propiedad.listarCategoria,control.cboCategoriaProducto);
-        crearCombobox(propiedad.listarMarca,control.cboMarcaProducto);
-        crearCombobox(propiedad.listarColor,control.cboColorProducto);
+    //     crearCombobox(propiedad.listarCategoria,control.cboCategoriaProducto);
+    //     crearCombobox(propiedad.listarMarca,control.cboMarcaProducto);
+    //     crearCombobox(propiedad.listarColor,control.cboColorProducto);
 
-        obj.obtenerListaImagenProductoCarrito();
-    },
+    //     obj.obtenerListaImagenProductoCarrito();
+    // },
 
     respuestaListarProductoId: function(rpta){
         const obj = productoView;
@@ -87,49 +101,83 @@ let productoView = {
         let data = rpta.split("^");
         let producto = data[0].split("|");
 
-        _id(control.cboCategoriaProducto).value = producto[1];
-        _id(control.txtNombreProducto).value = producto[2];
-        _id(control.txtNombreProductoColor).value = producto[2];
-        _addAtrribute(_id(control.txtNombreProductoColor),"data-id",producto[0]);
-        _id(control.txtModeloProducto).value = producto[3];
-        _id(control.cboMarcaProducto).value = producto[4];
-        _id(control.txtPrecioProducto).value = producto[5];
-        if(producto[6] != "0"){
-            _id(control.chkStockProducto).checked = true;
-            _removeClass(_id(control.contenedorCantidadProducto),"d-none");
-            _id(control.txtCantidadProducto).value = producto[7];
-        }else{
-            _id(control.chkStockProducto).checked = false;
-            _addClass(_id(control.contenedorCantidadProducto),"d-none");
-            _id(control.txtCantidadProducto).value = producto[7];
-        }
+        _id(control.txtRutaProductoVideo).value = producto[2];
 
-        if(producto[8] != "0"){
-            _id(control.chkNuevoProducto).checked = true;
-        }else{
-            _id(control.chkNuevoProducto).checked = false;
-        }
-        _id(control.txtDescripcionProducto).value = producto[9];
+        _id(control.txtTiProductoES).value = producto[4];
+        _id(control.txtNombreProductoES).value = producto[5];
+        _id(control.txtDescripcionProductoES).value = producto[6];
+        CKEDITOR.instances.descripcionItemProductoES.setData(producto[7]);
+        _id(control.txtTituloBeneficioES).value = producto[8];
+        CKEDITOR.instances.descripcionBeneficiosES.setData(producto[9]);
+        _id(control.txtTituloPrincipiosActivosES).value = producto[10];
+        CKEDITOR.instances.descripcionPrincipiosActivosES.setData(producto[11]);
 
-        if(producto[10] != "0"){
-            _id(control.chkEstadoProducto).checked = true;
-        }else{
-            _id(control.chkEstadoProducto).checked = false;
-        }
+        _id(control.txtTiProductoEN).value = producto[12];
+        _id(control.txtNombreProductoEN).value = producto[13];
+        _id(control.txtDescripcionProductoEN).value = producto[14];
+        CKEDITOR.instances.descripcionItemProductoEN.setData(producto[15]);
+        _id(control.txtTituloBeneficioEN).value = producto[16];
+        CKEDITOR.instances.descripcionBeneficiosEN.setData(producto[17]);
+        _id(control.txtTituloPrincipiosActivosEN).value = producto[18];
+        CKEDITOR.instances.descripcionPrincipiosActivosEN.setData(producto[19]);
+  
+        _id(control.txtTiProductoRU).value = producto[20];
+        _id(control.txtNombreProductoRU).value = producto[21];
+        _id(control.txtDescripcionProductoRU).value = producto[22];
+        CKEDITOR.instances.descripcionItemProductoRU.setData(producto[23]);
+        _id(control.txtTituloBeneficioRU).value = producto[24];
+        CKEDITOR.instances.descripcionBeneficiosRU.setData(producto[25]);
+        _id(control.txtTituloPrincipiosActivosRU).value = producto[26];
+        CKEDITOR.instances.descripcionPrincipiosActivosRU.setData(producto[27]);
 
-        obj.obtenerListaImagenProductoCarrito();
+        _id(control.txtTiProductoFR).value = producto[28];
+        _id(control.txtNombreProductoFR).value = producto[29];
+        _id(control.txtDescripcionProductoFR).value = producto[30];
+        CKEDITOR.instances.descripcionItemProductoFR.setData(producto[31]);
+        _id(control.txtTituloBeneficioFR).value = producto[32];
+        CKEDITOR.instances.descripcionBeneficiosFR.setData(producto[33]);
+        _id(control.txtTituloPrincipiosActivosFR).value = producto[34];
+        CKEDITOR.instances.descripcionPrincipiosActivosFR.setData(producto[35]);
+        // obj.obtenerListaImagenProductoCarrito();
     },
 
     registrarProducto: function (form) {
         const obj = productoView;
         const link = obj.link;
 
-        console.log(CKEDITOR.instances.descripcionItemProductoES.getData())
+        let txtdesItemProductoES = CKEDITOR.instances.descripcionItemProductoES.getData();
+        let txtdesBeneficiosES = CKEDITOR.instances.descripcionBeneficiosES.getData();
+        let txtdesPrincipiosActivosES = CKEDITOR.instances.descripcionPrincipiosActivosES.getData();
 
-        // let formData = new FormData(form);
-        // formData.append("registrarProducto", true);
+        let txtdesItemProductoEN = CKEDITOR.instances.descripcionItemProductoEN.getData();
+        let txtdesBeneficiosEN = CKEDITOR.instances.descripcionBeneficiosEN.getData();
+        let txtdesPrincipiosActivosEN = CKEDITOR.instances.descripcionPrincipiosActivosEN.getData();
 
-        // sendDataAjax("POST", link.productoController, true, formData, obj.respuestaRegistroProducto);
+        let txtdesItemProductoRU = CKEDITOR.instances.descripcionItemProductoRU.getData();
+        let txtdesBeneficiosRU = CKEDITOR.instances.descripcionBeneficiosRU.getData();
+        let txtdesPrincipiosActivosRU = CKEDITOR.instances.descripcionPrincipiosActivosRU.getData();
+
+        let txtdesItemProductoFR = CKEDITOR.instances.descripcionItemProductoFR.getData();
+        let txtdesBeneficiosFR = CKEDITOR.instances.descripcionBeneficiosFR.getData();
+        let txtdesPrincipiosActivosFR = CKEDITOR.instances.descripcionPrincipiosActivosFR.getData();
+
+
+        let formData = new FormData(form);
+        formData.append("desItemProductoES",txtdesItemProductoES);
+        formData.append("desBeneficiosES",txtdesBeneficiosES);
+        formData.append("desPrincipiosActivosES",txtdesPrincipiosActivosES);
+        formData.append("desItemProductoEN",txtdesItemProductoEN);
+        formData.append("desBeneficiosEN",txtdesBeneficiosEN);
+        formData.append("desPrincipiosActivosEN",txtdesPrincipiosActivosEN);
+        formData.append("desItemProductoRU",txtdesItemProductoRU);
+        formData.append("desBeneficiosRU",txtdesBeneficiosRU);
+        formData.append("desPrincipiosActivosRU",txtdesPrincipiosActivosRU);
+        formData.append("desItemProductoFR",txtdesItemProductoFR);
+        formData.append("desBeneficiosFR",txtdesBeneficiosFR);
+        formData.append("desPrincipiosActivosFR",txtdesPrincipiosActivosFR);
+        formData.append("registrarProducto",true);
+
+        sendDataAjax("POST", link.productoController, true, formData, obj.respuestaRegistroProducto);
     },
 
     actualizarProducto: function (form) {
@@ -151,8 +199,6 @@ let productoView = {
 
         if (rpta != "0") {
             mostrarMensaje("success", "Se registró el producto");
-            _id(control.txtNombreProductoColor).value = data[2];
-            _addAtrribute(_id(control.txtNombreProductoColor),"data-id",data[1]);
 
         } else {
             mostrarMensaje("error", "Ocurrio un error");

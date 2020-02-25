@@ -48,11 +48,13 @@ let productoView = {
         txtTituloPrincipiosActivosFR: "tituloPrincipiosActivosFR",
         txtDesPrincipiosActivosFR: "descripcionPrincipiosActivosFR",
 
-        imgProductoResultado: "imagenProductoResultado",
+        imagenProductoResultado: "imagenProductoResultado",
         txtRutaProductoVideo: "rutaProductoVideo",
 
         frmRegistrarProducto: "formRegistrarProducto",
         idProducto: "idProducto",
+        containerImgResultado: "containerImagenResultado",
+        imgProductoResultado: "imgProductoResultado",
         editarFormulario: false,
     },
 
@@ -61,44 +63,19 @@ let productoView = {
         const control = obj.control;
         const link = obj.link;
 
-        // validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
-
-        // sendDataAjax("POST",link.productoController,false,"listarDataProducto=true",obj.listarDataProducto);
-        // validarEnviarFormulario(control.formRegistrarImagenProducto,obj.agregarImagenProductoSession);
-
         //====================== SECCION DE EDITAR ================
         if(_id(control.idProducto).value == ""){
             validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
         }else{
-            // validarEnviarFormulario(control.frmRegistrarProducto,obj.actualizarProducto);
             control.editarFormulario = true;
             control.idProducto = _id(control.idProducto).value;
             sendDataAjax("POST",link.productoController,false,"idProducto=" + control.idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
         }
     },
 
-    // listarDataProducto:function(rpta){
-    //     const obj = productoView;
-    //     const control = obj.control;
-    //     const propiedad = obj.propiedad;
-
-    //     let lista = rpta.split("^");
-    //     propiedad.listarCategoria = lista[0];
-    //     propiedad.listarMarca = lista[1];
-    //     propiedad.listarColor = lista[2];
-
-    //     crearCombobox(propiedad.listarCategoria,control.cboCategoriaProducto);
-    //     crearCombobox(propiedad.listarMarca,control.cboMarcaProducto);
-    //     crearCombobox(propiedad.listarColor,control.cboColorProducto);
-
-    //     obj.obtenerListaImagenProductoCarrito();
-    // },
-
     respuestaListarProductoId: function(rpta){
         const obj = productoView;
         const control = obj.control;
-
-        // let data = rpta.split("^");
         let producto = rpta.split("|");
 
         _id(control.txtRutaProductoVideo).value = producto[2];
@@ -138,7 +115,19 @@ let productoView = {
         CKEDITOR.instances.descripcionBeneficiosFR.setData(producto[33]);
         _id(control.txtTituloPrincipiosActivosFR).value = producto[34];
         CKEDITOR.instances.descripcionPrincipiosActivosFR.setData(producto[35]);
-        // obj.obtenerListaImagenProductoCarrito();
+
+        if(producto[1] !== ""){
+            _removeClass(_id(control.containerImgResultado),"hide");
+            _addAttribute(_id(control.imgProductoResultado),"src",baseImagen + "producto/" + producto[1]);
+            _addAttribute(_id(control.imgProductoResultado),"data-src",producto[1]);
+            _removeAttribute(_id(control.imagenProductoResultado),"required");
+        }else{
+            _addClass(_id(control.containerImgResultado),"hide");
+            _addAttribute(_id(control.imagenProductoResultado),"requered",true);
+        }
+        
+        validarEnviarFormulario(control.frmRegistrarProducto,obj.actualizarProducto);
+
     },
 
     registrarProducto: function (form) {
@@ -185,23 +174,51 @@ let productoView = {
         const control = obj.control;
         const link = obj.link;
 
+        let txtdesItemProductoES = CKEDITOR.instances.descripcionItemProductoES.getData();
+        let txtdesBeneficiosES = CKEDITOR.instances.descripcionBeneficiosES.getData();
+        let txtdesPrincipiosActivosES = CKEDITOR.instances.descripcionPrincipiosActivosES.getData();
+
+        let txtdesItemProductoEN = CKEDITOR.instances.descripcionItemProductoEN.getData();
+        let txtdesBeneficiosEN = CKEDITOR.instances.descripcionBeneficiosEN.getData();
+        let txtdesPrincipiosActivosEN = CKEDITOR.instances.descripcionPrincipiosActivosEN.getData();
+
+        let txtdesItemProductoRU = CKEDITOR.instances.descripcionItemProductoRU.getData();
+        let txtdesBeneficiosRU = CKEDITOR.instances.descripcionBeneficiosRU.getData();
+        let txtdesPrincipiosActivosRU = CKEDITOR.instances.descripcionPrincipiosActivosRU.getData();
+
+        let txtdesItemProductoFR = CKEDITOR.instances.descripcionItemProductoFR.getData();
+        let txtdesBeneficiosFR = CKEDITOR.instances.descripcionBeneficiosFR.getData();
+        let txtdesPrincipiosActivosFR = CKEDITOR.instances.descripcionPrincipiosActivosFR.getData();
+
+        let imgProductoResultado = _getAtrribute(_id(control.imgProductoResultado),"data-src");
+
         let formData = new FormData(form);
-        formData.append("idProducto", control.idProducto);
-        formData.append("actualizarProducto", true);
+        formData.append("id_producto",idProducto);
+        formData.append("desItemProductoES",txtdesItemProductoES);
+        formData.append("desBeneficiosES",txtdesBeneficiosES);
+        formData.append("desPrincipiosActivosES",txtdesPrincipiosActivosES);
+        formData.append("desItemProductoEN",txtdesItemProductoEN);
+        formData.append("desBeneficiosEN",txtdesBeneficiosEN);
+        formData.append("desPrincipiosActivosEN",txtdesPrincipiosActivosEN);
+        formData.append("desItemProductoRU",txtdesItemProductoRU);
+        formData.append("desBeneficiosRU",txtdesBeneficiosRU);
+        formData.append("desPrincipiosActivosRU",txtdesPrincipiosActivosRU);
+        formData.append("desItemProductoFR",txtdesItemProductoFR);
+        formData.append("desBeneficiosFR",txtdesBeneficiosFR);
+        formData.append("desPrincipiosActivosFR",txtdesPrincipiosActivosFR);
+
+        formData.append("imgProductoResultado",imgProductoResultado);
+        formData.append("actualizarProducto",true);
 
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarProducto);
     },
 
     respuestaRegistroProducto: function (rpta) {
-        const obj = productoView;
-        const control = obj.control;
-        // let data = rpta.split("|");
-
         if (rpta != "0") {
             if(rpta == "1|1"){
-                mostrarMensaje("success", "Se registro el producto")
+                mostrarMensaje("success", "Se registró el producto")
             }else{
-                mostrarMensaje("warning", "Se registro el producto, pero la imagen no se pudo grabar")
+                mostrarMensaje("warning", "Se registró el producto, pero la imagen no se pudo grabar")
             }
         } else {
             mostrarMensaje("error", "Ocurrio un error");
@@ -209,60 +226,16 @@ let productoView = {
     },
 
     respuestaActualizarProducto: function (rpta) {
-        const obj = productoView;
-        const control = obj.control;
-        // let data = rpta.split("|");
-
         if (rpta != "0") {
             if(rpta == "1|1"){
-                mostrarMensaje("success", "Se actualizo el producto")
+                mostrarMensaje("success", "Se actualizó el producto");
+                _addClass(_id(this.control.containerImgResultado),"hide");
             }else{
-                mostrarMensaje("warning", "Se actualizo el producto")
+                mostrarMensaje("warning", "Se actualizó el producto, pero la imagen no se pudo grabar")
             }
         } else {
             mostrarMensaje("error", "Ocurrio un error");
         }
-    },
-
-    agregarImagenProductoSession: function(form){
-        const obj = productoView;
-        const control = obj.control;
-        const link = obj.link;
-
-        let idProductoColor = _getAtrribute(_id(control.txtNombreProductoColor),"data-id");
-        let cboNombrecolor = obtenerTextoSelect(control.cboColorProducto);
-
-        let formData = new FormData(form);
-        formData.append("idProductoColor",idProductoColor);
-        formData.append("colorProducto",cboNombrecolor);
-        formData.append("agregarImagenProductoCarrito", true);
-        sendDataAjax("POST", link.productoController, true, formData, obj.respuestaAgregarImagenProductoCarrito);
-    },
-
-    respuestaAgregarImagenProductoCarrito: function(rpta){
-        const obj = productoView;
-
-        let rptaMensaje = rpta;
-
-        if(rptaMensaje === "0|1"){
-            mostrarMensaje("success", "Se agregó la imagen");
-        }else if(rptaMensaje === "0|0"){
-            mostrarMensaje("error", "No se ha podido agregar la imagen");
-        }else if(rptaMensaje === "1|0"){
-            mostrarMensaje("error", "No se ha podido agregar la imagen");
-        }else if(rptaMensaje === "1|1"){
-            mostrarMensaje("warning", "La imagen ya ha sido agregado");
-        }
-
-        obj.obtenerListaImagenProductoCarrito();
-
-    },
-
-    obtenerListaImagenProductoCarrito: function(){
-        const obj = productoView;
-        const link = obj.link;
-
-        sendDataAjax("POST",link.productoController,false,"listarImagenProductoCarrito=true",obj.mostrarTablaImagen);
     },
 
     mostrarTablaImagen: function(rpta){

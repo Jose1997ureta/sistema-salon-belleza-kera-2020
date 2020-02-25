@@ -25,7 +25,6 @@
                         Registrar Producto Español
                     </div>
                     <div class="card-body">
-                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoES">Tipo Producto:</label>
@@ -92,7 +91,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -102,7 +100,6 @@
                         Registrar Producto Ingles
                     </div>
                     <div class="card-body">
-                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoEN">Tipo Producto:</label>
@@ -169,7 +166,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -179,7 +175,6 @@
                         Registrar Producto Ruso
                     </div>
                     <div class="card-body">
-                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoRU">Tipo Producto:</label>
@@ -246,7 +241,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -256,7 +250,6 @@
                         Registrar Producto Frances
                     </div>
                     <div class="card-body">
-                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoFR">Tipo Producto:</label>
@@ -323,7 +316,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -333,7 +325,6 @@
                         FORMULARIO DE REGISTRAR IMAGEN PRODUCTO
                     </div>
                     <div class="card-body">
-                        <!-- <form class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-12 form-group">
                                 <label for="imagenProductoResultado" class="">Imágen</label>
@@ -343,7 +334,8 @@
                                     Ingresar una Imagen para el producto
                                 </div>
                             </div>
-                            <div class="col-md-12 hide">
+                            <div class="col-md-12 hide containerImagenResultado">
+                                <img class="rounded" id="imgProductoResultado"/>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="rutaProductoVideo">Ruta Video:</label>
@@ -354,9 +346,8 @@
                         <button class="btn btn-outline-primary" type="submit">
                             <span class="btn-icon-wrapper pr-2 opacity-7">
                                 <i class="fa fa-save fa-w-20"></i>
-                            </span>Agregar
+                            </span>Grabar
                         </button>
-                        <!-- </form> -->
                     </div>
                 </div>
             </div>

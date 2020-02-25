@@ -1,5 +1,7 @@
 let baseUrl = () => "http://localhost/ProyectosWeb-2019/Sistema-Salon-Belleza-Kera-2020";
 
+let baseImagen = () => "../images/";
+
 let _cname = (value) => document.getElementsByClassName(value);
 
 let _id = (value) => document.getElementById(value);
@@ -8,7 +10,7 @@ let _log = (value) => console.log(value);
 
 let _tag = (value) => document.getElementsByTagName(value);
 
-let _addAtrribute = (elemento, attribute, value) => elemento.setAttribute(attribute, value);
+let _addAttribute = (elemento, attribute, value) => elemento.setAttribute(attribute, value);
 
 let _getAtrribute = (elemento, attribute) => elemento.getAttribute(attribute);
 
@@ -152,10 +154,10 @@ let crearTabla = (lista, contenedor,buttonEditarModal) => {
                     tabla += "</span>Eliminar";
                     tabla += "</button>";
                     tabla += "</td>";
-                } else if (data[j] == 1 || data[j] == 0) {
+                } else if (data[j] == 'Activo' || data[j] == 'Inactivo') {
                     tabla += "<td class='text-center'>";
                     tabla += "<input type='checkbox' data-id='" + data[0] + "'  class='estado-elemento'"; 
-                    data[j] == 1 ? tabla +="checked" : tabla += "";
+                    data[j] == 'Activo' ? tabla +="checked" : tabla += "";
                     tabla += ">";
                     tabla += "</td>";
 
@@ -277,9 +279,9 @@ let ocultarModal = () => {
     _removeAttribute(_tag("BODY")[0], "style");
 
     _removeClass(_id("exampleModal"), "show");
-    _addAtrribute(_id("exampleModal"), "style", "display:none");
+    _addAttribute(_id("exampleModal"), "style", "display:none");
     _removeAttribute(_id("exampleModal"), "aria-model");
-    _addAtrribute(_id("exampleModal"), "aria-hidden", true);
+    _addAttribute(_id("exampleModal"), "aria-hidden", true);
 
     _cname("modal-backdrop")[0].parentNode.removeChild(_cname("modal-backdrop")[0]);
 

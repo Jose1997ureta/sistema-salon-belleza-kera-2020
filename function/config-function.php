@@ -41,8 +41,10 @@ class config_function {
         }else if($method === "SESSION"){
             if(isset($_SESSION[$value]) && $_SESSION[$value] != null && $_SESSION[$value] != "" && count($_SESSION[$value])){
                 $valorCampo =  true;
-            }else{
-                $valorCampo =  false;
+            }
+        }else if($method === "FILES"){
+            if(isset($_FILES[$value]) && $_FILES[$value] != "" && $_FILES[$value != null]){
+                $valorCampo = true;
             }
         }
 

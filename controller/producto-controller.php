@@ -17,16 +17,6 @@ if(isset($_POST["listarProducto"])){
     echo $data;
 }
 
-// if(isset($_POST["listarDataProducto"])){
-//     $data = "";
-//     $listarCategoria = $categoriaModel::listar_categoria();
-//     $listarMarca = $marcaModel::listarMarca();
-//     $listarColor = $colorModel::listarColor();
-
-//     $data = $configFunction::convertirCadena($listarCategoria)."^".$configFunction::convertirCadena($listarMarca)."^".$configFunction::convertirCadena($listarColor);
-//     echo $data;
-// }
-
 if(isset($_POST["listarProductoId"])){
     $rpta = "";
     $idProducto = $configFunction::validarMetodos("POST","idProducto");
@@ -140,53 +130,120 @@ if(isset($_POST["registrarProducto"])){
 
 }
 
-// if(isset($_POST["actualizarProducto"])){
+if(isset($_POST["actualizarProducto"])){
 
-//     $idProducto = $configFunction::validarMetodos("POST","idProducto");
-//     $idMarca = $configFunction::validarMetodos("POST","marcaProducto");
-//     $nombreProducto = $configFunction::validarMetodos("POST","nombreProducto");
-//     $flagNuevo = $configFunction::validarMetodos("POST","nombreCheckboxNuevo");
-//     $flagEstado = $configFunction::validarMetodos("POST","chkEstadoProducto");
+    $idProducto = $configFunction::validarMetodos("POST","idProducto");
 
-//     ($flagNuevo == "") ? $flagNuevo = 0 : $flagNuevo = 1;
-//     ($flagEstado == "") ? $flagEstado = 0 : $flagEstado = 1;
+    $tipoProductoES = $configFunction::validarMetodos("POST","tipoProductoES");
+    $nombreProductoES = $configFunction::validarMetodos("POST","nombreProductoES");
+    $descripcionProductoES = $configFunction::validarMetodos("POST","descripcionProductoES");
+    $desItemProductoES = $configFunction::validarMetodos("POST","desItemProductoES");
+    $tituloBeneficioES = $configFunction::validarMetodos("POST","tituloBeneficioES");
+    $desBeneficiosES = $configFunction::validarMetodos("POST","desBeneficiosES");
+    $tituloPrincipiosActivosES = $configFunction::validarMetodos("POST","tituloPrincipiosActivosES");
+    $desPrincipiosActivosES = $configFunction::validarMetodos("POST","desPrincipiosActivosES");
 
-//     $productoEntity->setIdProducto($idProducto);
-//     $productoEntity->setIdMarca($idMarca);
-//     $productoEntity->setNombreProducto($nombreProducto);
-//     $productoEntity->setFlagNuevo($flagNuevo);
-//     $productoEntity->setFlagEstado($flagEstado);
+    $tipoProductoEN = $configFunction::validarMetodos("POST","tipoProductoEN");
+    $nombreProductoEN = $configFunction::validarMetodos("POST","nombreProductoEN");
+    $descripcionProductoEN = $configFunction::validarMetodos("POST","descripcionProductoEN");
+    $desItemProductoEN = $configFunction::validarMetodos("POST","desItemProductoEN");
+    $tituloBeneficioEN = $configFunction::validarMetodos("POST","tituloBeneficioEN");
+    $desBeneficiosEN = $configFunction::validarMetodos("POST","desBeneficiosEN");
+    $tituloPrincipiosActivosEN = $configFunction::validarMetodos("POST","tituloPrincipiosActivosEN");
+    $desPrincipiosActivosEN = $configFunction::validarMetodos("POST","desPrincipiosActivosEN");
 
-//     // DETALLE PRODUCTO
+    $tipoProductoRU = $configFunction::validarMetodos("POST","tipoProductoRU");
+    $nombreProductoRU = $configFunction::validarMetodos("POST","nombreProductoRU");
+    $descripcionProductoRU = $configFunction::validarMetodos("POST","descripcionProductoRU");
+    $desItemProductoRU = $configFunction::validarMetodos("POST","desItemProductoRU");
+    $tituloBeneficioRU = $configFunction::validarMetodos("POST","tituloBeneficioRU");
+    $desBeneficiosRU = $configFunction::validarMetodos("POST","desBeneficiosRU");
+    $tituloPrincipiosActivosRU = $configFunction::validarMetodos("POST","tituloPrincipiosActivosRU");
+    $desPrincipiosActivosRU = $configFunction::validarMetodos("POST","desPrincipiosActivosRU");
 
-//     $modeloProducto = $configFunction::validarMetodos("POST","modeloProducto");
-//     $flagStock = $configFunction::validarMetodos("POST","nombreCheckboxStock");
-//     $stockProducto = $configFunction::validarMetodos("POST","cantidadProducto");
-//     $precioProducto = $configFunction::validarMetodos("POST","precioProducto");
-//     $descripcionProducto = $configFunction::validarMetodos("POST","descripcionProducto");
+    $tipoProductoFR = $configFunction::validarMetodos("POST","tipoProductoFR");
+    $nombreProductoFR = $configFunction::validarMetodos("POST","nombreProductoFR");
+    $descripcionProductoFR = $configFunction::validarMetodos("POST","descripcionProductoFR");
+    $desItemProductoFR = $configFunction::validarMetodos("POST","desItemProductoFR");
+    $tituloBeneficioFR = $configFunction::validarMetodos("POST","tituloBeneficioFR");
+    $desBeneficiosFR = $configFunction::validarMetodos("POST","desBeneficiosFR");
+    $tituloPrincipiosActivosFR = $configFunction::validarMetodos("POST","tituloPrincipiosActivosFR");
+    $desPrincipiosActivosFR = $configFunction::validarMetodos("POST","desPrincipiosActivosFR");
 
-//     ($flagStock == "") ? $flagStock = 0 : $flagStock = 1;
-    
-//     $productoEntity->setModeloProducto($modeloProducto);
-//     $productoEntity->setFlagStock($flagStock);
-//     $productoEntity->setStockProducto($stockProducto);
-//     $productoEntity->setPrecioProducto($precioProducto);
-//     $productoEntity->setDescripcionProducto($descripcionProducto);
+    $rutaProductoVideo = $configFunction::validarMetodos("POST","rutaProductoVideo");
+    $imagenProductoResultado = $configFunction::validarMetodos("FILES","imagenProductoResultado");
+    $imgProductoResultado = $configFunction::validarMetodos("POST","imgProductoResultado");
 
-//     $validarConsultaProducto = $productoModel::actualizarProducto($productoEntity);
-//     $validarConsultaDetalleProduto = $productoModel::actualizarDetalleProducto($productoEntity);
+    if($imagenProductoResultado != true && $imgProductoResultado != ""){
+        $productoEntity->setImagenProducto($imgProductoResultado);
 
-//     if($validarConsultaProducto){
-//         if($validarConsultaDetalleProduto){
-//             echo "1|".$idProducto."|".$nombreProducto;
-//         }else{
-//             echo "0";
-//         }
-//     }else{
-//         echo "0";
-//     }
+    }else if($imagenProductoResultado == true)
 
-// }
+        $configFunction::validarDirectorio("../images");
+        $configFunction::validarDirectorio("../images/producto");
+
+        $imagenProductoResultado = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenProductoResultado"]["name"]);
+        $tmpImagenProductoResultado = $_FILES["imagenProductoResultado"]["tmp_name"];
+        $carpetaImagen = "../images/producto/".$imagenProductoResultado;
+
+        $productoEntity->setImagenProducto($imagenProductoResultado);
+    }
+
+    $productoEntity->setIdProducto($idProducto);
+
+    $productoEntity->setTipoProductoES($tipoProductoES);
+    $productoEntity->setnombreProductoES($nombreProductoES);
+    $productoEntity->setDescripcionProductoES($descripcionProductoES);
+    $productoEntity->setDescripcionItemProductoES($desItemProductoES);
+    $productoEntity->setTituloBeneficioES($tituloBeneficioES);
+    $productoEntity->setDescripcionBeneficioES($desBeneficiosES);
+    $productoEntity->setTituloPrincipiosActivosES($tituloPrincipiosActivosES);
+    $productoEntity->setDescripcionPrincipiosActivosES($desPrincipiosActivosES);
+
+    $productoEntity->setTipoProductoEN($tipoProductoEN);
+    $productoEntity->setnombreProductoEN($nombreProductoEN);
+    $productoEntity->setDescripcionProductoEN($descripcionProductoEN);
+    $productoEntity->setDescripcionItemProductoEN($desItemProductoEN);
+    $productoEntity->setTituloBeneficioEN($tituloBeneficioEN);
+    $productoEntity->setDescripcionBeneficioEN($desBeneficiosEN);
+    $productoEntity->setTituloPrincipiosActivosEN($tituloPrincipiosActivosEN);
+    $productoEntity->setDescripcionPrincipiosActivosEN($desPrincipiosActivosEN);
+
+    $productoEntity->setTipoProductoRU($tipoProductoRU);
+    $productoEntity->setnombreProductoRU($nombreProductoRU);
+    $productoEntity->setDescripcionProductoRU($descripcionProductoRU);
+    $productoEntity->setDescripcionItemProductoRU($desItemProductoRU);
+    $productoEntity->setTituloBeneficioRU($tituloBeneficioRU);
+    $productoEntity->setDescripcionBeneficioRU($desBeneficiosRU);
+    $productoEntity->setTituloPrincipiosActivosRU($tituloPrincipiosActivosRU);
+    $productoEntity->setDescripcionPrincipiosActivosRU($desPrincipiosActivosRU);
+
+    $productoEntity->setTipoProductoFR($tipoProductoFR);
+    $productoEntity->setnombreProductoFR($nombreProductoFR);
+    $productoEntity->setDescripcionProductoFR($descripcionProductoFR);
+    $productoEntity->setDescripcionItemProductoFR($desItemProductoFR);
+    $productoEntity->setTituloBeneficioFR($tituloBeneficioFR);
+    $productoEntity->setDescripcionBeneficioFR($desBeneficiosFR);
+    $productoEntity->setTituloPrincipiosActivosFR($tituloPrincipiosActivosFR);
+    $productoEntity->setDescripcionPrincipiosActivosFR($desPrincipiosActivosFR);
+
+    // $productoEntity->setImagenResultadoProducto($imagenProductoResultado);
+    $productoEntity->setRutaVideoProducto($rutaProductoVideo);
+
+    $validarConsultaProducto = $productoModel::actualizarProducto($productoEntity);
+
+    if($validarConsultaProducto){
+        if(move_uploaded_file($tmpImagenProductoResultado,$carpetaImagen)){
+            $rpta = "1";
+        }else{
+            $rpta = "0";
+        }
+        echo "1|".$rpta;
+    }else{
+        echo "0";
+    }
+
+}
 
 if(isset($_POST["agregarImagenProductoCarrito"])){
     $find = false;

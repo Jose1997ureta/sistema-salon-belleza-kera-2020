@@ -65,12 +65,12 @@ let productoView = {
 
         // sendDataAjax("POST",link.productoController,false,"listarDataProducto=true",obj.listarDataProducto);
         // validarEnviarFormulario(control.formRegistrarImagenProducto,obj.agregarImagenProductoSession);
-        
+
         //====================== SECCION DE EDITAR ================
-        if(!validarEmptyNullElement(control.idProducto,true)){
-            validarEnviarFormulario(control.formRegistrarProducto,obj.registrarProducto);
+        if(_id(control.idProducto).value == ""){
+            validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
         }else{
-            // validarEnviarFormulario(control.formActualizarProducto,obj.actualizarProducto);
+            // validarEnviarFormulario(control.frmRegistrarProducto,obj.actualizarProducto);
             control.editarFormulario = true;
             control.idProducto = _id(control.idProducto).value;
             sendDataAjax("POST",link.productoController,false,"idProducto=" + control.idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
@@ -81,7 +81,7 @@ let productoView = {
     //     const obj = productoView;
     //     const control = obj.control;
     //     const propiedad = obj.propiedad;
-        
+
     //     let lista = rpta.split("^");
     //     propiedad.listarCategoria = lista[0];
     //     propiedad.listarMarca = lista[1];
@@ -98,8 +98,8 @@ let productoView = {
         const obj = productoView;
         const control = obj.control;
 
-        let data = rpta.split("^");
-        let producto = data[0].split("|");
+        // let data = rpta.split("^");
+        let producto = rpta.split("|");
 
         _id(control.txtRutaProductoVideo).value = producto[2];
 
@@ -120,7 +120,7 @@ let productoView = {
         CKEDITOR.instances.descripcionBeneficiosEN.setData(producto[17]);
         _id(control.txtTituloPrincipiosActivosEN).value = producto[18];
         CKEDITOR.instances.descripcionPrincipiosActivosEN.setData(producto[19]);
-  
+
         _id(control.txtTiProductoRU).value = producto[20];
         _id(control.txtNombreProductoRU).value = producto[21];
         _id(control.txtDescripcionProductoRU).value = producto[22];
@@ -195,11 +195,14 @@ let productoView = {
     respuestaRegistroProducto: function (rpta) {
         const obj = productoView;
         const control = obj.control;
-        let data = rpta.split("|");
+        // let data = rpta.split("|");
 
         if (rpta != "0") {
-            mostrarMensaje("success", "Se registró el producto");
-
+            if(rpta == "1|1"){
+                mostrarMensaje("success", "Se registro el producto")
+            }else{
+                mostrarMensaje("warning", "Se registro el producto, pero la imagen no se pudo grabar")
+            }
         } else {
             mostrarMensaje("error", "Ocurrio un error");
         }
@@ -208,13 +211,14 @@ let productoView = {
     respuestaActualizarProducto: function (rpta) {
         const obj = productoView;
         const control = obj.control;
-        let data = rpta.split("|");
+        // let data = rpta.split("|");
 
         if (rpta != "0") {
-            mostrarMensaje("success", "Se actualizo el producto");
-            _id(control.txtNombreProductoColor).value = data[2];
-            _addAtrribute(_id(control.txtNombreProductoColor),"data-id",data[1]);
-
+            if(rpta == "1|1"){
+                mostrarMensaje("success", "Se actualizo el producto")
+            }else{
+                mostrarMensaje("warning", "Se actualizo el producto")
+            }
         } else {
             mostrarMensaje("error", "Ocurrio un error");
         }
@@ -296,7 +300,7 @@ let productoView = {
                 tabla += "<td><img src='"+ baseUrl() +"/images/producto/"+ data[4] +"' width='50'></td>";
                 tabla += "</tr>";
             }
-    
+
             tabla += "</tbody>";
             tabla += "</table>";
 
@@ -347,7 +351,7 @@ let productoView = {
 
     respuestaEliminarImagenProductoCarrito: function(rpta){
         const obj = productoView;
-        
+
         obj.obtenerListaImagenProductoCarrito();
 
         if(rpta == "1|1"){
@@ -361,11 +365,11 @@ let productoView = {
         const obj = productoView;
         const control = obj.control;
         const link = obj.link;
-        
+
         if(validarEmptyNullElement(control.btnRegistrarDetalleImagen,true)){
             _id(control.btnRegistrarDetalleImagen).addEventListener("click",function(e){
                 e.preventDefault();
-                
+
                 sendDataAjax("POST",link.productoController,false,"registrarDatosImagenes=true",obj.respuestaRegistrarImagen);
             })
         }
@@ -385,11 +389,11 @@ let productoView = {
         const obj = productoView;
         const control = obj.control;
         const link = obj.link;
-        
+
         if(validarEmptyNullElement(control.btnActualizarDetalleImagen,true)){
             _id(control.btnActualizarDetalleImagen).addEventListener("click",function(e){
                 e.preventDefault();
-                
+
                 sendDataAjax("POST",link.productoController,false,"registrarDatosImagenes=true&eliminarImagen="+control.idProducto,obj.respuestaRegistrarImagen);
             })
         }
@@ -400,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
     CKEDITOR.replace('descripcionItemProductoES');
     CKEDITOR.replace('descripcionBeneficiosES');
     CKEDITOR.replace('descripcionPrincipiosActivosES');
-    
+
     CKEDITOR.replace('descripcionItemProductoEN');
     CKEDITOR.replace('descripcionBeneficiosEN');
     CKEDITOR.replace('descripcionPrincipiosActivosEN');

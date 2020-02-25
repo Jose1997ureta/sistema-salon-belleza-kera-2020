@@ -29,7 +29,7 @@ class productoModel{
 
     public static function registrarProducto(productoEntity $producto){
         $configFunction = new config_function();
-        $procedure = "CALL REGISTRAR_PRODUCTO('$producto->idProducto','$producto->imagenResultadoProducto','$producto->rutaVideoProducto',";
+        $procedure = "CALL REGISTRAR_PRODUCTO('$producto->imagenResultadoProducto','$producto->rutaVideoProducto',";
         // PRODUCTO ESPAÑOL
         $procedure .= "'$producto->tipoProductoES','$producto->nombreProductoES','$producto->descripcionProductoES','$producto->descripcionItemProductoES','$producto->tituloBeneficioES','$producto->descripcionBeneficioES','$producto->tituloPrincipiosActivosES','$producto->descripcionPrincipiosActivosES',";
 

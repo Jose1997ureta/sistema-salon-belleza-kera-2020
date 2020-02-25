@@ -20,51 +20,51 @@ CREATE TABLE IF NOT EXISTS PRODUCTO_KERA (
 )ENGINE = INNODB DEFAULT CHAR SET = UTF8;
 
 CREATE TABLE IF NOT EXISTS PRODUCTO_KERA_ESPANOL (
-	id_producto INT NOT NULL,
-	tipo_producto VARCHAR(40) NOT NULL,
-	nombre_producto VARCHAR(40) NOT NULL,
-	descripcion_producto TEXT NULL, 	 
-	descripcion_item_producto TEXT NULL,
-	titulo_beneficio VARCHAR(20) NULL,
-	descripcion_beneficios TEXT NULL,
-	titulo_principios_activos VARCHAR(40) NULL,
-	descripcion_principios_activos TEXT NULL
+	id_productos INT NOT NULL,
+	tipo_producto_es VARCHAR(40) NOT NULL,
+	nombre_producto_es VARCHAR(40) NOT NULL,
+	descripcion_producto_es TEXT NULL, 	 
+	descripcion_item_producto_es TEXT NULL,
+	titulo_beneficio_es VARCHAR(20) NULL,
+	descripcion_beneficios_es TEXT NULL,
+	titulo_principios_activos_es VARCHAR(40) NULL,
+	descripcion_principios_activos_es TEXT NULL
 )ENGINE = INNODB DEFAULT CHAR SET = UTF8;
 
 CREATE TABLE IF NOT EXISTS PRODUCTO_KERA_INGLES (
 	id_producto INT NOT NULL,
-	tipo_producto VARCHAR(40) NOT NULL,
-	nombre_producto VARCHAR(40) NOT NULL,
-	descripcion_producto TEXT NULL, 	 
-	descripcion_item_producto TEXT NULL,
-	titulo_beneficio VARCHAR(20) NULL,
-	descripcion_beneficios TEXT NULL,
-	titulo_principios_activos VARCHAR(40) NULL,
-	descripcion_principios_activos TEXT NULL
+	tipo_producto_en VARCHAR(40) NOT NULL,
+	nombre_producto_en VARCHAR(40) NOT NULL,
+	descripcion_producto_en TEXT NULL, 	 
+	descripcion_item_producto_en TEXT NULL,
+	titulo_beneficio_en VARCHAR(20) NULL,
+	descripcion_beneficios_en TEXT NULL,
+	titulo_principios_activos_en VARCHAR(40) NULL,
+	descripcion_principios_activos_en TEXT NULL
 )ENGINE = INNODB DEFAULT CHAR SET = UTF8;
 
 CREATE TABLE IF NOT EXISTS PRODUCTO_KERA_RUSO (
 	id_producto INT NOT NULL,
-	tipo_producto VARCHAR(40) NOT NULL,
-	nombre_producto VARCHAR(40) NOT NULL,
-	descripcion_producto TEXT NULL, 	 
-	descripcion_item_producto TEXT NULL,
-	titulo_beneficio VARCHAR(20) NULL,
-	descripcion_beneficios TEXT NULL,
-	titulo_principios_activos VARCHAR(40) NULL,
-	descripcion_principios_activos TEXT NULL
+	tipo_producto_ru VARCHAR(40) NOT NULL,
+	nombre_producto_ru VARCHAR(40) NOT NULL,
+	descripcion_producto_ru TEXT NULL, 	 
+	descripcion_item_producto_ru TEXT NULL,
+	titulo_beneficio_ru VARCHAR(20) NULL,
+	descripcion_beneficios_ru TEXT NULL,
+	titulo_principios_activos_ru VARCHAR(40) NULL,
+	descripcion_principios_activos_ru TEXT NULL
 )ENGINE = INNODB DEFAULT CHAR SET = UTF8;
 
 CREATE TABLE IF NOT EXISTS PRODUCTO_KERA_FRANCES (
 	id_producto INT NOT NULL,
-	tipo_producto VARCHAR(40) NOT NULL,
-	nombre_producto VARCHAR(40) NOT NULL,
-	descripcion_producto TEXT NULL, 	 
-	descripcion_item_producto TEXT NULL,
-	titulo_beneficio VARCHAR(20) NULL,
-	descripcion_beneficios TEXT NULL,
-	titulo_principios_activos VARCHAR(40) NULL,
-	descripcion_principios_activos TEXT NULL
+	tipo_producto_fr VARCHAR(40) NOT NULL,
+	nombre_producto_fr VARCHAR(40) NOT NULL,
+	descripcion_producto_fr TEXT NULL, 	 
+	descripcion_item_producto_fr TEXT NULL,
+	titulo_beneficio_fr VARCHAR(20) NULL,
+	descripcion_beneficios_fr TEXT NULL,
+	titulo_principios_activos_fr VARCHAR(40) NULL,
+	descripcion_principios_activos_fr TEXT NULL
 )ENGINE = INNODB DEFAULT CHAR SET = UTF8;
 
 CREATE TABLE IF NOT EXISTS IMAGEN_PRODUCTO_KERA(

@@ -7,7 +7,8 @@
                     </i>
                 </div>
                 <div>PRODUCTO
-                    <input type="hidden" id="idProducto" name="idProducto" value="<?php (isset($_GET['id'])) ?  $id = $_GET['id'] : $id = ''; echo $id; ?>">
+                    <input type="hidden" id="idProducto" name="idProducto"
+                        value="<?php (isset($_GET['id'])) ?  $id = $_GET['id'] : $id = ''; echo $id; ?>">
                     <div class="page-title-subheading">En esta pantalla ingresaremos los productos que tiene la empresa
                     </div>
                 </div>
@@ -15,15 +16,16 @@
 
         </div>
     </div>
-    <div class="row">
-        <form  class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate>
-        <div class="col-md-6">
-            <div class="main-card mb-3 card">
-                <div class="card-header">
-                    Registrar Producto Español
-                </div>
-                <div class="card-body">
-                    <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
+
+    <form class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">
+                        Registrar Producto Español
+                    </div>
+                    <div class="card-body">
+                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoES">Tipo Producto:</label>
@@ -43,17 +45,17 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionProductoES">Descripcion Producto:</label>
-                                <textarea name="descripcionProductoES" id="descripcionProductoES" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea name="descripcionProductoES" id="descripcionProductoES"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionItemProductoES">Descripcion Item Producto:</label>
-                                <textarea id="descripcionItemProductoES"class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionItemProductoES" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
@@ -67,9 +69,9 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionBeneficiosES">Descripcion Beneficios:</label>
-                                <textarea id="descripcionBeneficiosES" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionBeneficiosES" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Beneficios
                                 </div>
                             </div>
@@ -85,22 +87,22 @@
                                 <label for="descripcionPrincipiosActivosES">Descripcion Principios Activos:</label>
                                 <textarea id="descripcionPrincipiosActivosES" class="form-control form-control-sm"
                                     rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Principios Activos
                                 </div>
                             </div>
                         </div>
-                    <!-- </form> -->
+                        <!-- </form> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="main-card mb-3 card">
-                <div class="card-header">
-                    Registrar Producto Ingles
-                </div>
-                <div class="card-body">
-                    <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
+            <div class="col-md-6">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">
+                        Registrar Producto Ingles
+                    </div>
+                    <div class="card-body">
+                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoEN">Tipo Producto:</label>
@@ -120,17 +122,17 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionProductoEN">Descripcion Producto:</label>
-                                <textarea name="descripcionProductoEN" id="descripcionProductoEN" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea name="descripcionProductoEN" id="descripcionProductoEN"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionItemProductoEN">Descripcion Producto:</label>
-                                <textarea id="descripcionItemProductoEN"class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionItemProductoEN" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
@@ -144,9 +146,9 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionBeneficiosEN">Descripcion Beneficios:</label>
-                                <textarea id="descripcionBeneficiosEN" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionBeneficiosEN" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Beneficios
                                 </div>
                             </div>
@@ -162,22 +164,22 @@
                                 <label for="descripcionPrincipiosActivosEN">Descripcion Principios Activos:</label>
                                 <textarea id="descripcionPrincipiosActivosEN" class="form-control form-control-sm"
                                     rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Principios Activos
                                 </div>
                             </div>
                         </div>
-                    <!-- </form> -->
+                        <!-- </form> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="main-card mb-3 card">
-                <div class="card-header">
-                    Registrar Producto Ruso
-                </div>
-                <div class="card-body">
-                    <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
+            <div class="col-md-6">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">
+                        Registrar Producto Ruso
+                    </div>
+                    <div class="card-body">
+                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoRU">Tipo Producto:</label>
@@ -197,17 +199,17 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionProductoRU">Descripcion Producto:</label>
-                                <textarea name="descripcionProductoRU" id="descripcionProductoRU" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea name="descripcionProductoRU" id="descripcionProductoRU"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionItemProductoRU">Descripcion Producto:</label>
-                                <textarea id="descripcionItemProductoRU"class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionItemProductoRU" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
@@ -221,9 +223,9 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionBeneficiosRU">Descripcion Beneficios:</label>
-                                <textarea id="descripcionBeneficiosRU" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionBeneficiosRU" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Beneficios
                                 </div>
                             </div>
@@ -239,22 +241,22 @@
                                 <label for="descripcionPrincipiosActivosRU">Descripcion Principios Activos:</label>
                                 <textarea id="descripcionPrincipiosActivosRU" class="form-control form-control-sm"
                                     rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Principios Activos
                                 </div>
                             </div>
                         </div>
-                    <!-- </form> -->
+                        <!-- </form> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="main-card mb-3 card">
-                <div class="card-header">
-                    Registrar Producto Frances
-                </div>
-                <div class="card-body">
-                    <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
+            <div class="col-md-6">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">
+                        Registrar Producto Frances
+                    </div>
+                    <div class="card-body">
+                        <!-- <form class="needs-validation" id="form-registrar-producto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-6 form-group">
                                 <label for="tipoProductoFR">Tipo Producto:</label>
@@ -274,17 +276,17 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionProductoFR">Descripcion Producto:</label>
-                                <textarea name="descripcionProductoFR" id="descripcionProductoFR" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea name="descripcionProductoFR" id="descripcionProductoFR"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionItemProductoFR">Descripcion Producto:</label>
-                                <textarea id="descripcionItemProductoFR"class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionItemProductoFR" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Producto
                                 </div>
                             </div>
@@ -298,9 +300,9 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="descripcionBeneficiosFR">Descripcion Beneficios:</label>
-                                <textarea id="descripcionBeneficiosFR" class="form-control form-control-sm"
-                                    rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <textarea id="descripcionBeneficiosFR" class="form-control form-control-sm" rows="2"
+                                    required></textarea>
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Beneficios
                                 </div>
                             </div>
@@ -316,26 +318,27 @@
                                 <label for="descripcionPrincipiosActivosFR">Descripcion Principios Activos:</label>
                                 <textarea id="descripcionPrincipiosActivosFR" class="form-control form-control-sm"
                                     rows="2" required></textarea>
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     Ingresar Descripcion Principios Activos
                                 </div>
                             </div>
                         </div>
-                    <!-- </form> -->
+                        <!-- </form> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="main-card mb-3 card">
-                <div class="card-header">
-                    FORMULARIO DE REGISTRAR IMAGEN PRODUCTO
-                </div>
-                <div class="card-body">
-                    <!-- <form class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate> -->
+            <div class="col-md-6">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">
+                        FORMULARIO DE REGISTRAR IMAGEN PRODUCTO
+                    </div>
+                    <div class="card-body">
+                        <!-- <form class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate> -->
                         <div class="form-row form-group">
                             <div class="col-md-12 form-group">
                                 <label for="imagenProductoResultado" class="">Imágen</label>
-                                <input name="imagenProductoResultado" id="imagenProductoResultado" type="file" class="form-control-file" required>
+                                <input name="imagenProductoResultado" id="imagenProductoResultado" type="file"
+                                    class="form-control-file" required>
                                 <div class="invalid-feedback">
                                     Ingresar una Imagen para el producto
                                 </div>
@@ -344,7 +347,8 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="rutaProductoVideo">Ruta Video:</label>
-                                <input type="text" name="rutaProductoVideo" id="rutaProductoVideo" class="form-control form-control-sm" required>
+                                <input type="text" name="rutaProductoVideo" id="rutaProductoVideo"
+                                    class="form-control form-control-sm" required>
                             </div>
                         </div>
                         <button class="btn btn-outline-primary" type="submit">
@@ -352,12 +356,12 @@
                                 <i class="fa fa-save fa-w-20"></i>
                             </span>Agregar
                         </button>
-                    <!-- </form> -->
+                        <!-- </form> -->
+                    </div>
                 </div>
             </div>
         </div>
     </form>
-    </div>
 </div>
 
 <script src="<?php echo SERVER_URL; ?>/script/producto-view.js"></script>

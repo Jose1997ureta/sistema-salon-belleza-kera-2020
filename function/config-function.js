@@ -1,4 +1,4 @@
-let baseUrl = () => "http://localhost/ProyectosWeb-2019/Sistema-Ventas-Case-Celulares-2019";
+let baseUrl = () => "http://localhost/ProyectosWeb-2019/Sistema-Salon-Belleza-Kera-2020";
 
 let _cname = (value) => document.getElementsByClassName(value);
 

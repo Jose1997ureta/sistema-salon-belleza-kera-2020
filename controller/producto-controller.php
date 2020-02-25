@@ -140,53 +140,53 @@ if(isset($_POST["registrarProducto"])){
 
 }
 
-if(isset($_POST["actualizarProducto"])){
+// if(isset($_POST["actualizarProducto"])){
 
-    $idProducto = $configFunction::validarMetodos("POST","idProducto");
-    $idMarca = $configFunction::validarMetodos("POST","marcaProducto");
-    $nombreProducto = $configFunction::validarMetodos("POST","nombreProducto");
-    $flagNuevo = $configFunction::validarMetodos("POST","nombreCheckboxNuevo");
-    $flagEstado = $configFunction::validarMetodos("POST","chkEstadoProducto");
+//     $idProducto = $configFunction::validarMetodos("POST","idProducto");
+//     $idMarca = $configFunction::validarMetodos("POST","marcaProducto");
+//     $nombreProducto = $configFunction::validarMetodos("POST","nombreProducto");
+//     $flagNuevo = $configFunction::validarMetodos("POST","nombreCheckboxNuevo");
+//     $flagEstado = $configFunction::validarMetodos("POST","chkEstadoProducto");
 
-    ($flagNuevo == "") ? $flagNuevo = 0 : $flagNuevo = 1;
-    ($flagEstado == "") ? $flagEstado = 0 : $flagEstado = 1;
+//     ($flagNuevo == "") ? $flagNuevo = 0 : $flagNuevo = 1;
+//     ($flagEstado == "") ? $flagEstado = 0 : $flagEstado = 1;
 
-    $productoEntity->setIdProducto($idProducto);
-    $productoEntity->setIdMarca($idMarca);
-    $productoEntity->setNombreProducto($nombreProducto);
-    $productoEntity->setFlagNuevo($flagNuevo);
-    $productoEntity->setFlagEstado($flagEstado);
+//     $productoEntity->setIdProducto($idProducto);
+//     $productoEntity->setIdMarca($idMarca);
+//     $productoEntity->setNombreProducto($nombreProducto);
+//     $productoEntity->setFlagNuevo($flagNuevo);
+//     $productoEntity->setFlagEstado($flagEstado);
 
-    // DETALLE PRODUCTO
+//     // DETALLE PRODUCTO
 
-    $modeloProducto = $configFunction::validarMetodos("POST","modeloProducto");
-    $flagStock = $configFunction::validarMetodos("POST","nombreCheckboxStock");
-    $stockProducto = $configFunction::validarMetodos("POST","cantidadProducto");
-    $precioProducto = $configFunction::validarMetodos("POST","precioProducto");
-    $descripcionProducto = $configFunction::validarMetodos("POST","descripcionProducto");
+//     $modeloProducto = $configFunction::validarMetodos("POST","modeloProducto");
+//     $flagStock = $configFunction::validarMetodos("POST","nombreCheckboxStock");
+//     $stockProducto = $configFunction::validarMetodos("POST","cantidadProducto");
+//     $precioProducto = $configFunction::validarMetodos("POST","precioProducto");
+//     $descripcionProducto = $configFunction::validarMetodos("POST","descripcionProducto");
 
-    ($flagStock == "") ? $flagStock = 0 : $flagStock = 1;
+//     ($flagStock == "") ? $flagStock = 0 : $flagStock = 1;
     
-    $productoEntity->setModeloProducto($modeloProducto);
-    $productoEntity->setFlagStock($flagStock);
-    $productoEntity->setStockProducto($stockProducto);
-    $productoEntity->setPrecioProducto($precioProducto);
-    $productoEntity->setDescripcionProducto($descripcionProducto);
+//     $productoEntity->setModeloProducto($modeloProducto);
+//     $productoEntity->setFlagStock($flagStock);
+//     $productoEntity->setStockProducto($stockProducto);
+//     $productoEntity->setPrecioProducto($precioProducto);
+//     $productoEntity->setDescripcionProducto($descripcionProducto);
 
-    $validarConsultaProducto = $productoModel::actualizarProducto($productoEntity);
-    $validarConsultaDetalleProduto = $productoModel::actualizarDetalleProducto($productoEntity);
+//     $validarConsultaProducto = $productoModel::actualizarProducto($productoEntity);
+//     $validarConsultaDetalleProduto = $productoModel::actualizarDetalleProducto($productoEntity);
 
-    if($validarConsultaProducto){
-        if($validarConsultaDetalleProduto){
-            echo "1|".$idProducto."|".$nombreProducto;
-        }else{
-            echo "0";
-        }
-    }else{
-        echo "0";
-    }
+//     if($validarConsultaProducto){
+//         if($validarConsultaDetalleProduto){
+//             echo "1|".$idProducto."|".$nombreProducto;
+//         }else{
+//             echo "0";
+//         }
+//     }else{
+//         echo "0";
+//     }
 
-}
+// }
 
 if(isset($_POST["agregarImagenProductoCarrito"])){
     $find = false;
@@ -297,82 +297,82 @@ if(isset($_POST["eliminarImagenProductoCarrito"])){
     echo $rpta;
 }
 
-if(isset($_POST["registrarDatosImagenes"])){
-    $rpta = "";
-    if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
+// if(isset($_POST["registrarDatosImagenes"])){
+//     $rpta = "";
+//     if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
 
-        $eliminarImagen = $configFunction::validarMetodos("POST","eliminarImagen");
-        $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
+//         $eliminarImagen = $configFunction::validarMetodos("POST","eliminarImagen");
+//         $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
 
-        if($eliminarImagen !== ""){
-            $productoEntity->setIdProducto($eliminarImagen);
-            $validarEliminarImagen = $productoModel::eliminarImagenProducto($productoEntity);
-        }
+//         if($eliminarImagen !== ""){
+//             $productoEntity->setIdProducto($eliminarImagen);
+//             $validarEliminarImagen = $productoModel::eliminarImagenProducto($productoEntity);
+//         }
 
-        if($validarEliminarImagen){
-            for($i = 0; $i < count($carritoImagenProducto); $i++){
-                $data = explode("|",$carritoImagenProducto[$i]);
-                $idProducto = $data[0];
-                $idColor = $data[2];
-                $nombreImagen = $data[4];
+//         if($validarEliminarImagen){
+//             for($i = 0; $i < count($carritoImagenProducto); $i++){
+//                 $data = explode("|",$carritoImagenProducto[$i]);
+//                 $idProducto = $data[0];
+//                 $idColor = $data[2];
+//                 $nombreImagen = $data[4];
     
-                $productoEntity->setIdProducto($idProducto);
-                $productoEntity->setIdColor($idColor);
-                $productoEntity->setImagenProducto($nombreImagen);
+//                 $productoEntity->setIdProducto($idProducto);
+//                 $productoEntity->setIdColor($idColor);
+//                 $productoEntity->setImagenProducto($nombreImagen);
 
-                $validarRegistroDetalle = $productoModel::registrarImagenDetalle($productoEntity);
+//                 $validarRegistroDetalle = $productoModel::registrarImagenDetalle($productoEntity);
 
-                if($validarRegistroDetalle){
-                    $rpta = "1";
-                }else {
-                    $rpta = "0";
-                }
-            }
+//                 if($validarRegistroDetalle){
+//                     $rpta = "1";
+//                 }else {
+//                     $rpta = "0";
+//                 }
+//             }
 
-        }
-    }
-    echo $rpta;
-}
+//         }
+//     }
+//     echo $rpta;
+// }
 
-if(isset($_POST["actualizarDatosImagenes"])){
-    $rpta = "";
-    if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
+// if(isset($_POST["actualizarDatosImagenes"])){
+//     $rpta = "";
+//     if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
 
-        // $listaIdImagen = $productoModel::obtenerSiguienteIdImagen();
-        // $idImagen = $configFunction::convertirCadena($listaIdImagen);
+//         // $listaIdImagen = $productoModel::obtenerSiguienteIdImagen();
+//         // $idImagen = $configFunction::convertirCadena($listaIdImagen);
 
-        $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
-        for($i = 0; $i < count($carritoImagenProducto); $i++){
-            $data = explode("|",$carritoImagenProducto[$i]);
-            $idProducto = $data[0];
-            $idColor = $data[2];
-            $nombreImagen = $data[4];
+//         $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
+//         for($i = 0; $i < count($carritoImagenProducto); $i++){
+//             $data = explode("|",$carritoImagenProducto[$i]);
+//             $idProducto = $data[0];
+//             $idColor = $data[2];
+//             $nombreImagen = $data[4];
 
-            $productoEntity->setIdProducto($idProducto);
-            $productoEntity->setIdColor($idColor);
-            // $productoEntity->setIdImagen($idImagen);
-            $productoEntity->setImagenProducto($nombreImagen);
+//             $productoEntity->setIdProducto($idProducto);
+//             $productoEntity->setIdColor($idColor);
+//             // $productoEntity->setIdImagen($idImagen);
+//             $productoEntity->setImagenProducto($nombreImagen);
 
-            // $idImagen++;
+//             // $idImagen++;
 
-            // $validarEditar = $productoModel::actualizarImagen($productoEntity);
-            // $validarEditarDetalle = $productoModel::actualizarImagenDetalle($productoEntity);
+//             // $validarEditar = $productoModel::actualizarImagen($productoEntity);
+//             // $validarEditarDetalle = $productoModel::actualizarImagenDetalle($productoEntity);
 
-            if($validarRegistro){
-                if($validarRegistroDetalle){
-                    $rpta = "1";
-                }else {
+//             if($validarRegistro){
+//                 if($validarRegistroDetalle){
+//                     $rpta = "1";
+//                 }else {
                    
-                }
-            }else{
-                $rpta = "0";
-            }
-        }
+//                 }
+//             }else{
+//                 $rpta = "0";
+//             }
+//         }
 
-        if($rpta == "1"){
-            unset($_SESSION["carritoImagenProducto"]);
-        }
+//         if($rpta == "1"){
+//             unset($_SESSION["carritoImagenProducto"]);
+//         }
 
-        echo $rpta;
-    }
-}
+//         echo $rpta;
+//     }
+// }

@@ -54,7 +54,9 @@ let productoView = {
         frmRegistrarProducto: "formRegistrarProducto",
         idProducto: "idProducto",
         containerImgResultado: "containerImagenResultado",
+        containerAgregarImagen: "containerAgregarImagen",
         imgProductoResultado: "imgProductoResultado",
+        btnAgregarImagen: "btnAgregarImagen",
         editarFormulario: false,
     },
 
@@ -70,6 +72,15 @@ let productoView = {
             control.editarFormulario = true;
             control.idProducto = _id(control.idProducto).value;
             sendDataAjax("POST",link.productoController,false,"idProducto=" + control.idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
+
+            _removeClass(_id(control.containerAgregarImagen),"d-none");
+            _addClass(_id(control.containerAgregarImagen),"d-flex");
+
+            _id(control.btnAgregarImagen).addEventListener("click",function(e){
+                e.preventDefault();
+    
+                window.location = baseUrl() + "/view/imagen-producto/" + control.idProducto;
+            })
         }
     },
 
@@ -117,12 +128,12 @@ let productoView = {
         CKEDITOR.instances.descripcionPrincipiosActivosFR.setData(producto[35]);
 
         if(producto[1] !== ""){
-            _removeClass(_id(control.containerImgResultado),"hide");
-            _addAttribute(_id(control.imgProductoResultado),"src",baseImagen + "producto/" + producto[1]);
+            _removeClass(_id(control.containerImgResultado),"d-none");
+            _addAttribute(_id(control.imgProductoResultado),"src", baseUrl() + "/images/producto/" + producto[1]);
             _addAttribute(_id(control.imgProductoResultado),"data-src",producto[1]);
             _removeAttribute(_id(control.imagenProductoResultado),"required");
         }else{
-            _addClass(_id(control.containerImgResultado),"hide");
+            _addClass(_id(control.containerImgResultado),"d-none");
             _addAttribute(_id(control.imagenProductoResultado),"requered",true);
         }
         
@@ -238,139 +249,6 @@ let productoView = {
         }
     },
 
-    mostrarTablaImagen: function(rpta){
-        const obj = productoView;
-        const control = obj.control;
-
-        let lista = rpta.split("~");
-
-        let cabecera = "Operaciones|Producto|Color|Imagen";
-        let cabeceraTabla = cabecera.split("|");
-        let tabla = "";
-
-        tabla += "<table class='table table-bordered'>";
-        tabla += "<thead class='text-center'>";
-        tabla += "<tr>";
-        for(let i = 0; i < cabeceraTabla.length; i++){
-            tabla += "<th>" + cabeceraTabla[i] + "</th>";
-        }
-        tabla += "</tr>"
-        tabla += "<tbody class='text-center'>";
-
-        if(lista != null && lista != ""){
-            for(let i = 0; i < lista.length; i++){
-                let data = lista[i].split("|");
-                tabla += "<tr>";
-                tabla += "<td>";
-                tabla += "<button class='btn btn-outline-danger eliminar-elemento' data-id='" + data[0] +"|"+data[2]+"|"+data[4]+"'>";
-                tabla += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
-                tabla += "<i class='fa fa-trash-alt fa-w-20'></i>";
-                tabla += "</span>Eliminar";
-                tabla += "</button>";
-                tabla += "</td>";
-                tabla += "<td>" + data[1] + "</td>";
-                tabla += "<td>" + data[3] + "</td>";
-                tabla += "<td><img src='"+ baseUrl() +"/images/producto/"+ data[4] +"' width='50'></td>";
-                tabla += "</tr>";
-            }
-
-            tabla += "</tbody>";
-            tabla += "</table>";
-
-            if(control.editarFormulario == true){
-                tabla += "<button class='btn btn-outline-success' id='buttonActualizarDetalleImagen'><span class='btn-icon-wrapper pr-2 opacity-7'>";
-                tabla += "<i class='fa fa-save fa-w-20'></i>";
-                tabla +="</span>Actualizar Imagen</button>";
-            }else{
-                tabla += "<button class='btn btn-outline-primary' id='buttonRegistrarDetalleImagen'><span class='btn-icon-wrapper pr-2 opacity-7'>";
-                tabla += "<i class='fa fa-save fa-w-20'></i>";
-                tabla +="</span><span>Registrar Imagen</button>";
-            }
-
-        }else{
-            tabla += "<tr>";
-            tabla += "<td class='text-center' colspan='" + cabecera.length +"'>No hay Información Registrada</td>";
-            tabla += "</tr>";
-            tabla += "</tbody>";
-            tabla += "</table>";
-        }
-
-        _id("listarImagenProducto").innerHTML = tabla;
-
-        obj.eliminarImagenProductoCarrito();
-        obj.registrarDetalleImagen();
-        obj.actualizarDetalleImagen();
-    },
-
-    eliminarImagenProductoCarrito: function(){
-        const obj = productoView;
-        const control = obj.control;
-        const link = obj.link;
-
-        let buttonEliminar = _cname(control.buttonEliminarProducto);
-        let nButtonEliminar = buttonEliminar.length;
-
-        for(let i = 0; i < nButtonEliminar; i++){
-            let button = buttonEliminar[i];
-            button.addEventListener("click",function(e){
-                e.preventDefault();
-                let id = button.getAttribute("data-id");
-
-                sendDataAjax("POST",link.productoController,false,"id=" + id + "&eliminarImagenProductoCarrito=true",obj.respuestaEliminarImagenProductoCarrito);
-
-            })
-        }
-    },
-
-    respuestaEliminarImagenProductoCarrito: function(rpta){
-        const obj = productoView;
-
-        obj.obtenerListaImagenProductoCarrito();
-
-        if(rpta == "1|1"){
-            mostrarMensaje("success", "Se eliminó la imagen");
-        }else if(rpta == "1|0"){
-            mostrarMensaje("error", "No se ha podido eliminar la imagen");
-        }
-    },
-
-    registrarDetalleImagen: function(){
-        const obj = productoView;
-        const control = obj.control;
-        const link = obj.link;
-
-        if(validarEmptyNullElement(control.btnRegistrarDetalleImagen,true)){
-            _id(control.btnRegistrarDetalleImagen).addEventListener("click",function(e){
-                e.preventDefault();
-
-                sendDataAjax("POST",link.productoController,false,"registrarDatosImagenes=true",obj.respuestaRegistrarImagen);
-            })
-        }
-    },
-
-    respuestaRegistrarImagen: function(rpta){
-        const obj = productoView;
-        if(rpta == "1"){
-            mostrarMensaje("success", "Se registrarón las imagenes");
-            obj.obtenerListaImagenProductoCarrito();
-        }else{
-            mostrarMensaje("error", "No se ha podido registrar las imagenes");
-        }
-    },
-
-    actualizarDetalleImagen: function(){
-        const obj = productoView;
-        const control = obj.control;
-        const link = obj.link;
-
-        if(validarEmptyNullElement(control.btnActualizarDetalleImagen,true)){
-            _id(control.btnActualizarDetalleImagen).addEventListener("click",function(e){
-                e.preventDefault();
-
-                sendDataAjax("POST",link.productoController,false,"registrarDatosImagenes=true&eliminarImagen="+control.idProducto,obj.respuestaRegistrarImagen);
-            })
-        }
-    },
 }
 
 document.addEventListener("DOMContentLoaded", function () {

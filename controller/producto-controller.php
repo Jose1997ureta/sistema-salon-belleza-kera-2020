@@ -177,7 +177,7 @@ if(isset($_POST["actualizarProducto"])){
     if($imagenProductoResultado != true && $imgProductoResultado != ""){
         $productoEntity->setImagenProducto($imgProductoResultado);
 
-    }else if($imagenProductoResultado == true)
+    }else if($imagenProductoResultado == true){
 
         $configFunction::validarDirectorio("../images");
         $configFunction::validarDirectorio("../images/producto");

@@ -16,11 +16,11 @@ CREATE TABLE IF NOT EXISTS PRODUCTO_KERA (
 	id_producto INT PRIMARY KEY NOT NULL,
     imagen_resultado TEXT NULL,
     ruta_video TEXT NULL,
-    flag_producto TINYINT DEFAULT 1
+    flag_producto VARCHAR(10) DEFAULT 'Activo'
 )ENGINE = INNODB DEFAULT CHAR SET = UTF8;
 
 CREATE TABLE IF NOT EXISTS PRODUCTO_KERA_ESPANOL (
-	id_productos INT NOT NULL,
+	id_producto INT NOT NULL,
 	tipo_producto_es VARCHAR(40) NOT NULL,
 	nombre_producto_es VARCHAR(40) NOT NULL,
 	descripcion_producto_es TEXT NULL, 	 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS IMAGEN_HOME_KERA(
 	id_imagen INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     titulo_imagen VARCHAR(40) NOT NULL,
     imagen TEXT NULL,
-    flag_imagen TINYINT DEFAULT 1
+    flag_imagen VARCHAR(10) DEFAULT 'Activo'
 )ENGINE = INNODB DEFAULT CHAR SET= UTF8;
 
 -- CLAVES FORANEAS

@@ -19,24 +19,25 @@ let listarProductoView = {
 
     inicializarDom: function(){
         const obj = listarProductoView;
-        const control = obj.control;
         const link = obj.link;
 
         sendDataAjax("POST",link.productoController,false,"listarProducto=true",obj.listarProducto);
-        
+
     },
 
     listarProducto: function(rpta){
         const obj = listarProductoView;
         const control = obj.control;
 
-        let data = rpta.split("|");
+        let cabecera = "Operaciones|Tipo Producto|Nombre Producto|Ruta Video|Estado";
+        let data = rpta.split("~");
+        data.unshift(cabecera)
         crearTabla(data,control.lstProducto,true);
         obj.editarProducto();
         obj.eliminarProducto();
     },
 
-    editarFormulario: function(){
+    editarProducto: function(){
         const obj = listarProductoView;
         const control = obj.control;
 
@@ -48,7 +49,7 @@ let listarProductoView = {
                 e.preventDefault();
                 let idProducto = _getAtrribute(button,"data-id");
 
-                window.location = baseUrl + "/producto/" + idProducto;
+                window.location = baseUrl() + "/view/producto/" + idProducto;
 
             })
         }
@@ -57,7 +58,8 @@ let listarProductoView = {
     eliminarProducto: function(){
         const obj = listarProductoView;
         const control = obj.control;
-        
+        const link = obj.link;
+
         let buttonEliminar = _cname(control.eliminarElemento);
 
         for(let i = 0; i < buttonEliminar.length; i++){
@@ -70,6 +72,14 @@ let listarProductoView = {
             })
         }
     },
+
+    respuestaEliminarProducto: function(rpta){
+        if(rpta === "1"){
+            mostrarMensaje("success", "Se eliminó el producto");
+        }else{
+            mostrarMensaje("error", "Ocurrio un error");
+        }
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {

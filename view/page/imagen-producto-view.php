@@ -57,4 +57,4 @@
     </form>
 </div>
 
-<script src="<?php echo SERVER_URL; ?>/script/producto-view.js"></script>
+<script src="<?php echo SERVER_URL; ?>/script/imagen-producto-view.js"></script>

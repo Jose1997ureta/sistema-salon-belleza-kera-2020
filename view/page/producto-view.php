@@ -17,6 +17,10 @@
         </div>
     </div>
 
+    <div class="justify-content-end mb-3 d-none" id="containerAgregarImagen">
+        <button class="btn btn-primary" id="btnAgregarImagen">Agregar Imagen</button>
+    </div>
+
     <form class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate>
         <div class="row">
             <div class="col-md-6">
@@ -334,8 +338,8 @@
                                     Ingresar una Imagen para el producto
                                 </div>
                             </div>
-                            <div class="col-md-12 hide containerImagenResultado">
-                                <img class="rounded" id="imgProductoResultado"/>
+                            <div class="col-md-12 d-none mb-3" id="containerImagenResultado">
+                                <img class="rounded w-100" id="imgProductoResultado"/>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="rutaProductoVideo">Ruta Video:</label>

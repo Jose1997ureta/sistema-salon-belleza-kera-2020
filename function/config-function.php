@@ -7,8 +7,6 @@ if(file_exists("../model/conexion.php")){
     require_once "core/configuration-router.php";
 }
 
-// session_start();
-
 class config_function {
 
     public static function obtenerLista($procedure){

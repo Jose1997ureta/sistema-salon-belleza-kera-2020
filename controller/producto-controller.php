@@ -245,6 +245,25 @@ if(isset($_POST["actualizarProducto"])){
 
 }
 
+if(isset($_POST["eliminarProducto"])){
+    $rpta = "";
+    $idProducto = $configFunction::validarMetodos("POST","idProducto");
+
+    $productoEntity->setIdProducto($idProducto);
+
+    $validarConsulta = $productoModel::eliminarProducto($productoEntity);
+
+    if($validarConsulta){
+        echo "1";
+    }else{
+        echo "0";
+    }
+}
+
+// IMAGEN PRODUCTO
+
+
+
 if(isset($_POST["agregarImagenProductoCarrito"])){
     $find = false;
     $position = 0;
@@ -305,131 +324,3 @@ if(isset($_POST["agregarImagenProductoCarrito"])){
 
     echo $rpta;
 }
-
-if(isset($_POST["listarImagenProductoCarrito"])){
-
-    $rpta = "";
-
-    if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
-
-        $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
-
-        $rpta = implode("~", $carritoImagenProducto);
-    }
-    
-    echo $rpta;
-}
-
-if(isset($_POST["eliminarImagenProductoCarrito"])){
-    $rpta = "";
-    if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
-        $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
-        $id = $configFunction::validarMetodos("POST","id");
-        $parametro = explode("|",$id);
-
-        $idProducto = $parametro[0];
-        $idColor = $parametro[1];
-        $Imagen = $parametro[2];
-
-        $rpta = "";
-
-        for($i = 0; $i < count($carritoImagenProducto); $i++){
-            $carrito = explode("|",$carritoImagenProducto[$i]);
-
-            if($carrito[0] == $idProducto && $carrito[2] == $idColor && $carrito[4] == $Imagen){
-                unset($carritoImagenProducto[$i]);
-
-                $rpta .="1|";
-
-                if(is_file("../images/producto/".$carrito[4])){
-                    unlink("../images/producto/".$carrito[4]);
-                    $rpta .= "1";
-                }else{
-                    $rpta .= "0";
-                }
-            }
-        }
-        $_SESSION["carritoImagenProducto"] = array_values($carritoImagenProducto);
-    }
-    echo $rpta;
-}
-
-// if(isset($_POST["registrarDatosImagenes"])){
-//     $rpta = "";
-//     if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
-
-//         $eliminarImagen = $configFunction::validarMetodos("POST","eliminarImagen");
-//         $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
-
-//         if($eliminarImagen !== ""){
-//             $productoEntity->setIdProducto($eliminarImagen);
-//             $validarEliminarImagen = $productoModel::eliminarImagenProducto($productoEntity);
-//         }
-
-//         if($validarEliminarImagen){
-//             for($i = 0; $i < count($carritoImagenProducto); $i++){
-//                 $data = explode("|",$carritoImagenProducto[$i]);
-//                 $idProducto = $data[0];
-//                 $idColor = $data[2];
-//                 $nombreImagen = $data[4];
-    
-//                 $productoEntity->setIdProducto($idProducto);
-//                 $productoEntity->setIdColor($idColor);
-//                 $productoEntity->setImagenProducto($nombreImagen);
-
-//                 $validarRegistroDetalle = $productoModel::registrarImagenDetalle($productoEntity);
-
-//                 if($validarRegistroDetalle){
-//                     $rpta = "1";
-//                 }else {
-//                     $rpta = "0";
-//                 }
-//             }
-
-//         }
-//     }
-//     echo $rpta;
-// }
-
-// if(isset($_POST["actualizarDatosImagenes"])){
-//     $rpta = "";
-//     if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
-
-//         // $listaIdImagen = $productoModel::obtenerSiguienteIdImagen();
-//         // $idImagen = $configFunction::convertirCadena($listaIdImagen);
-
-//         $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
-//         for($i = 0; $i < count($carritoImagenProducto); $i++){
-//             $data = explode("|",$carritoImagenProducto[$i]);
-//             $idProducto = $data[0];
-//             $idColor = $data[2];
-//             $nombreImagen = $data[4];
-
-//             $productoEntity->setIdProducto($idProducto);
-//             $productoEntity->setIdColor($idColor);
-//             // $productoEntity->setIdImagen($idImagen);
-//             $productoEntity->setImagenProducto($nombreImagen);
-
-//             // $idImagen++;
-
-//             // $validarEditar = $productoModel::actualizarImagen($productoEntity);
-//             // $validarEditarDetalle = $productoModel::actualizarImagenDetalle($productoEntity);
-
-//             if($validarRegistro){
-//                 if($validarRegistroDetalle){
-//                     $rpta = "1";
-//                 }else {
-                   
-//                 }
-//             }else{
-//                 $rpta = "0";
-//             }
-//         }
-
-//         if($rpta == "1"){
-//             unset($_SESSION["carritoImagenProducto"]);
-//         }
-
-//         echo $rpta;
-//     }
-// }

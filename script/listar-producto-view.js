@@ -21,11 +21,15 @@ let listarProductoView = {
         const obj = listarProductoView;
         const link = obj.link;
 
-        sendDataAjax("POST",link.productoController,false,"listarProducto=true",obj.listarProducto);
-
+        obj.listarProducto();
     },
 
     listarProducto: function(rpta){
+        const obj = listarProductoView;
+        sendDataAjax("POST",link.productoController,false,"listarProducto=true",obj.listarProducto);
+    },
+
+    mostrarListaProducto: function(){
         const obj = listarProductoView;
         const control = obj.control;
 
@@ -74,8 +78,11 @@ let listarProductoView = {
     },
 
     respuestaEliminarProducto: function(rpta){
+        const obj = listarProductoView;
+
         if(rpta === "1"){
             mostrarMensaje("success", "Se eliminó el producto");
+            obj.mostrarListaProducto();    
         }else{
             mostrarMensaje("error", "Ocurrio un error");
         }

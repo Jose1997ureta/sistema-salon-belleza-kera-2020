@@ -14,19 +14,22 @@ let imagenProductoView = {
     control: {
         idProducto: "idProducto",
         lstImagenProducto: "listarImagenProducto",
+        frmRegistrarImagenProducto: "formRegistrarImagenProducto",
+        btnEliminarImgProducto: "eliminar-elemento",
     },
 
     inicializarDom: function(){
         const obj = imagenProductoView;
         const control = obj.control;
 
-        validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
+        validarEnviarFormulario(control.frmRegistrarImagenProducto,obj.registrarImagenProducto);
         obj.listarImagenProducto();
     },
 
     listarImagenProducto: function(){
         const obj = imagenProductoView;
         const control = obj.control;
+        const link = obj.link;
 
         let idProducto = _id(control.idProducto).value;
 
@@ -35,26 +38,35 @@ let imagenProductoView = {
 
     mostrarImagenProducto: function(rpta){
         const obj = imagenProductoView;
-        const control = obj.control;
-
-        let data = rpta.split("|");
-        obj.eliminarProducto();
+        obj.mostrarTablaImagen(rpta);
+        obj.eliminarImagenProducto();
     },
 
-    eliminarProducto: function(){
+    registrarImagenProducto: function(form){
         const obj = imagenProductoView;
-        const control = obj.control;
+        const link = obj.link;
+
+        let idProducto = _id(control.idProducto).value;
+
+        let formData = new FormData(form);
+        formData.append("idProducto",idProducto);
+        formData.append("registrarImagenProducto",true);
+
+        sendDataAjax("POST", link.productoController, true, formData, obj.respuestaRegistroImagenProducto);
+    },
+
+    respuestaRegistroImagenProducto: function (rpta) {
+        const obj = imagenProductoView;
         
-        let buttonEliminar = _cname(control.eliminarElemento);
-
-        for(let i = 0; i < buttonEliminar.length; i++){
-            let button = buttonEliminar[i];
-            button.addEventListener("click",function(e){
-                e.preventDefault();
-                let idProducto = _getAtrribute(button,"data-id");
-
-                sendDataAjax("POST",link.productoController,false,"idProducto="+ idProducto + "&eliminarProducto=true",obj.respuestaEliminarProducto);
-            })
+        if (rpta != "0") {
+            if(rpta == "1|1"){
+                mostrarMensaje("success", "Se registró la imagen producto")
+            }else{
+                mostrarMensaje("warning", "Se registró el producto, pero la imagen no se pudo grabar")
+            }
+            obj.listarImagenProducto();
+        } else {
+            mostrarMensaje("error", "Ocurrio un error");
         }
     },
 
@@ -104,78 +116,36 @@ let imagenProductoView = {
             tabla += "</table>";
         }
 
-        _id("listarImagenProducto").innerHTML = tabla;
+        _id(control.lstImagenProducto).innerHTML = tabla;
 
         obj.eliminarProducto();
     },
 
-    eliminarImagenProductoCarrito: function(){
+    eliminarImagenProducto: function(){
         const obj = imagenProductoView;
         const control = obj.control;
-        const link = obj.link;
+        
+        let buttonEliminar = _cname(control.btnEliminarImgProducto);
 
-        let buttonEliminar = _cname(control.buttonEliminarProducto);
-        let nButtonEliminar = buttonEliminar.length;
-
-        for(let i = 0; i < nButtonEliminar; i++){
+        for(let i = 0; i < buttonEliminar.length; i++){
             let button = buttonEliminar[i];
             button.addEventListener("click",function(e){
                 e.preventDefault();
-                let id = button.getAttribute("data-id");
+                let idImagen = _getAtrribute(button,"data-id");
 
-                sendDataAjax("POST",link.productoController,false,"id=" + id + "&eliminarImagenProductoCarrito=true",obj.respuestaEliminarImagenProductoCarrito);
-
+                sendDataAjax("POST",link.productoController,false,"idImagen="+ idImagen + "&eliminarImagenProducto=true",obj.respuestaEliminarProducto);
             })
         }
     },
 
-    respuestaEliminarImagenProductoCarrito: function(rpta){
-        const obj = imagenProductoView;
+    respuestaEliminarProducto: function(rpta){
+        const obj = listarProductoView;
 
-        obj.obtenerListaImagenProductoCarrito();
-
-        if(rpta == "1|1"){
-            mostrarMensaje("success", "Se eliminó la imagen");
-        }else if(rpta == "1|0"){
-            mostrarMensaje("error", "No se ha podido eliminar la imagen");
-        }
-    },
-
-    registrarDetalleImagen: function(){
-        const obj = imagenProductoView;
-        const control = obj.control;
-        const link = obj.link;
-
-        if(validarEmptyNullElement(control.btnRegistrarDetalleImagen,true)){
-            _id(control.btnRegistrarDetalleImagen).addEventListener("click",function(e){
-                e.preventDefault();
-
-                sendDataAjax("POST",link.productoController,false,"registrarDatosImagenes=true",obj.respuestaRegistrarImagen);
-            })
-        }
-    },
-
-    respuestaRegistrarImagen: function(rpta){
-        const obj = imagenProductoView;
-        if(rpta == "1"){
-            mostrarMensaje("success", "Se registrarón las imagenes");
-            obj.obtenerListaImagenProductoCarrito();
+        if(rpta === "1"){
+            mostrarMensaje("success", "Se eliminó el producto");
+            obj.listarImagenProducto();    
         }else{
-            mostrarMensaje("error", "No se ha podido registrar las imagenes");
-        }
-    },
-
-    actualizarDetalleImagen: function(){
-        const obj = imagenProductoView;
-        const control = obj.control;
-        const link = obj.link;
-
-        if(validarEmptyNullElement(control.btnActualizarDetalleImagen,true)){
-            _id(control.btnActualizarDetalleImagen).addEventListener("click",function(e){
-                e.preventDefault();
-
-                sendDataAjax("POST",link.productoController,false,"registrarDatosImagenes=true&eliminarImagen="+control.idProducto,obj.respuestaRegistrarImagen);
-            })
+            mostrarMensaje("error", "Ocurrio un error");
         }
     },
 }

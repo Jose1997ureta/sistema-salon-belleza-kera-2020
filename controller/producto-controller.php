@@ -233,10 +233,14 @@ if(isset($_POST["actualizarProducto"])){
     $validarConsultaProducto = $productoModel::actualizarProducto($productoEntity);
 
     if($validarConsultaProducto){
-        if(move_uploaded_file($tmpImagenProductoResultado,$carpetaImagen)){
-            $rpta = "1";
+        if($imagenProductoResultado == true){
+            if(move_uploaded_file($tmpImagenProductoResultado,$carpetaImagen)){
+                $rpta = "1";
+            }else{
+                $rpta = "0";
+            }
         }else{
-            $rpta = "0";
+            $rpta = "1";
         }
         echo "1|".$rpta;
     }else{
@@ -261,8 +265,48 @@ if(isset($_POST["eliminarProducto"])){
 }
 
 // IMAGEN PRODUCTO
+if(isset($_POST["registrarImagenProducto"])){
 
+    $idProducto = $configFunction::validarMetodos("POST","idProducto");
+    
+    $configFunction::validarDirectorio("../images");
+    $configFunction::validarDirectorio("../images/producto");
+    
+    $imagenProducto = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenProducto"]["name"]);
+    $tmpImagenProducto = $_FILES["imagenProducto"]["tmp_name"];
+    $carpetaImagen = "../images/producto/".$imagenProducto;
+    
+    $productoEntity->setIdProducto($idProducto);
+    $productoEntity->setImagenProducto($imagenProducto);
 
+    $validarConsultaProducto = $productoModel::registrarImagenProducto($productoEntity);
+
+    if($validarConsultaProducto){
+        if(move_uploaded_file($tmpImagenProducto,$carpetaImagen)){
+            $rpta = "1";
+        }else{
+            $rpta = "0";
+        }
+        echo "1|".$rpta;
+    }else{
+        echo "0";
+    }
+}
+
+if(isset($_POST["eliminarImagenProducto"])){
+    $rpta = "";
+    $idImagen = $configFunction::validarMetodos("POST","idImagen");
+
+    $productoEntity->setIdImagen($idImagen);
+
+    $validarConsulta = $productoModel::eliminarImagenProducto($productoEntity);
+
+    if($validarConsulta){
+        echo "1";
+    }else{
+        echo "0";
+    }
+}
 
 if(isset($_POST["agregarImagenProductoCarrito"])){
     $find = false;
@@ -281,7 +325,6 @@ if(isset($_POST["agregarImagenProductoCarrito"])){
     $imagenProductoColor = "dataCell-".$idProducto."-".$configFunction::generarUrlDinamico("",$_FILES["imagenProductoColor"]["name"]);
     $tmpImagenProductoColor = $_FILES["imagenProductoColor"]["tmp_name"];
     $carpetaImagen = "../images/producto/".$imagenProductoColor;
-
     
     if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
         $carritoImagenProducto = $_SESSION["carritoImagenProducto"];

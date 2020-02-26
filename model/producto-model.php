@@ -84,7 +84,7 @@ class productoModel{
 
     public static function eliminarImagenProducto(productoEntity $producto){
         $configFunction = new config_function();
-        $procedure = "CALL ELIMINAR_PRODUCTO('$producto->idImagen')";
+        $procedure = "CALL ELIMINAR_IMAGEN_PRODUCTO('$producto->idImagen')";
 
         return $configFunction::ejecutarConsulta($procedure);
     }

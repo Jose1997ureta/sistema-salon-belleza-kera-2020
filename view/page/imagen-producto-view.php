@@ -1,3 +1,9 @@
+<script>
+    let id = <?php (isset($_GET['id'])) ?  $id = $_GET['id'] : $id = ''; echo $id; ?>; 
+    if( id === ""){
+        window.location = baseUrl() + "/view/listar-producto";
+    }
+</script>
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -8,8 +14,8 @@
                 </div>
                 <div>IMAGEN PRODUCTO
                     <input type="hidden" id="idProducto" name="idProducto"
-                        value="<?php (isset($_GET['id'])) ?  $id = $_GET['id'] : $id = ''; echo $id; ?>">
-                    <div class="page-title-subheading">En esta pantalla ingresaremos los productos que tiene la empresa
+                        value="<?php echo $_GET['id']; ?>">
+                    <div class="page-title-subheading">En esta pantalla ingresaremos las Imagenes de los productos
                     </div>
                 </div>
             </div>
@@ -28,7 +34,7 @@
                         <div class="form-row form-group">
                             <div class="col-md-12 form-group">
                                 <label for="imagenProducto" class="">Imágen</label>
-                                <input name="imagenProducto[]" id="imagenProducto" type="file"
+                                <input name="imagenProducto" id="imagenProducto" type="file"
                                     class="form-control-file" required>
                                 <div class="invalid-feedback">
                                     Ingresar una Imagen para el producto

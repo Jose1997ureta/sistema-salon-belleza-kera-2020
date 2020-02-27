@@ -44,6 +44,7 @@ let imagenProductoView = {
 
     registrarImagenProducto: function(form){
         const obj = imagenProductoView;
+        const control = obj.control;
         const link = obj.link;
 
         let idProducto = _id(control.idProducto).value;
@@ -118,12 +119,13 @@ let imagenProductoView = {
 
         _id(control.lstImagenProducto).innerHTML = tabla;
 
-        obj.eliminarProducto();
+        obj.eliminarImagenProducto();
     },
 
     eliminarImagenProducto: function(){
         const obj = imagenProductoView;
         const control = obj.control;
+        const link = obj.link;
         
         let buttonEliminar = _cname(control.btnEliminarImgProducto);
 
@@ -139,7 +141,7 @@ let imagenProductoView = {
     },
 
     respuestaEliminarProducto: function(rpta){
-        const obj = listarProductoView;
+        const obj = imagenProductoView;
 
         if(rpta === "1"){
             mostrarMensaje("success", "Se eliminó el producto");

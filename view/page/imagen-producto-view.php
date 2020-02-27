@@ -1,6 +1,6 @@
 <script>
-    let id = <?php (isset($_GET['id'])) ?  $id = $_GET['id'] : $id = ''; echo $id; ?>; 
-    if( id === ""){
+    let id = <?php (isset($_GET['id'])) ?  $id = $_GET['id'] : $id = "''"; echo $id; ?>; 
+    if(id === ""){
         window.location = baseUrl() + "/view/listar-producto";
     }
 </script>

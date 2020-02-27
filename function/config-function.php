@@ -41,7 +41,7 @@ class config_function {
                 $valorCampo =  true;
             }
         }else if($method === "FILES"){
-            if(isset($_FILES[$value]) && $_FILES[$value] != "" && $_FILES[$value != null]){
+            if($_FILES[$value]["name"]!= ""){
                 $valorCampo = true;
             }
         }

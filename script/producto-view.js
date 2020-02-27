@@ -70,8 +70,8 @@ let productoView = {
             validarEnviarFormulario(control.frmRegistrarProducto,obj.registrarProducto);
         }else{
             control.editarFormulario = true;
-            control.idProducto = _id(control.idProducto).value;
-            sendDataAjax("POST",link.productoController,false,"idProducto=" + control.idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
+            let idProducto = _id(control.idProducto).value;
+            sendDataAjax("POST",link.productoController,false,"idProducto=" + idProducto + "&listarProductoId=true",obj.respuestaListarProductoId);
 
             _removeClass(_id(control.containerAgregarImagen),"d-none");
             _addClass(_id(control.containerAgregarImagen),"d-flex");
@@ -79,7 +79,7 @@ let productoView = {
             _id(control.btnAgregarImagen).addEventListener("click",function(e){
                 e.preventDefault();
     
-                window.location = baseUrl() + "/view/imagen-producto/" + control.idProducto;
+                window.location = baseUrl() + "/view/imagen-producto/" + idProducto;
             })
         }
     },
@@ -203,8 +203,10 @@ let productoView = {
 
         let imgProductoResultado = _getAtrribute(_id(control.imgProductoResultado),"data-src");
 
+        let idProducto = _id(control.idProducto).value;
+
         let formData = new FormData(form);
-        formData.append("id_producto",idProducto);
+        formData.append("idProducto",idProducto);
         formData.append("desItemProductoES",txtdesItemProductoES);
         formData.append("desBeneficiosES",txtdesBeneficiosES);
         formData.append("desPrincipiosActivosES",txtdesPrincipiosActivosES);

@@ -174,8 +174,8 @@ if(isset($_POST["actualizarProducto"])){
     $imagenProductoResultado = $configFunction::validarMetodos("FILES","imagenProductoResultado");
     $imgProductoResultado = $configFunction::validarMetodos("POST","imgProductoResultado");
 
-    if($imagenProductoResultado != true && $imgProductoResultado != ""){
-        $productoEntity->setImagenProducto($imgProductoResultado);
+    if($imagenProductoResultado == "" && $imgProductoResultado != ""){
+        $productoEntity->setImagenResultadoProducto($imgProductoResultado);
 
     }else if($imagenProductoResultado == true){
 
@@ -186,7 +186,7 @@ if(isset($_POST["actualizarProducto"])){
         $tmpImagenProductoResultado = $_FILES["imagenProductoResultado"]["tmp_name"];
         $carpetaImagen = "../images/producto/".$imagenProductoResultado;
 
-        $productoEntity->setImagenProducto($imagenProductoResultado);
+        $productoEntity->setImagenResultadoProducto($imagenProductoResultado);
     }
 
     $productoEntity->setIdProducto($idProducto);
@@ -233,7 +233,7 @@ if(isset($_POST["actualizarProducto"])){
     $validarConsultaProducto = $productoModel::actualizarProducto($productoEntity);
 
     if($validarConsultaProducto){
-        if($imagenProductoResultado == true){
+        if($imagenProductoResultado != ""){
             if(move_uploaded_file($tmpImagenProductoResultado,$carpetaImagen)){
                 $rpta = "1";
             }else{
@@ -265,6 +265,17 @@ if(isset($_POST["eliminarProducto"])){
 }
 
 // IMAGEN PRODUCTO
+if(isset($_POST["listarImagenProducto"])){
+    $rpta = "";
+    $idProducto = $configFunction::validarMetodos("POST","idProducto");
+    $productoEntity->setIdProducto($idProducto);
+    $listarImagenProductoId = $productoModel::listarImagenProducto($productoEntity);
+
+    $rpta = $configFunction::convertirCadena($listarImagenProductoId);
+
+    echo $rpta;
+}
+
 if(isset($_POST["registrarImagenProducto"])){
 
     $idProducto = $configFunction::validarMetodos("POST","idProducto");

@@ -3,7 +3,7 @@ require_once 'conexion.php';
 require_once '../entity/imagen-home-entity.php';
 require_once '../function/config-function.php';
 
-class trabajadorModel {
+class imagenHomeModel {
 
     public static function listarImagenHome(){
         $configFunction = new config_function();

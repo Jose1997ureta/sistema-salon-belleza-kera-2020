@@ -33,13 +33,7 @@ let imagenProductoView = {
 
         let idProducto = _id(control.idProducto).value;
 
-        sendDataAjax("POST",link.productoController,false,"idProducto="+ idProducto +"&listarImagenProducto=true",obj.mostrarImagenProducto);
-    },
-
-    mostrarImagenProducto: function(rpta){
-        const obj = imagenProductoView;
-        obj.mostrarTablaImagen(rpta);
-        obj.eliminarImagenProducto();
+        sendDataAjax("POST",link.productoController,false,"idProducto="+ idProducto +"&listarImagenProducto=true",obj.mostrarTablaImagen);
     },
 
     registrarImagenProducto: function(form){

@@ -7,8 +7,6 @@ $productoModel = new productoModel();
 $productoEntity = new productoEntity();
 $configFunction = new config_function();
 
-session_start();
-
 if(isset($_POST["listarProducto"])){
     $data = "";
     $listarProducto = $productoModel::listarProducto();
@@ -317,64 +315,4 @@ if(isset($_POST["eliminarImagenProducto"])){
     }else{
         echo "0";
     }
-}
-
-if(isset($_POST["agregarImagenProductoCarrito"])){
-    $find = false;
-    $position = 0;
-    $rpta = "";
-
-    $idProducto = $configFunction::validarMetodos("POST","idProductoColor");
-    $nombreProducto = $configFunction::validarMetodos("POST","nombreProductoColor");
-    $idColor = $configFunction::validarMetodos("POST","colorProductoImagen");
-    $nombreColor = $configFunction::validarMetodos("POST","colorProducto");
-
-    // VALIDAR CARPETA DONDE SE VA A GUARDAR LA IMAGEN
-    $configFunction::validarDirectorio("../images");
-    $configFunction::validarDirectorio("../images/producto");
-
-    $imagenProductoColor = "dataCell-".$idProducto."-".$configFunction::generarUrlDinamico("",$_FILES["imagenProductoColor"]["name"]);
-    $tmpImagenProductoColor = $_FILES["imagenProductoColor"]["tmp_name"];
-    $carpetaImagen = "../images/producto/".$imagenProductoColor;
-    
-    if($configFunction::validarMetodos("SESSION","carritoImagenProducto")){
-        $carritoImagenProducto = $_SESSION["carritoImagenProducto"];
-
-        for($i = 0; $i < count($carritoImagenProducto); $i++){
-            $carrito = explode("|",$carritoImagenProducto[$i]);
-            if($carrito[0] == $idProducto && $carrito[2] == $idColor && $carrito[4] == $imagenProductoColor){
-                $find = true;
-                $position = $i;
-            }
-        }
-
-        if($find === true){
-            $rpta .= "1|";
-        }else{
-            $newArray = $idProducto."|".$nombreProducto."|".$idColor."|".$nombreColor."|".$imagenProductoColor;
-
-            array_push($carritoImagenProducto,$newArray);
-            $_SESSION["carritoImagenProducto"] = $carritoImagenProducto;
-
-            $rpta .="0|";
-        }
-
-    }else{
-        $carritoImagenProducto = array($idProducto."|".$nombreProducto."|".$idColor."|".$nombreColor."|".$imagenProductoColor);
-
-        $_SESSION["carritoImagenProducto"] = $carritoImagenProducto;
-
-        $rpta .="0|";
-    }
-
-    if(move_uploaded_file($tmpImagenProductoColor,$carpetaImagen)){
-        $rpta .= "1";
-    }else{
-        $rpta .= "0";
-        $delete = array_pop($carritoImagenProducto);
-
-        $_SESSION["carritoImagenProducto"] = $carritoImagenProducto;
-    }
-
-    echo $rpta;
 }

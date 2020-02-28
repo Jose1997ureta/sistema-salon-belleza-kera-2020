@@ -144,11 +144,11 @@ let imagenHomeView = {
                     html += "</div>";
                     html += "<div class='col-md-12 form-group'>";
                     html += "<label for='namecategory'>Imagen:</label>";
-                    html += "<input type='file' class='form-control-file' name='imagenHomeActualizar' required=''>";
+                    html += "<input type='file' class='form-control-file' name='imagenHomeActualizar' id='imagenHomeActualizar' required=''>";
                     html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12'>";
-                    html += "<img class='w-100' id='imagenHomeActual' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
+                    html += "<img class='w-100' id='imagenHomeActual' data-img='" + srcImagen + "' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
                     html += "</div>";
                     html += "</div>";
                     html += "<button class='btn btn-outline-success' type='submit'>";
@@ -159,6 +159,10 @@ let imagenHomeView = {
                     html += "</form>";
 
                 mostrarModal("", "Formulario Actualizar Categoría", html);
+
+                if(srcImagen != ""){
+                    _removeAttribute(_id("imagenHomeActualizar"),"required");
+                }
                 validarEnviarFormulario(control.frmActualizarImagenHome,obj.actualizarImagenHome);
             })
         }
@@ -168,7 +172,7 @@ let imagenHomeView = {
         const obj = imagenHomeView;
         const link = obj.link;
 
-        let imagenActual = _getAtrribute(_id("imagenHomeActual"),"src");
+        let imagenActual = _getAtrribute(_id("imagenHomeActual"),"data-img");
 
         let formData = new FormData(form);
         formData.append("imagenHomeActual",imagenActual);

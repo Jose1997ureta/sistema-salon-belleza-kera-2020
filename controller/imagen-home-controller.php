@@ -47,12 +47,12 @@ if(isset($_POST["registrarImagenHome"])){
 if(isset($_POST["actualizarImagenHome"])){
 
     $idImagen = $configFunction::validarMetodos("POST","idImagenHome");
-    $tituloImagen = $configFunction::validarMetodos("POST","tituloImagen");
+    $tituloImagen = $configFunction::validarMetodos("POST","tituloImagenEditar");
     $imagenHomeActualizar = $configFunction::validarMetodos("FILES","imagenHomeActualizar");
     $imagenHomeActual = $configFunction::validarMetodos("POST","imagenHomeActual");
 
     if($imagenHomeActualizar == "" && $imagenHomeActual != ""){
-        $productoEntity->setImagen($imagenHomeActual);
+        $imagenHomeEntity->setImagen($imagenHomeActual);
 
     }else if($imagenHomeActualizar == true){
 
@@ -63,7 +63,7 @@ if(isset($_POST["actualizarImagenHome"])){
         $tmpImagenHome = $_FILES["imagenHomeActualizar"]["tmp_name"];
         $carpetaImagen = "../images/imagen-home/".$imagenHomeActualizar;
 
-        $productoEntity->setImagen($imagenHomeActualizar);
+        $imagenHomeEntity->setImagen($imagenHomeActualizar);
     }
     
     $imagenHomeEntity->setIdImagen($idImagen);

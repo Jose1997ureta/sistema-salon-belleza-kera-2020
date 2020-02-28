@@ -1,6 +1,6 @@
 let imagenHomeView = {
     propiedad: {
-        listarHome: [],
+        listarImagenHome: [],
     },
 
     session: {
@@ -64,6 +64,7 @@ let imagenHomeView = {
     mostrarTablaImagen: function(rpta){
         const obj = imagenHomeView;
         const control = obj.control;
+        const propiedad = obj.propiedad;
 
         let lista = rpta.split("~");
 
@@ -82,6 +83,7 @@ let imagenHomeView = {
 
         if(lista != null && lista != ""){
             for(let i = 0; i < lista.length; i++){
+                propiedad.listarImagenHome = lista;
                 let data = lista[i].split("|");
                 tabla += "<tr>";
                 tabla += "<td>";
@@ -123,6 +125,7 @@ let imagenHomeView = {
     mostrarModalImagenHome: function(){
         const obj = imagenHomeView;
         const control = obj.control;
+        const propiedad = obj.propiedad;
 
         let btnActualizar = _cname(control.btnActualizarImgHome);
         for(let i = 0; i < btnActualizar.length; i++){
@@ -131,16 +134,28 @@ let imagenHomeView = {
                 e.preventDefault();
 
                 let idImage = _getAtrribute(btn,"data-id");
-                let tituloImagen = _getAtrribute(btn,"data-titulo");
-                let srcImagen = _getAtrribute(btn,"data-src");
+
+                for(let i = 0; i < propiedad.listarImagenHome.length; i++){
+                    let lista = propiedad.listarImagenHome[i].split("|");
+
+                    if(lista[0] === idImage){
+                        let tituloImagen = lista[1];
+                        let srcImagen = lista[2];
+                    }
+                }
 
                 let html = "<form class='needs-validation' id='formActualizarImagenHome' novalidate='' autocomplete='off'>";
                     html += "<div class='form-row form-group'>";
                     html += "<div class='col-md-12'>";
-                    html += "<label for='namecategory'>Categoria:</label>";
+                    html += "<label for='tituloImagenEditar'>Categoria:</label>";
                     html += "<input type='hidden' name='idImagenHome' value='" + idImage + "'>";
                     html += "<input type='text' class='form-control form-control-sm mb-3' name='tituloImagenEditar' value='" + tituloImagen + "' placeholder='Nombre de la Categoría' required=''>";
                     html += "<div class='invalid-feedback'>Ingresar Título Imagen</div>";
+                    html += "</div>";
+                    html += "<div class='col-md-12 form-group'>";
+                    html += "<label for='namecategory'>Imagen:</label>";
+                    html += "<input type='file' class='form-control-file' name='imagenHomeActualizar' required=''>";
+                    html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12'>";
                     html += "<img class='w-100' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";

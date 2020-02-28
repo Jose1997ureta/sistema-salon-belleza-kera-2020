@@ -5,9 +5,9 @@ require_once '../function/config-function.php';
 
 class trabajadorModel {
 
-    public static function listarTrabajador(){
+    public static function listarTrabajador(trabajadorEntity $trabajador){
         $configFunction = new config_function();
-        $procedure = "CALL LISTAR_TRABAJADOR";
+        $procedure = "CALL LISTAR_TRABAJADOR_ID('$trabajador->idTrabajador')";
 
         return $configFunction::obtenerLista($procedure);
     }

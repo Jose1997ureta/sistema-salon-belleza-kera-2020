@@ -141,35 +141,36 @@ let imagenHomeView = {
                     if(lista[0] === idImage){
                         let tituloImagen = lista[1];
                         let srcImagen = lista[2];
+
+                        let html = "<form class='needs-validation' id='formActualizarImagenHome' novalidate='' autocomplete='off'>";
+                        html += "<div class='form-row form-group'>";
+                        html += "<div class='col-md-12'>";
+                        html += "<label for='tituloImagenEditar'>Categoria:</label>";
+                        html += "<input type='hidden' name='idImagenHome' value='" + idImage + "'>";
+                        html += "<input type='text' class='form-control form-control-sm mb-3' name='tituloImagenEditar' value='" + tituloImagen + "' placeholder='Nombre de la Categoría' required=''>";
+                        html += "<div class='invalid-feedback'>Ingresar Título Imagen</div>";
+                        html += "</div>";
+                        html += "<div class='col-md-12 form-group'>";
+                        html += "<label for='namecategory'>Imagen:</label>";
+                        html += "<input type='file' class='form-control-file' name='imagenHomeActualizar' required=''>";
+                        html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
+                        html += "</div>";
+                        html += "<div class='col-md-12'>";
+                        html += "<img class='w-100' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "<button class='btn btn-outline-success' type='submit'>";
+                        html += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
+                        html += "<i class='fa fa-save fa-w-20'></i>";
+                        html += "</span>Actualizar";
+                        html += "</button>";
+                        html += "</form>";
+
+                        mostrarModal("", "Formulario Actualizar Categoría", html);
+                        validarEnviarFormulario(control.frmActualizarImagenHome,obj.actualizarImagenHome);
                     }
                 }
 
-                let html = "<form class='needs-validation' id='formActualizarImagenHome' novalidate='' autocomplete='off'>";
-                    html += "<div class='form-row form-group'>";
-                    html += "<div class='col-md-12'>";
-                    html += "<label for='tituloImagenEditar'>Categoria:</label>";
-                    html += "<input type='hidden' name='idImagenHome' value='" + idImage + "'>";
-                    html += "<input type='text' class='form-control form-control-sm mb-3' name='tituloImagenEditar' value='" + tituloImagen + "' placeholder='Nombre de la Categoría' required=''>";
-                    html += "<div class='invalid-feedback'>Ingresar Título Imagen</div>";
-                    html += "</div>";
-                    html += "<div class='col-md-12 form-group'>";
-                    html += "<label for='namecategory'>Imagen:</label>";
-                    html += "<input type='file' class='form-control-file' name='imagenHomeActualizar' required=''>";
-                    html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
-                    html += "</div>";
-                    html += "<div class='col-md-12'>";
-                    html += "<img class='w-100' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "<button class='btn btn-outline-success' type='submit'>";
-                    html += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
-                    html += "<i class='fa fa-save fa-w-20'></i>";
-                    html += "</span>Actualizar";
-                    html += "</button>";
-                    html += "</form>";
-
-                mostrarModal("", "Formulario Actualizar Categoría", html);
-                validarEnviarFormulario(control.frmActualizarImagenHome,obj.actualizarImagenHome);
             })
         }
     },

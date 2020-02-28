@@ -1,6 +1,6 @@
 let imagenHomeView = {
     propiedad: {
-        listarImagenHome: [],
+        listarHome: [],
     },
 
     session: {
@@ -64,7 +64,6 @@ let imagenHomeView = {
     mostrarTablaImagen: function(rpta){
         const obj = imagenHomeView;
         const control = obj.control;
-        const propiedad = obj.propiedad;
 
         let lista = rpta.split("~");
 
@@ -83,7 +82,6 @@ let imagenHomeView = {
 
         if(lista != null && lista != ""){
             for(let i = 0; i < lista.length; i++){
-                propiedad.listarImagenHome = lista;
                 let data = lista[i].split("|");
                 tabla += "<tr>";
                 tabla += "<td>";
@@ -125,7 +123,6 @@ let imagenHomeView = {
     mostrarModalImagenHome: function(){
         const obj = imagenHomeView;
         const control = obj.control;
-        const propiedad = obj.propiedad;
 
         let btnActualizar = _cname(control.btnActualizarImgHome);
         for(let i = 0; i < btnActualizar.length; i++){
@@ -134,15 +131,8 @@ let imagenHomeView = {
                 e.preventDefault();
 
                 let idImage = _getAtrribute(btn,"data-id");
-
-                for(let i = 0; i < propiedad.listarImagenHome.length; i++){
-                    let lista = propiedad.listarImagenHome[i].split("|");
-
-                    if(lista[0] === idImage){
-                        let tituloImagen = lista[1];
-                        let srcImagen = lista[2];
-                    }
-                }
+                let tituloImagen = _getAtrribute(btn,"data-titulo");
+                let srcImagen = _getAtrribute(btn,"data-src");
 
                 let html = "<form class='needs-validation' id='formActualizarImagenHome' novalidate='' autocomplete='off'>";
                     html += "<div class='form-row form-group'>";
@@ -158,7 +148,7 @@ let imagenHomeView = {
                     html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12'>";
-                    html += "<img class='w-100' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
+                    html += "<img class='w-100' id='imagenHomeActual' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
                     html += "</div>";
                     html += "</div>";
                     html += "<button class='btn btn-outline-success' type='submit'>";
@@ -178,14 +168,28 @@ let imagenHomeView = {
         const obj = imagenHomeView;
         const link = obj.link;
 
+        let imagenActual = _getAtrribute(_id("imagenHomeActual"),"src");
+
         let formData = new FormData(form);
+        formData.append("imagenHomeActual",imagenActual);
         formData.append("actualizarImagenHome",true);
 
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarImagenHome);
     },
 
     respuestaActualizarImagenHome:function(rpta){
-
+        const obj = imagenHomeView;
+        if (rpta != "0") {
+            if(rpta == "1|1"){
+                mostrarMensaje("success", "Se actualizó la Imagen del Home");
+                ocultarModal();
+                obj.listarImagenHome();
+            }else{
+                mostrarMensaje("warning", "Se actualizó el titulo, pero la imagen no se pudo grabar")
+            }
+        } else {
+            mostrarMensaje("error", "Ocurrio un error");
+        }
     },
 
     eliminarImagenHome: function(){

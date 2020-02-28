@@ -175,7 +175,7 @@ let imagenHomeView = {
         formData.append("actualizarImagenHome",true);
 
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarImagenHome);
-    },
+    }, 
 
     respuestaActualizarImagenHome:function(rpta){
         const obj = imagenHomeView;

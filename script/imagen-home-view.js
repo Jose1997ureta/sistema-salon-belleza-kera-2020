@@ -8,12 +8,13 @@ let imagenHomeView = {
     },
 
     link: {
-        productoController: "controller/producto-controller.php",
+        productoController: "controller/imagen-home-controller.php",
     },
 
     control: {
         lstImagenHome: "listarImagenHome",
         frmRegistrarImagenHome: "formRegistrarImagenHome",
+        frmActualizarImagenHome: "formActualizarImagenHome",
         btnEliminarImgHome: "eliminar-elemento",
         btnActualizarImgHome: "modificar-elemento",
     },
@@ -45,8 +46,10 @@ let imagenHomeView = {
 
     respuestaRegistroImagenHome: function (rpta) {
         const obj = imagenHomeView;
+        const control = obj.control;
         
         if (rpta != "0") {
+            _id(control.frmRegistrarImagenHome).reset();
             if(rpta == "1|1"){
                 mostrarMensaje("success", "Se registró la imagen del Home")
             }else{
@@ -83,7 +86,7 @@ let imagenHomeView = {
                 tabla += "<tr>";
                 tabla += "<td>";
                 tabla += "<div class='d-flex justify-content-center'>";
-                tabla += "<button class='btn btn-outline-warning modificar-elemento' data-id='" + data[0] + "' data-src='" + data[2] + "' data-toggle='modal' data-target='#exampleModal'>";
+                tabla += "<button class='btn btn-outline-warning mr-2 modificar-elemento' data-id='" + data[0] + "' data-titulo='" + data[1] + "' data-src='" + data[2] + "' data-toggle='modal' data-target='#exampleModal'>";
                 tabla += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
                 tabla += "<i class='fa fa-trash-alt fa-w-20'></i>";
                 tabla += "</span>Modificar";
@@ -96,7 +99,7 @@ let imagenHomeView = {
                 tabla += "</div>";
                 tabla += "</td>";
                 tabla += "<td>" + data[1] + "</td>";
-                tabla += "<td><img src='"+ baseUrl() +"/images/producto/"+ data[2] +"' width='50'></td>";
+                tabla += "<td><img src='"+ baseUrl() +"/images/imagen-home/"+ data[2] +"' width='50'></td>";
                 tabla += "</tr>";
             }
 
@@ -136,11 +139,11 @@ let imagenHomeView = {
                     html += "<div class='col-md-12'>";
                     html += "<label for='namecategory'>Categoria:</label>";
                     html += "<input type='hidden' name='idImagenHome' value='" + idImage + "'>";
-                    html += "<input type='text' class='form-control form-control-sm' name='tituloImagenEditar' value='" + tituloImagen + "' placeholder='Nombre de la Categoría' required=''>";
+                    html += "<input type='text' class='form-control form-control-sm mb-3' name='tituloImagenEditar' value='" + tituloImagen + "' placeholder='Nombre de la Categoría' required=''>";
                     html += "<div class='invalid-feedback'>Ingresar Título Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12'>";
-                    html += "<img src='" + baseUrl() + "imagen/imagen-home/'" + srcImagen + "' />";
+                    html += "<img class='w-100' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
                     html += "</div>";
                     html += "</div>";
                     html += "<button class='btn btn-outline-success' type='submit'>";
@@ -151,8 +154,23 @@ let imagenHomeView = {
                     html += "</form>";
 
                 mostrarModal("", "Formulario Actualizar Categoría", html);
+                validarEnviarFormulario(control.frmActualizarImagenHome,obj.actualizarImagenHome);
             })
         }
+    },
+
+    actualizarImagenHome: function(form){
+        const obj = imagenHomeView;
+        const link = obj.link;
+
+        let formData = new FormData(form);
+        formData.append("actualizarImagenHome",true);
+
+        sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarImagenHome);
+    },
+
+    respuestaActualizarImagenHome:function(rpta){
+
     },
 
     eliminarImagenHome: function(){

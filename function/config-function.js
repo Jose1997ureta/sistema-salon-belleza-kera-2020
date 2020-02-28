@@ -141,7 +141,8 @@ let crearTabla = (lista, contenedor,buttonEditarModal) => {
             tabla += "<tr>";
             for (let j = 0; j < data.length; j++) {
                 if (j == 0) {
-                    tabla += "<td class='d-flex justify-content-center'>";
+                    tabla += "<td>";
+                    tabla += "<div class='d-flex justify-content-center'>";
                     tabla += "<button type='button' class='btn btn-outline-warning mr-2 modificar-elemento' data-id='" + data[0] +"'";
                     (buttonEditarModal == true) ? tabla += "data-toggle='modal' data-target='#exampleModal'>" : tabla += ">";
                     tabla += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
@@ -153,7 +154,8 @@ let crearTabla = (lista, contenedor,buttonEditarModal) => {
                     tabla += "<i class='fa fa-trash-alt fa-w-20'></i>";
                     tabla += "</span>Eliminar";
                     tabla += "</button>";
-                    tabla += "</td>";
+                    tabla += "</div>";
+                    tabla += "</div>";
                 } else if (data[j] == 'Activo' || data[j] == 'Inactivo') {
                     tabla += "<td class='text-center'>";
                     tabla += "<input type='checkbox' data-id='" + data[0] + "'  class='estado-elemento'"; 

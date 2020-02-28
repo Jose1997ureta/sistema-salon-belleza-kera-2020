@@ -232,7 +232,28 @@ let productoView = {
     },
 
     respuestaRegistroProducto: function (rpta) {
+        const obj = productoView;
+        const control = obj.control;
+
         if (rpta != "0") {
+            _id(control.frmRegistrarProducto).reset();
+
+            CKEDITOR.instances.descripcionItemProductoES.setData('');
+            CKEDITOR.instances.descripcionBeneficiosES.setData('');
+            CKEDITOR.instances.descripcionPrincipiosActivosES.setData('');
+
+            CKEDITOR.instances.descripcionItemProductoEN.setData('');
+            CKEDITOR.instances.descripcionBeneficiosEN.setData('');
+            CKEDITOR.instances.descripcionPrincipiosActivosEN.setData('');
+
+            CKEDITOR.instances.descripcionItemProductoRU.setData('');
+            CKEDITOR.instances.descripcionBeneficiosRU.setData('');
+            CKEDITOR.instances.descripcionPrincipiosActivosRU.setData('');
+
+            CKEDITOR.instances.descripcionItemProductoFR.setData('');
+            CKEDITOR.instances.descripcionBeneficiosFR.setData('');
+            CKEDITOR.instances.descripcionPrincipiosActivosFR.setData('');
+
             if(rpta == "1|1"){
                 mostrarMensaje("success", "Se registró el producto")
             }else{

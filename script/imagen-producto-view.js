@@ -52,8 +52,10 @@ let imagenProductoView = {
 
     respuestaRegistroImagenProducto: function (rpta) {
         const obj = imagenProductoView;
-        
+        const control = obj.control;
+
         if (rpta != "0") {
+            _id(control.frmRegistrarImagenProducto).reset();
             if(rpta == "1|1"){
                 mostrarMensaje("success", "Se registró la imagen producto")
             }else{

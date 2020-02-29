@@ -99,7 +99,7 @@ let imagenHomeView = {
                 tabla += "</div>";
                 tabla += "</td>";
                 tabla += "<td>" + data[1] + "</td>";
-                tabla += "<td><img src='"+ baseUrl() +"/images/imagen-home/"+ data[2] +"' width='50'></td>";
+                tabla += "<td><img src='"+ baseUrl() +"/imagenes/imagen-home/"+ data[2] +"' width='50'></td>";
                 tabla += "</tr>";
             }
 
@@ -148,7 +148,7 @@ let imagenHomeView = {
                     html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12'>";
-                    html += "<img class='w-100' id='imagenHomeActual' data-img='" + srcImagen + "' src='" + baseUrl() + "/images/imagen-home/" + srcImagen + "' />";
+                    html += "<img class='w-100' id='imagenHomeActual' data-img='" + srcImagen + "' src='" + baseUrl() + "/imagenes/imagen-home/" + srcImagen + "' />";
                     html += "</div>";
                     html += "</div>";
                     html += "<button class='btn btn-outline-success' type='submit'>";

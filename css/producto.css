@@ -1,0 +1,111 @@
+.header{
+	background: #1a1a1a;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.contenido{
+	padding: 20px;
+	display: grid;
+	grid-gap: 20px
+}
+.lista{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2px;
+}
+	.lista_item{
+		background: #2C2C2C;
+		padding: 40px 20px;
+		display: grid;
+		grid-gap: 20px;
+		transition: ease 0.2s;
+	}
+		.lista_item:hover{
+			transform: scale(1.05);
+    		box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    		transition: ease 0.5s;
+		}
+		.lista_item_img{
+			position: relative;
+		}	
+			.lista_item_img img{
+				width: 100%;
+				max-height: 250px;
+				object-fit: contain;
+			}
+			.lista_item_img span{
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0.1;
+				font-weight: 800;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+				width: 100%;
+				-webkit-text-stroke: 3px #fff;
+				color: rgba(0,0,0,0);
+				font-size: 150px;
+			}
+		.lista_item_nombre{
+			color: #fff;
+			text-align: center;
+			line-height: 18px;
+		}
+/*----pagina registro------*/
+.body{
+	overflow: initial;
+	background: url(../images/cabello-kera.jpg) center center/cover no-repeat;
+}
+.registro_ant{
+	background: rgba(0,0,0,0.85);
+}
+.registro{
+	padding-top: 130px;
+	text-align: center;
+	color: #fff;
+}
+.footer{
+	background: #000;
+}
+	.form{
+		padding: 0 30px 80px;
+	}
+	.registro p{
+		padding: 20px;
+		font-weight: 300;
+	}
+	.select{
+		color: #fff;
+		font-family: 'nunito sans', sans-serif;
+		background: transparent;
+		padding: 10px;
+		text-align: center;
+		border: none;
+		outline: none;
+		border-radius: initial;
+		border-bottom: solid 1px rgba(255,255,255,0.3);
+		font-size: 15px;
+		font-weight: 400;
+	}
+
+@media screen and (min-width:768px){
+	.lista{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+@media screen and (min-width:1024px){
+	.lista{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+	.registro{
+		max-width: 1024px;
+		margin: 0 auto;
+		padding-top: 200px;
+	}
+}
+@media screen and (min-width:1300px){
+	.lista{
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	

@@ -98,7 +98,7 @@ let imagenProductoView = {
                 tabla += "</button>";
                 tabla += "</td>";
                 tabla += "<td>" + data[1] + "</td>";
-                tabla += "<td><img src='"+ baseUrl() +"/images/producto/"+ data[2] +"' width='50'></td>";
+                tabla += "<td><img src='"+ baseUrl() +"/imagenes/producto/"+ data[2] +"' width='50'></td>";
                 tabla += "</tr>";
             }
 

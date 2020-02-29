@@ -131,7 +131,7 @@ let productoView = {
 
             if(producto[1] !== ""){
                 _removeClass(_id(control.containerImgResultado),"d-none");
-                _addAttribute(_id(control.imgProductoResultado),"src", baseUrl() + "/images/producto/" + producto[1]);
+                _addAttribute(_id(control.imgProductoResultado),"src", baseUrl() + "/imagenes/producto/" + producto[1]);
                 _addAttribute(_id(control.imgProductoResultado),"data-src",producto[1]);
                 _removeAttribute(_id(control.imagenProductoResultado),"required");
             }else{

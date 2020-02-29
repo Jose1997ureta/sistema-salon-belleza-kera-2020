@@ -177,7 +177,7 @@ let imagenHomeView = {
         let formData = new FormData(form);
         formData.append("imagenHomeActual",imagenActual);
         formData.append("actualizarImagenHome",true);
-
+        
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarImagenHome);
     }, 
 

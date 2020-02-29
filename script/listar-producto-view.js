@@ -32,7 +32,7 @@ let listarProductoView = {
         const obj = listarProductoView;
         const control = obj.control;
 
-        let cabecera = "Operaciones|Tipo Producto|Nombre Producto|Ruta Video|Estado";
+        let cabecera = "Operaciones|Tipo Producto|Nombre Producto|Ruta Video";
         let data = rpta.split("~");
         data.unshift(cabecera)
         crearTabla(data,control.lstProducto,true);

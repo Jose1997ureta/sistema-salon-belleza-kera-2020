@@ -1,9 +1,3 @@
-<script>
-    let id = <?php (isset($_SESSION["idTrabajador"])) ?  $id = $_SESSION["idTrabajador"] : $id = "''"; echo $id; ?>; 
-    if(id === ""){
-        window.location = baseUrl() + "/view/login";
-    }
-</script>
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -32,7 +26,7 @@
                     Registrar del Trabajador
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" id="formRegistrarProducto" autocomplete="off" novalidate>
+                    <form class="needs-validation" id="formActualizarTrabajador" autocomplete="off" novalidate>
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <label for="nombreTrabajador">NOMBRE:</label>
@@ -76,9 +70,9 @@
                 <div class="card-body">
                     <form class="needs-validation" id="formActualizarPassword" autocomplete="off" novalidate>
                         <div class="form-row">
-                        <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="passwordTrabajador1">Ingresar Contraseña:</label>
-                                <input type="text" class="form-control form-control-sm" name="passwordTrabajador1"
+                                <input type="password" class="form-control form-control-sm" name="passwordTrabajador1"
                                     id="passwordTrabajador1" required>
                                 <div class="invalid-feedback">
                                     Ingresar la contraseña
@@ -86,7 +80,7 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for="passwordTrabajador2">Confirmar Contraseña:</label>
-                                <input type="text" class="form-control form-control-sm" name="passwordTrabajador2"
+                                <input type="password" class="form-control form-control-sm" name="passwordTrabajador2"
                                     id="passwordTrabajador2" required>
                                 <div class="invalid-feedback">
                                     Repita la contraseña

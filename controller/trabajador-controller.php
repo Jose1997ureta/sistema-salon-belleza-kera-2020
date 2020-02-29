@@ -14,23 +14,23 @@ if(isset($_POST["listarTrabajadorId"])){
     $idTrabajador = $configFunction::validarMetodos("SESSION","idTrabajador");
     $trabajadorEntity->setIdTrabajador($idTrabajador);
     $listarTrabajadorId = $trabajadorModel::listarTrabajadorId($trabajadorEntity);
-
+    
     $rpta = $configFunction::convertirCadena($listarTrabajadorId);
-
     echo $rpta;
 }
 
 if(isset($_POST["IniciarSession"])){
-    $rpta = "";
+   
     $correoTrabajador = $configFunction::validarMetodos("POST","correoTrabajador");
     $passwordTrabajador = $configFunction::validarMetodos("POST","passwordTrabajador");
 
-    $trabajadorEntity->setIdTrabajador($idTrabajador);
+    $trabajadorEntity->setCorreoTrabajador($correoTrabajador);
+    $trabajadorEntity->setPasswordTrabajador($passwordTrabajador);
     $validarSession = $trabajadorModel::iniciarSesionTrabajador($trabajadorEntity);
 
-    if($validarSession!== ""){
-        $_SESSION["Idtrabajador"] = $validarSession[0][0];
-        $_SESSION["nombreCompleto"] = $validarSession[0][1]." ".$validarSession[0][2];
+    if($configFunction::validarVariablesExistentes($validarSession)){
+        $_SESSION["idTrabajador"] = $validarSession[0]["ID_TRABAJADOR"];
+        $_SESSION["nombreCompleto"] = $validarSession[0]["NOMBRE_TRABAJADOR"]." ".$validarSession[0]["APELLIDO_TRABAJADOR"];
 
         echo "1";
     }else{
@@ -53,6 +53,7 @@ if(isset($_POST["actualizarTrabajador"])){
     $validarConsultaTrabajador = $trabajadorModel::actualizarTrabajador($trabajadorEntity);
 
     if($validarConsultaTrabajador){
+        $_SESSION["nombreCompleto"] = $nombreTrabajador." ".$apellidoTrabajador;
         echo "1";
     }else{
         echo "0";
@@ -60,7 +61,7 @@ if(isset($_POST["actualizarTrabajador"])){
 }
 
 if(isset($_POST["actualizarPasswordTrabajador"])){
-    $rpta = "0";
+    
     $idTrabajador = $configFunction::validarMetodos("SESSION","idTrabajador");
     $passwordTrabajador1 = $configFunction::validarMetodos("POST","passwordTrabajador1");
     $passwordTrabajador2 = $configFunction::validarMetodos("POST","passwordTrabajador2");
@@ -72,11 +73,12 @@ if(isset($_POST["actualizarPasswordTrabajador"])){
         $validarConsultaTrabajador = $trabajadorModel::actualizarPasswordTrabajador($trabajadorEntity);
 
         if($validarConsultaTrabajador){
+            session_destroy();
             echo "1";
         }else{
             echo "0";
         }
     }else{
-        echo "0";
+        echo "2";
     }
 }

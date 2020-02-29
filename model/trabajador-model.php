@@ -23,13 +23,13 @@ class trabajadorModel {
         $configFunction = new config_function();
         $procedure = "CALL ACTUALIZAR_TRABAJADOR('$trabajador->idTrabajador','$trabajador->nombreTrabajador','$trabajador->apellidoTrabajador','$trabajador->correoTrabajador')";
 
-        return $configFunction::obtenerLista($procedure);
+        return $configFunction::ejecutarConsulta($procedure);
     }
 
     public static function actualizarPasswordTrabajador(trabajadorEntity $trabajador){
         $configFunction = new config_function();
         $procedure = "CALL ACTUALIZAR_PASSWORD_TRABAJADOR('$trabajador->idTrabajador','$trabajador->passwordTrabajador')";
 
-        return $configFunction::obtenerLista($procedure);
+        return $configFunction::ejecutarConsulta($procedure);
     }
 }

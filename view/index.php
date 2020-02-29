@@ -1,6 +1,10 @@
 <?php 
     session_start();
     require_once '../core/configuration-router.php';
+
+    if(!isset($_SESSION["idTrabajador"])){
+        header("Location: sign-in");
+    }
 ?>
 <!doctype html>
 <html lang="en">

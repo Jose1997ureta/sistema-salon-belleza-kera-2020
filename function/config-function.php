@@ -37,7 +37,7 @@ class config_function {
         }else if($method === "GET"){
             if(isset($_GET[$value])) $valorCampo = $_GET[$value];
         }else if($method === "SESSION"){
-            if(isset($_SESSION[$value]) && $_SESSION[$value] != null && $_SESSION[$value] != "" && count($_SESSION[$value])){
+            if(isset($_SESSION[$value]) && $_SESSION[$value] != null && $_SESSION[$value] != ""){
                 $valorCampo =  true;
             }
         }else if($method === "FILES"){

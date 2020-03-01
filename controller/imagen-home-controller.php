@@ -18,30 +18,33 @@ if(isset($_POST["listarImagenHome"])){
 
 if(isset($_POST["registrarImagenHome"])){
 
+    $configFunction::validarDirectorio("../imagenes");
+    $configFunction::validarDirectorio("../imagenes/imagen-home");
+
+    $tipoLang = $configFunction::validarMetodos("POST","tipoLang");
     $tituloImagen = $configFunction::validarMetodos("POST","tituloImagen");
-    
-    $configFunction::validarDirectorio("../images");
-    $configFunction::validarDirectorio("../images/imagen-home");
-    
+
     $imagenHome = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenHome"]["name"]);
     $tmpImagenHome = $_FILES["imagenHome"]["tmp_name"];
-    $carpetaImagen = "../images/imagen-home/".$imagenHome;
-    
+    $carpetaImagen = "../imagenes/imagen-home/".$imagenHome;
+
+    $imagenHomeEntity->setTipoLang($tipoLang);
     $imagenHomeEntity->setTituloImagen($tituloImagen);
     $imagenHomeEntity->setImagen($imagenHome);
+    $validar = $imagenHomeModel::registrarImagenHome($imagenHomeEntity);
 
-    $validarConsultaHome = $imagenHomeModel::registrarImagenHome($imagenHomeEntity);
-
-    if($validarConsultaHome){
+    if($validar){
+        $rpta = "1";
         if(move_uploaded_file($tmpImagenHome,$carpetaImagen)){
-            $rpta = "1";
+            $rpta .= "|1";
         }else{
-            $rpta = "0";
+            $rpta .= "|0";
         }
-        echo "1|".$rpta;
     }else{
-        echo "0";
+        $rpta = "0";
     }
+
+    echo $rpta;
 }
 
 if(isset($_POST["actualizarImagenHome"])){
@@ -56,12 +59,12 @@ if(isset($_POST["actualizarImagenHome"])){
 
     }else if($imagenHomeActualizar == true){
 
-        $configFunction::validarDirectorio("../images");
-        $configFunction::validarDirectorio("../images/imagen-home");
+        $configFunction::validarDirectorio("../imagenes");
+        $configFunction::validarDirectorio("../imagenes/imagen-home");
 
         $imagenHomeActualizar = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenHomeActualizar"]["name"]);
         $tmpImagenHome = $_FILES["imagenHomeActualizar"]["tmp_name"];
-        $carpetaImagen = "../images/imagen-home/".$imagenHomeActualizar;
+        $carpetaImagen = "../imagenes/imagen-home/".$imagenHomeActualizar;
 
         $imagenHomeEntity->setImagen($imagenHomeActualizar);
     }

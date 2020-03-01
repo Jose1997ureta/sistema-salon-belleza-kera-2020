@@ -67,12 +67,12 @@ if(isset($_POST["registrarProducto"])){
     $rutaProductoVideo = $configFunction::validarMetodos("POST","rutaProductoVideo");
     
     // VALIDAR CARPETA DONDE SE VA A GUARDAR LA IMAGEN
-    $configFunction::validarDirectorio("../images");
-    $configFunction::validarDirectorio("../images/producto");
+    $configFunction::validarDirectorio("../imagenes");
+    $configFunction::validarDirectorio("../imagenes/producto");
     
     $imagenProductoResultado = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenProductoResultado"]["name"]);
     $tmpImagenProductoResultado = $_FILES["imagenProductoResultado"]["tmp_name"];
-    $carpetaImagen = "../images/producto/".$imagenProductoResultado;
+    $carpetaImagen = "../imagenes/producto/".$imagenProductoResultado;
     
     $productoEntity->setTipoProductoES($tipoProductoES);
     $productoEntity->setnombreProductoES($nombreProductoES);
@@ -177,12 +177,12 @@ if(isset($_POST["actualizarProducto"])){
 
     }else if($imagenProductoResultado == true){
 
-        $configFunction::validarDirectorio("../images");
-        $configFunction::validarDirectorio("../images/producto");
+        $configFunction::validarDirectorio("../imagenes");
+        $configFunction::validarDirectorio("../imagenes/producto");
 
         $imagenProductoResultado = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenProductoResultado"]["name"]);
         $tmpImagenProductoResultado = $_FILES["imagenProductoResultado"]["tmp_name"];
-        $carpetaImagen = "../images/producto/".$imagenProductoResultado;
+        $carpetaImagen = "../imagenes/producto/".$imagenProductoResultado;
 
         $productoEntity->setImagenResultadoProducto($imagenProductoResultado);
     }
@@ -278,12 +278,12 @@ if(isset($_POST["registrarImagenProducto"])){
 
     $idProducto = $configFunction::validarMetodos("POST","idProducto");
     
-    $configFunction::validarDirectorio("../images");
-    $configFunction::validarDirectorio("../images/producto");
+    $configFunction::validarDirectorio("../imagenes");
+    $configFunction::validarDirectorio("../imagenes/producto");
     
     $imagenProducto = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenProducto"]["name"]);
     $tmpImagenProducto = $_FILES["imagenProducto"]["tmp_name"];
-    $carpetaImagen = "../images/producto/".$imagenProducto;
+    $carpetaImagen = "../imagenes/producto/".$imagenProducto;
     
     $productoEntity->setIdProducto($idProducto);
     $productoEntity->setImagenProducto($imagenProducto);

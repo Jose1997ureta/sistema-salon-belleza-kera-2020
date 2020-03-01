@@ -14,7 +14,7 @@ class imagenHomeModel {
 
     public static function registrarImagenHome(imagenHomeEntity $imagenHome){
         $configFunction = new config_function();
-        $procedure = "CALL REGISTRAR_IMAGEN_HOME('$imagenHome->tituloImagen','$imagenHome->imagen')";
+        $procedure = "CALL REGISTRAR_IMAGEN_HOME('$imagenHome->tipoLang','$imagenHome->tituloImagen','$imagenHome->imagen')";
 
         return $configFunction::ejecutarConsulta($procedure);
     }

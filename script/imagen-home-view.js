@@ -1,6 +1,9 @@
 let imagenHomeView = {
     propiedad: {
-        listarHome: [],
+        listarHomeES: [],
+        listarHomeEN: [],
+        listarHomeRU: [],
+        listarHomeFR: [],
     },
 
     session: {
@@ -12,8 +15,14 @@ let imagenHomeView = {
     },
 
     control: {
-        lstImagenHome: "listarImagenHome",
-        frmRegistrarImagenHome: "formRegistrarImagenHome",
+        lstImagenHomeES: "listarImagenHomeES",
+        lstImagenHomeEN: "listarImagenHomeEN",
+        lstImagenHomeRU: "listarImagenHomeRU",
+        lstImagenHomeFR: "listarImagenHomeFR",
+        frmRegistrarImagenHomeES: "formRegistrarImagenHomeES",
+        frmRegistrarImagenHomeEN: "formRegistrarImagenHomeEN",
+        frmRegistrarImagenHomeRU: "formRegistrarImagenHomeRU",
+        frmRegistrarImagenHomeFR: "formRegistrarImagenHomeFR",
         frmActualizarImagenHome: "formActualizarImagenHome",
         btnEliminarImgHome: "eliminar-elemento",
         btnActualizarImgHome: "modificar-elemento",
@@ -23,7 +32,10 @@ let imagenHomeView = {
         const obj = imagenHomeView;
         const control = obj.control;
 
-        validarEnviarFormulario(control.frmRegistrarImagenHome,obj.registrarImagenHome);
+        validarEnviarFormulario(control.frmRegistrarImagenHomeES,obj.registrarImagenHome);
+        validarEnviarFormulario(control.frmRegistrarImagenHomeEN,obj.registrarImagenHome);
+        validarEnviarFormulario(control.frmRegistrarImagenHomeRU,obj.registrarImagenHome);
+        validarEnviarFormulario(control.frmRegistrarImagenHomeFR,obj.registrarImagenHome);
         obj.listarImagenHome();
     },
 
@@ -47,13 +59,16 @@ let imagenHomeView = {
     respuestaRegistroImagenHome: function (rpta) {
         const obj = imagenHomeView;
         const control = obj.control;
-        
+
         if (rpta != "0") {
-            _id(control.frmRegistrarImagenHome).reset();
+            _id(control.frmRegistrarImagenHomeES).reset();
+            _id(control.frmRegistrarImagenHomeEN).reset();
+            _id(control.frmRegistrarImagenHomeRU).reset();
+            _id(control.frmRegistrarImagenHomeFR).reset();
             if(rpta == "1|1"){
-                mostrarMensaje("success", "Se registró la imagen del Home")
+                mostrarMensaje("success", "Se registró las imagenes para Home")
             }else{
-                mostrarMensaje("warning", "Se registró el título, pero la imagen no se pudo grabar")
+                mostrarMensaje("warning", "Se registró los títulos, pero las imagenes no se pudieron grabar")
             }
             obj.listarImagenHome();
         } else {
@@ -64,9 +79,43 @@ let imagenHomeView = {
     mostrarTablaImagen: function(rpta){
         const obj = imagenHomeView;
         const control = obj.control;
+        const propiedad = obj.propiedad;
+
+        propiedad.listarHomeES = [];
+        propiedad.listarHomeEN = [];
+        propiedad.listarHomeRU = [];
+        propiedad.listarHomeFR = [];
 
         let lista = rpta.split("~");
 
+        if(lista != null && lista != ""){
+            for(let i = 0; i < lista.length; i++){
+                let data = lista[i].split("|");
+                if(data[1] === "es"){
+                    propiedad.listarHomeES.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                }else if(data[1] === "en"){
+                    propiedad.listarHomeEN.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                }else if(data[1] === "ru"){
+                    propiedad.listarHomeRU.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                }else{
+                    propiedad.listarHomeFR.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                }
+            }
+        }
+
+        obj.tablaImagen(propiedad.listarHomeES,control.lstImagenHomeES);
+        obj.tablaImagen(propiedad.listarHomeEN,control.lstImagenHomeEN);
+        obj.tablaImagen(propiedad.listarHomeRU,control.lstImagenHomeRU);
+        obj.tablaImagen(propiedad.listarHomeFR,control.lstImagenHomeFR);
+
+        obj.eliminarImagenHome();
+        obj.mostrarModalImagenHome();
+    },
+
+    tablaImagen: function(lista,contenedor){
+        const obj = imagenHomeView;
+        const control = obj.control;
+        
         let cabecera = "Operaciones|Título|Imagen";
         let cabeceraTabla = cabecera.split("|");
         let tabla = "";
@@ -79,14 +128,14 @@ let imagenHomeView = {
         }
         tabla += "</tr>"
         tabla += "<tbody class='text-center'>";
-
-        if(lista != null && lista != ""){
+        if(lista != ""){
             for(let i = 0; i < lista.length; i++){
                 let data = lista[i].split("|");
+    
                 tabla += "<tr>";
                 tabla += "<td>";
                 tabla += "<div class='d-flex justify-content-center'>";
-                tabla += "<button class='btn btn-outline-warning mr-2 modificar-elemento' data-id='" + data[0] + "' data-titulo='" + data[1] + "' data-src='" + data[2] + "' data-toggle='modal' data-target='#exampleModal'>";
+                tabla += "<button class='btn btn-outline-warning mr-2 modificar-elemento' data-id='" + data[0] + "' data-titulo='" + data[2] + "' data-src='" + data[3] + "' data-toggle='modal' data-target='#exampleModal'>";
                 tabla += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
                 tabla += "<i class='fa fa-trash-alt fa-w-20'></i>";
                 tabla += "</span>Modificar";
@@ -98,14 +147,13 @@ let imagenHomeView = {
                 tabla += "</button>";
                 tabla += "</div>";
                 tabla += "</td>";
-                tabla += "<td>" + data[1] + "</td>";
-                tabla += "<td><img src='"+ baseUrl() +"/imagenes/imagen-home/"+ data[2] +"' width='50'></td>";
+                tabla += "<td>" + data[2] + "</td>";
+                tabla += "<td><img src='"+ baseUrl() +"/imagenes/imagen-home/"+ data[3] +"' width='50'></td>";
                 tabla += "</tr>";
             }
-
+    
             tabla += "</tbody>";
             tabla += "</table>";
-
         }else{
             tabla += "<tr>";
             tabla += "<td class='text-center' colspan='" + cabecera.length +"'>No hay Información Registrada</td>";
@@ -114,10 +162,8 @@ let imagenHomeView = {
             tabla += "</table>";
         }
 
-        _id(control.lstImagenHome).innerHTML = tabla;
-
-        obj.eliminarImagenHome();
-        obj.mostrarModalImagenHome();
+        _id(contenedor).innerHTML = tabla;
+        
     },
 
     mostrarModalImagenHome: function(){
@@ -177,9 +223,9 @@ let imagenHomeView = {
         let formData = new FormData(form);
         formData.append("imagenHomeActual",imagenActual);
         formData.append("actualizarImagenHome",true);
-        
+
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarImagenHome);
-    }, 
+    },
 
     respuestaActualizarImagenHome:function(rpta){
         const obj = imagenHomeView;
@@ -200,7 +246,7 @@ let imagenHomeView = {
         const obj = imagenHomeView;
         const control = obj.control;
         const link = obj.link;
-        
+
         let buttonEliminar = _cname(control.btnEliminarImgHome);
 
         for(let i = 0; i < buttonEliminar.length; i++){
@@ -219,7 +265,7 @@ let imagenHomeView = {
 
         if(rpta === "1"){
             mostrarMensaje("success", "Se eliminó la Imagen");
-            obj.listarImagenHome();    
+            obj.listarImagenHome();
         }else{
             mostrarMensaje("error", "Ocurrio un error");
         }

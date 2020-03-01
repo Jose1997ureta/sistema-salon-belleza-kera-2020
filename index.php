@@ -61,10 +61,14 @@ require 'requirelanguage.php';
 				</a>
 			</div>
 			<div class="header_idioma">
-				<a href="changelanguage.php?language=es">ES</a>
-				<a href="changelanguage.php?language=en">EN</a>
-				<a href="changelanguage.php?language=ru">RU</a>
-				<a href="changelanguage.php?language=fr">FR</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="es">ES</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="en">EN</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="ru">RU</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="fr">FR</a>
+				<!-- <a href="changelanguage.php?language=es" class="btnCambiarLanguaje" data-lang="es">ES</a>
+				<a href="changelanguage.php?language=en" class="btnCambiarLanguaje" data-lang="en">EN</a>
+				<a href="changelanguage.php?language=ru" class="btnCambiarLanguaje" data-lang="ru">RU</a>
+				<a href="changelanguage.php?language=fr" class="btnCambiarLanguaje" data-lang="fr">FR</a> -->
 			</div>
 		</div>
 	</header>
@@ -149,7 +153,7 @@ require 'requirelanguage.php';
 		            <div class="swiper-slide" data-hash="liss-intense">
 		            	<div class="sect3">
 		            		<div class="swiper-container swiper3">
-		            			<div class="swiper-wrapper">
+		            			<div class="swiper-wrapper" id="containerSliderImgenHome">
 		            				<div class="swiper-slide">
 			                           <a href="detalle.php" class="sect3_item animacion">
 			                           		<img src="images/modelo1.jpg" alt="">
@@ -280,6 +284,8 @@ require 'requirelanguage.php';
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/web.js"></script>
+	<script src="function/config-function.js"></script>
+	<script src="js/languaje.js"></script>
 	<!-- PRELOADED INTRO -->
     <script>
      

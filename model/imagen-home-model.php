@@ -12,6 +12,13 @@ class imagenHomeModel {
         return $configFunction::obtenerLista($procedure);
     }
 
+    public static function listarImagenHomeLang(imagenHomeEntity $imagenHome){
+        $configFunction = new config_function();
+        $procedure = "CALL LISTAR_IMAGEN_HOME_LANG('$imagenHome->tipoLang')";
+
+        return $configFunction::obtenerLista($procedure);
+    }
+
     public static function registrarImagenHome(imagenHomeEntity $imagenHome){
         $configFunction = new config_function();
         $procedure = "CALL REGISTRAR_IMAGEN_HOME('$imagenHome->tipoLang','$imagenHome->tituloImagen','$imagenHome->imagen')";

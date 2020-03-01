@@ -281,11 +281,12 @@ require 'requirelanguage.php';
 		  <img src="images/whatsapp-logo.png">
 		</div>
 	</a>
+	<script src="function/config-function.js"></script>
+	<script src="js/languaje.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/web.js"></script>
-	<script src="function/config-function.js"></script>
-	<script src="js/languaje.js"></script>
+	
 	<!-- PRELOADED INTRO -->
     <script>
      

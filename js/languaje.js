@@ -1,3 +1,5 @@
+// import Swiper from "swiper";
+
 let principalHome = {
     propiedad: {
       
@@ -8,11 +10,12 @@ let principalHome = {
     },
 
     link: {
-        lenguajeController: "controller/cambiarLenguaje-controller.php",
+        lenguajeController: "controller/imagen-home-controller.php",
     },
 
     control: {
         btnCambiarLanguaje: "btnCambiarLanguaje",
+        containerSliderImgenHome:"containerSliderImgenHome",
     },
 
     inicializarDom: function(){
@@ -28,80 +31,90 @@ let principalHome = {
         const link = obj.link;
         const control = obj.control;
 
-        let btn = _id(control.btnCambiarLanguaje);
-        for(let i = 0; i < btn.length; i++){
-            let languaje = _getAttribute(btn[i],"data-lang");
+        let btnCambiarLanguaje = _cname(control.btnCambiarLanguaje);
+        for(let i = 0; i < btnCambiarLanguaje.length; i++){
+            let btn = btnCambiarLanguaje[i];
+            btn.addEventListener("click",function(e){
+                e.preventDefault();
 
-            sendDataAjax("POST",link.lenguajeController,false,"lang="+languaje+"&cambiarLanguaje=true",obj.changeLaguaje);
+                let languaje = _getAtrribute(btn,"data-lang");
+
+                sendDataAjax("POST",link.lenguajeController,false,"lang="+languaje+"&listarImagenHomeLang=true",obj.mostrarImagenHome);
+            })
         }
 
     },
 
-    changeLaguaje: function(form){
-        const obj = principalHome;
-        const link = obj.link;
-
-        let formData = new FormData(form);
-        formData.append("registrarImagenHome",true);
-
-        sendDataAjax("POST", link.productoController, true, formData, obj.respuestaRegistroImagenHome);
-    },
-
-    respuestaRegistroImagenHome: function (rpta) {
+    mostrarImagenHome: function(rpta){
         const obj = principalHome;
         const control = obj.control;
 
-        if (rpta != "0") {
-            _id(control.frmRegistrarImagenHomeES).reset();
-            _id(control.frmRegistrarImagenHomeEN).reset();
-            _id(control.frmRegistrarImagenHomeRU).reset();
-            _id(control.frmRegistrarImagenHomeFR).reset();
-            if(rpta == "1|1"){
-                mostrarMensaje("success", "Se registró las imagenes para Home")
-            }else{
-                mostrarMensaje("warning", "Se registró los títulos, pero las imagenes no se pudieron grabar")
-            }
-            obj.listarImagenHome();
-        } else {
-            mostrarMensaje("error", "Ocurrio un error");
-        }
-    },
-
-    mostrarTablaImagen: function(rpta){
-        const obj = principalHome;
-        const control = obj.control;
-        const propiedad = obj.propiedad;
-
-        propiedad.listarHomeES = [];
-        propiedad.listarHomeEN = [];
-        propiedad.listarHomeRU = [];
-        propiedad.listarHomeFR = [];
-
+        let html = "";
         let lista = rpta.split("~");
 
-        if(lista != null && lista != ""){
+        if(lista!= ""){
             for(let i = 0; i < lista.length; i++){
                 let data = lista[i].split("|");
-                if(data[1] === "es"){
-                    propiedad.listarHomeES.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
-                }else if(data[1] === "en"){
-                    propiedad.listarHomeEN.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
-                }else if(data[1] === "ru"){
-                    propiedad.listarHomeRU.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
-                }else{
-                    propiedad.listarHomeFR.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
-                }
+                
+                html +="<div class='swiper-slide'>";
+                html +="<a href='detalle.php' class='sect3_item animacion'>";
+                html +="<img src='"+ baseUrl() + "/imagenes/imagen-home/" + data[1] + "' alt=''>";
+                html +="<div class='sect3_item_title'>"
+                html +="<b>" + data[0] + "</b>";
+                html +="</div>";
+                html +="<span>EXPLORAR</span>";
+                html +="</a>";  
+                html +="</div>";
             }
+
+            _id(control.containerSliderImgenHome).innerHTML = html;
+
+            var swiper3 = new Swiper('.swiper3', {
+                direction: 'horizontal',
+                slidesPerView: 3,
+                spaceBetween: 0,
+                // effect: 'coverflow',
+                speed: 1000,
+                loop: true,
+                pagination: false,
+                slidesPerColumn: 1,
+                navigation: {
+                    nextEl: '.swiper-button-next3',
+                    prevEl: '.swiper-button-prev3',
+                },
+               //  autoplay: {
+                  //   delay: 3500,
+                  //   disableOnInteraction: false,
+                  // },
+                breakpoints:{
+                    1024: {
+                        slidesPerView: 1,
+                        slidesPerColumn: 2,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                        slidesPerColumn: 2,
+                    },
+                    567: {
+                        slidesPerView: 1,
+                        slidesPerColumn: 2,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        slidesPerColumn: 2,
+        
+                    },
+                },
+            });	
         }
-
-        obj.tablaImagen(propiedad.listarHomeES,control.lstImagenHomeES);
-        obj.tablaImagen(propiedad.listarHomeEN,control.lstImagenHomeEN);
-        obj.tablaImagen(propiedad.listarHomeRU,control.lstImagenHomeRU);
-        obj.tablaImagen(propiedad.listarHomeFR,control.lstImagenHomeFR);
-
-        obj.eliminarImagenHome();
-        obj.mostrarModalImagenHome();
+        
     },
+
+    ImagenHomeEs: function(){
+
+    },
+
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -16,6 +16,19 @@ if(isset($_POST["listarImagenHome"])){
     echo $rpta;
 }
 
+if($_POST["listarImagenHomeLang"]){
+    $rpta = "";
+    $lang = $configFunction::validarMetodos("POST","lang");
+
+    $imagenHomeEntity->setTipoLang($lang);
+
+    $lista = $imagenHomeModel::listarImagenHomeLang($imagenHomeEntity);
+
+    $rpta = $configFunction::convertirCadena($lista);
+
+    echo $rpta;
+}
+
 if(isset($_POST["registrarImagenHome"])){
 
     $configFunction::validarDirectorio("../imagenes");

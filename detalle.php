@@ -31,9 +31,9 @@ require 'requirelanguage.php';
 				</div>
 				<nav class="header_menu_nav" id="mySidebar2">
 					<ul id="containerMenu">
-						<li><a href="index.php" class="active"><?php echo $home; ?></a></li>
+						<!-- <li><a href="index.php" class="active"><?php echo $home; ?></a></li>
 						<li><a href="productos.php"><?php echo $productos; ?></a></li>
-						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li>
+						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li> -->
 					</ul>
 					<div class="header__nav_info">
 						<div class="header__info_data">
@@ -61,10 +61,14 @@ require 'requirelanguage.php';
 				</a>
 			</div>
 			<div class="header_idioma">
-				<a href="changelanguage.php?language=es">ES</a>
+			<a href="#" class="btnCambiarLanguaje" data-lang="es">ES</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="en">EN</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="ru">RU</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="fr">FR</a>
+				<!-- <a href="changelanguage.php?language=es">ES</a>
 				<a href="changelanguage.php?language=en">EN</a>
 				<a href="changelanguage.php?language=ru">RU</a>
-				<a href="changelanguage.php?language=fr">FR</a>
+				<a href="changelanguage.php?language=fr">FR</a> -->
 			</div>
 		</div>
 	</header>
@@ -106,11 +110,11 @@ require 'requirelanguage.php';
 					</div>
 				</div>
 				<div class="detalle_text">
-					<div class="title detalle_title">
+					<div class="title detalle_title" id="tituloNombreProducto">
 	    				<h3>PRODUCTS</h3>
 	    				<p>KERAESSÉNCE</p>
 	    			</div>
-	    			<div class="detalle_text_info">
+	    			<div class="detalle_text_info" id="descripcionProducto">
 	    				<p>Deep cleansing shampoo, enriched with supreme Argan Cream (Argan Cream) and Quinoa Oil. This formulation contains the right balance of cleansing agents at the right pH to prepare hair for the straightening process but without drying it off or damaging it.</p>
 	    				<ul>
 	    					<li>PARABEN FREE</li>
@@ -201,12 +205,12 @@ require 'requirelanguage.php';
 					<!-- <p>TIEMPO DE SERVICIO(40 min)</p> -->
 				</div>
 				<div class="resultado">
-					<div>
-						<img src="../images/resultado.jpg" alt="">
+					<div id="conatinerImgResultado">
+						<!-- <img src="../images/resultado.jpg" alt=""> -->
 					</div>
 				</div>
-				<div class="video">
-					<iframe src="https://www.youtube.com/embed/cs0Vy0sT-DE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<div class="video" id="containerrutaVideo">
+					<!-- <iframe src="https://www.youtube.com/embed/cs0Vy0sT-DE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 				</div>
 			</div>
 		</section>
@@ -221,10 +225,12 @@ require 'requirelanguage.php';
 		  <img src="../images/whatsapp-logo.png">
 		</div>
 	</a>
+	<script src="function/config-function.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="../js/swiper.js"></script>
 	<script src="../js/web.js"></script>
-	
+	<script src="js/detalleProducto.js"></script>
+<!-- 	
 	<script>
 		var galleryTop = new Swiper('.gallery-top', {
 	      spaceBetween: 10,
@@ -243,7 +249,7 @@ require 'requirelanguage.php';
 	    galleryTop.controller.control = galleryThumbs;
 	    galleryThumbs.controller.control = galleryTop;
 
-	</script>
+	</script> -->
 </script>
 </body>
 </html>

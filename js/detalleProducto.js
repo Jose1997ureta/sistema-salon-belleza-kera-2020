@@ -64,27 +64,33 @@ let principalProducto = {
                 }else{
                     obj.mostrarFrances();
                 }
-                let n = i + 1;
-                let number = '';
-                if(n < 10){
-                    number = "0" + n;
-                }else{
-                    number =  n;
-                }
-                
-                html +="<a href='detalle/" + data[0] +"' class='lista_item'>";
-                html +="<div class='lista_item_img'>";
-                html +="<img src='" + baseUrl() + "/imagenes/producto/" + data[4] + "' alt=''>";
-                html +="<span>" + number + "</span>";
-                html +="</div>";
-                html +="<div class='lista_item_nombre'>";
-                html +="<b>" + data[2] + "</b>";
-                html +="<p>" + data[3] + "</p>";  
-                html +="</div>";
-                html +="</a>";
+
+                let tituloProducto = "";
+                    tituloProducto += data[1];
+                    tituloProducto += data[2];
+
+                let descripcionProducto = "";
+                    descripcionProducto += data[3];
+                    descripcionProducto += data[4];
+                    descripcionProducto += data[5];
+                    descripcionProducto += data[7];
+                    descripcionProducto += data[8];
+
+                let imagenResultado = "";
+                    imagenResultado += "<img src='" + data[10] + "' alt='" + data[1] + "'>";
+
+                let rutaVideo = "";
+                    rutaVideo += "<iframe src='" + data[11] + "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+
+                _id("tituloNombreProducto").innerHTML = tituloProducto;
+                _id("descripcionProducto").innerHTML = descripcionProducto;
+                _id("conatinerImgResultado").innerHTML = imagenResultado;
+                _id("containerrutaVideo").innerHTML = rutaVideo;
             }
 
             _id("containerListaProducto").innerHTML = html;
+
+            sliderProductoDetalle();
         }
         
     },
@@ -118,3 +124,23 @@ let principalProducto = {
 document.addEventListener("DOMContentLoaded", function () {
     principalProducto.inicializarDom();
 })
+
+function sliderProductoDetalle(){
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 10,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true,
+      });
+      galleryTop.controller.control = galleryThumbs;
+      galleryThumbs.controller.control = galleryTop;
+
+}

@@ -29,10 +29,10 @@ require 'requirelanguage.php';
 					<span></span>
 				</div>
 				<nav class="header_menu_nav" id="mySidebar2">
-					<ul>
-						<li><a href="index.php" class="active"><?php echo $home; ?></a></li>
+					<ul id="containerMenu">
+						<!-- <li><a href="index.php" class="active"><?php echo $home; ?></a></li>
 						<li><a href="productos.php"><?php echo $productos; ?></a></li>
-						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li>
+						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li> -->
 					</ul>
 					<div class="header__nav_info">
 						<div class="header__info_data">
@@ -60,10 +60,14 @@ require 'requirelanguage.php';
 				</a>
 			</div>
 			<div class="header_idioma">
-				<a href="changelanguage.php?language=es">ES</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="es">ES</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="en">EN</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="ru">RU</a>
+				<a href="#" class="btnCambiarLanguaje" data-lang="fr">FR</a>
+				<!-- <a href="changelanguage.php?language=es">ES</a>
 				<a href="changelanguage.php?language=en">EN</a>
 				<a href="changelanguage.php?language=ru">RU</a>
-				<a href="changelanguage.php?language=fr">FR</a>
+				<a href="changelanguage.php?language=fr">FR</a> -->
 			</div>
 		</div>
 	</header>
@@ -83,7 +87,7 @@ require 'requirelanguage.php';
     				<h3>PRODUCTS</h3>
     				<p>KERAESSÉNCE</p>
     			</div>
-    			<div class="lista">
+    			<div class="lista" id="containerListaProducto">
     				<a href="detalle.php" class="lista_item">
     					<div class="lista_item_img">
     						<img src="images/products/repair2.png" alt="">
@@ -168,9 +172,11 @@ require 'requirelanguage.php';
 		  <img src="images/whatsapp-logo.png">
 		</div>
 	</a>
+	<script src="function/config-function.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/swiper.js"></script>
 	<script src="js/web.js"></script>
+	<script src="js/producto.js"></script>
 	
 </script>
 </body>

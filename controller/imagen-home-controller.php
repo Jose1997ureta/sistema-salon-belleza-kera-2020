@@ -16,7 +16,7 @@ if(isset($_POST["listarImagenHome"])){
     echo $rpta;
 }
 
-if($_POST["listarImagenHomeLang"]){
+if(isset($_POST["listarImagenHomeLang"])){
     $rpta = "";
     $lang = $configFunction::validarMetodos("POST","lang");
 
@@ -35,7 +35,7 @@ if(isset($_POST["registrarImagenHome"])){
     $configFunction::validarDirectorio("../imagenes/imagen-home");
 
     $tipoLang = $configFunction::validarMetodos("POST","tipoLang");
-    $tituloImagen = $configFunction::validarMetodos("POST","tituloImagen");
+    $tituloImagen = $configFunction::validarMetodos("POST","tituloImagenR");
 
     $imagenHome = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenHome"]["name"]);
     $tmpImagenHome = $_FILES["imagenHome"]["tmp_name"];

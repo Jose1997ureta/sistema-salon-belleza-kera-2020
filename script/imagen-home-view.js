@@ -26,6 +26,7 @@ let imagenHomeView = {
         frmActualizarImagenHome: "formActualizarImagenHome",
         btnEliminarImgHome: "eliminar-elemento",
         btnActualizarImgHome: "modificar-elemento",
+        tipoLang: "tipoLang",
     },
 
     inicializarDom: function(){
@@ -49,8 +50,24 @@ let imagenHomeView = {
     registrarImagenHome: function(form){
         const obj = imagenHomeView;
         const link = obj.link;
+        const control = obj.control;
+
+        let tipoLangR = form.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.value;
+        let tituloImagenR = "";
+
+        if(tipoLangR == "es"){
+            tituloImagenR = CKEDITOR.instances.tituloImagenES.getData();
+        }else if(tipoLangR == "en"){
+            tituloImagenR = CKEDITOR.instances.tituloImagenEN.getData();
+        }else if(tipoLangR == "ru"){
+            tituloImagenR = CKEDITOR.instances.tituloImagenRU.getData();
+        }else{
+            tituloImagenR = CKEDITOR.instances.tituloImagenFR.getData();
+        }
+        
 
         let formData = new FormData(form);
+        formData.append("tituloImagenR",tituloImagenR);
         formData.append("registrarImagenHome",true);
 
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaRegistroImagenHome);
@@ -65,6 +82,11 @@ let imagenHomeView = {
             _id(control.frmRegistrarImagenHomeEN).reset();
             _id(control.frmRegistrarImagenHomeRU).reset();
             _id(control.frmRegistrarImagenHomeFR).reset();
+            CKEDITOR.instances.tituloImagenES.setData('');
+            CKEDITOR.instances.tituloImagenEN.setData('');
+            CKEDITOR.instances.tituloImagenRU.setData('');
+            CKEDITOR.instances.tituloImagenFR.setData('');
+
             if(rpta == "1|1"){
                 mostrarMensaje("success", "Se registró las imagenes para Home")
             }else{
@@ -185,7 +207,7 @@ let imagenHomeView = {
                     html += "<div class='col-md-12'>";
                     html += "<label for='tituloImagenEditar'>Categoria:</label>";
                     html += "<input type='hidden' name='idImagenHome' value='" + idImage + "'>";
-                    html += "<input type='text' class='form-control form-control-sm mb-3' name='tituloImagenEditar' value='" + tituloImagen + "' placeholder='Nombre de la Categoría' required=''>";
+                    html += "<textarea class='form-control form-control-sm mb-3' id='tituloImagenEditar' required=''></textarea>";
                     html += "<div class='invalid-feedback'>Ingresar Título Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12 form-group'>";
@@ -194,7 +216,7 @@ let imagenHomeView = {
                     html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
                     html += "</div>";
                     html += "<div class='col-md-12'>";
-                    html += "<img class='w-100' id='imagenHomeActual' data-img='" + srcImagen + "' src='" + baseUrl() + "/imagenes/imagen-home/" + srcImagen + "' />";
+                    html += "<img style='width:400px' id='imagenHomeActual' data-img='" + srcImagen + "' src='" + baseUrl() + "/imagenes/imagen-home/" + srcImagen + "' />";
                     html += "</div>";
                     html += "</div>";
                     html += "<button class='btn btn-outline-success' type='submit'>";
@@ -204,7 +226,10 @@ let imagenHomeView = {
                     html += "</button>";
                     html += "</form>";
 
-                mostrarModal("", "Formulario Actualizar Categoría", html);
+                mostrarModal("large", "Formulario Actualizar Categoría", html);
+
+                CKEDITOR.replace('tituloImagenEditar');
+                CKEDITOR.instances.tituloImagenEditar.setData(tituloImagen);
 
                 if(srcImagen != ""){
                     _removeAttribute(_id("imagenHomeActualizar"),"required");
@@ -219,9 +244,11 @@ let imagenHomeView = {
         const link = obj.link;
 
         let imagenActual = _getAtrribute(_id("imagenHomeActual"),"data-img");
+        let tituloImagenEditar = CKEDITOR.instances.tituloImagenEditar.getData();
 
         let formData = new FormData(form);
         formData.append("imagenHomeActual",imagenActual);
+        formData.append("tituloImagenEditar",tituloImagenEditar);
         formData.append("actualizarImagenHome",true);
 
         sendDataAjax("POST", link.productoController, true, formData, obj.respuestaActualizarImagenHome);
@@ -273,6 +300,14 @@ let imagenHomeView = {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    CKEDITOR.replace('tituloImagenES');
+    CKEDITOR.replace('tituloImagenEN');
+    CKEDITOR.replace('tituloImagenRU');
+    CKEDITOR.replace('tituloImagenFR');
+
+    CKEDITOR.config.height = '100px';
+
     imagenHomeView.inicializarDom();
 
 })

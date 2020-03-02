@@ -339,7 +339,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 d-none mb-3" id="containerImagenResultado">
-                                <img class="rounded w-100" id="imgProductoResultado"/>
+                                <img class="rounded" style="width: 300px" id="imgProductoResultado"/>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label for="rutaProductoVideo">Ruta Video:</label>

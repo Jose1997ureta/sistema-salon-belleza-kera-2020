@@ -10,16 +10,16 @@ require 'requirelanguage.php';
 	<meta name="description" content="Cosméticos naturales">
     <meta name="keywords" content="cosméticos en lima, cosméticos naturales, productos de belleza en lima, aminoplastía capilar">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="icon" sizes="192x192" href="images/favicon.png">
+	<link rel="icon" sizes="192x192" href="../images/favicon.png">
 	<meta name="theme-color" content="#1a1a1a">
 	<meta name="msapplication-navbutton-color" content="#1a1a1a">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#1a1a1a">
 	
-	<link rel="stylesheet" href="css/font-awesome.css">
-	<link rel="stylesheet" href="css/swiper.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/producto.css">
-	<link rel="stylesheet" href="css/detalle.css">
+	<link rel="stylesheet" href="../css/font-awesome.css">
+	<link rel="stylesheet" href="../css/swiper.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/producto.css">
+	<link rel="stylesheet" href="../css/detalle.css">
 </head>
 <body>
 	<header>
@@ -30,7 +30,7 @@ require 'requirelanguage.php';
 					<span></span>
 				</div>
 				<nav class="header_menu_nav" id="mySidebar2">
-					<ul>
+					<ul id="containerMenu">
 						<li><a href="index.php" class="active"><?php echo $home; ?></a></li>
 						<li><a href="productos.php"><?php echo $productos; ?></a></li>
 						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li>
@@ -45,7 +45,7 @@ require 'requirelanguage.php';
 							<p>Intisuyo 165 Urb Maranga San Miguel</p>
 						</div>
 						<div class="puntos">
-							<img src="icon/puntos.svg" alt="">
+							<img src="../icon/puntos.svg" alt="">
 						</div>
 					</div>
 					<div class="header__nav_redes">
@@ -57,7 +57,7 @@ require 'requirelanguage.php';
 			</div>
 			<div class="header_logo">
 				<a href="index.php">
-					<img src="icon/logo-blanco.svg" alt="">
+					<img src="../icon/logo-blanco.svg" alt="">
 				</a>
 			</div>
 			<div class="header_idioma">
@@ -72,7 +72,7 @@ require 'requirelanguage.php';
 		<section>
 			<div class="sup" style="padding-top: 100px;">
 				<div class="sup_link">
-					<a href="index.php"><img src="icon/house.svg" alt=""></a><a href="productos.html">/ Products</a>
+					<a href="index.php"><img src="../icon/house.svg" alt=""></a><a href="productos.html">/ Products</a>
 					<p>/ Detalle</p>
 				</div>
 			</div>
@@ -83,11 +83,11 @@ require 'requirelanguage.php';
 					<div class="swiper-container gallery-top">
 					    <div class="swiper-wrapper">
 					      <!-- <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div> -->
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					    </div>
 					    <!-- Add Arrows -->
 						 <div class="flecha detalle_flecha">
@@ -97,11 +97,11 @@ require 'requirelanguage.php';
 					</div>
 					<div class="swiper-container gallery-thumbs">
 					    <div class="swiper-wrapper detalle_back">
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					    </div>
 					</div>
 				</div>
@@ -202,7 +202,7 @@ require 'requirelanguage.php';
 				</div>
 				<div class="resultado">
 					<div>
-						<img src="images/resultado.jpg" alt="">
+						<img src="../images/resultado.jpg" alt="">
 					</div>
 				</div>
 				<div class="video">
@@ -218,12 +218,12 @@ require 'requirelanguage.php';
 	</footer>
 	<a target="_blank" href="https://api.whatsapp.com/send?phone=51947317493&amp;text=Hola Kerasilk, me interesa el servicio de ">
 		<div class="hamburger">
-		  <img src="images/whatsapp-logo.png">
+		  <img src="../images/whatsapp-logo.png">
 		</div>
 	</a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/swiper.js"></script>
-	<script src="js/web.js"></script>
+    <script src="../js/swiper.js"></script>
+	<script src="../js/web.js"></script>
 	
 	<script>
 		var galleryTop = new Swiper('.gallery-top', {

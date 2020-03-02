@@ -30,7 +30,8 @@
                                     <div class="col-md-12 form-group ">
                                         <label for="tituloImagenES">Título Imagen:</label>
                                         <input type="hidden" name="tipoLang" value="es">
-                                        <input type="text" class="form-control form-control-sm" name="tituloImagen" id="tituloImagenES" required>
+                                        <textarea name="tituloImagen" id="tituloImagenES"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
                                         <div class="invalid-feedback">
                                             Ingresar Titulo de la Imágen Español
                                         </div>
@@ -65,7 +66,8 @@
                                     <div class="col-md-12 form-group ">
                                         <label for="tituloImagenEN">Título Imagen:</label>
                                         <input type="hidden" name="tipoLang" value="en">
-                                        <input type="text" class="form-control form-control-sm" name="tituloImagen" id="tituloImagenEN" required>
+                                        <textarea name="tituloImagen" id="tituloImagenEN"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
                                         <div class="invalid-feedback">
                                             Ingresar Titulo de la Imágen Ingles
                                         </div>
@@ -100,7 +102,8 @@
                                     <div class="col-md-12 form-group ">
                                         <label for="tituloImagenRU">Título Imagen:</label>
                                         <input type="hidden" name="tipoLang" value="ru">
-                                        <input type="text" class="form-control form-control-sm" name="tituloImagen" id="tituloImagenRU" required>
+                                        <textarea name="tituloImagen" id="tituloImagenRU"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
                                         <div class="invalid-feedback">
                                             Ingresar Titulo de la Imágen Ruso
                                         </div>
@@ -135,7 +138,8 @@
                                     <div class="col-md-12 form-group ">
                                         <label for="tituloImagenFR">Título Imagen:</label>
                                         <input type="hidden" name="tipoLang" value="fr">
-                                        <input type="text" class="form-control form-control-sm" name="tituloImagen" id="tituloImagenFR" required>
+                                        <textarea name="tituloImagen" id="tituloImagenFR"
+                                    class="form-control form-control-sm" rows="2" required></textarea>
                                         <div class="invalid-feedback">
                                             Ingresar Titulo de la Imágen Frances
                                         </div>

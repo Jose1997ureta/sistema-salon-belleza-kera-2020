@@ -30,10 +30,10 @@ require 'requirelanguage.php';
 					<span></span>
 				</div>
 				<nav class="header_menu_nav" id="mySidebar2">
-					<ul>
-						<li><a href="index.php" class="active"><?php echo $home; ?></a></li>
+					<ul id="containerMenu">
+						<!-- <li><a href="index.php" class="active"><?php echo $home; ?></a></li>
 						<li><a href="productos.php"><?php echo $productos; ?></a></li>
-						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li>
+						<li><a href="index.php#contacto"><?php echo $contacto; ?></a></li> -->
 					</ul>
 					<div class="header__nav_info">
 						<div class="header__info_data">
@@ -154,45 +154,6 @@ require 'requirelanguage.php';
 		            	<div class="sect3">
 		            		<div class="swiper-container swiper3">
 		            			<div class="swiper-wrapper" id="containerSliderImgenHome">
-		            				<div class="swiper-slide">
-			                           <a href="detalle.php" class="sect3_item animacion">
-			                           		<img src="images/modelo1.jpg" alt="">
-			                           		<div class="sect3_item_title">
-			                           		    <?php echo $title2; ?>
-			                           		</div>
-			                           		<span><?php echo $explorar; ?></span>
-			                           </a>  
-		            				</div>
-		            				<div class="swiper-slide">
-			                           <a href="detalle.php" class="sect3_item animacion">
-			                           		<img src="images/modelo2.jpg" alt="">
-			                           		<div class="sect3_item_title">
-			                           			<b>platinum liss</b>
-			                           			<p>ALISADO <br>MATIZADOR</p>
-			                           		</div>
-			                           		<span><?php echo $explorar; ?></span>
-			                           </a>  
-		            				</div>
-		            				<div class="swiper-slide">
-			                           <a href="detalle.php" class="sect3_item animacion">
-			                           		<img src="images/modelo3.jpg" alt="">
-			                           		<div class="sect3_item_title">
-			                           			<b>aminoplastía</b>
-			                           			<p>alisado <br>brasilero</p>
-			                           		</div>
-			                           		<span><?php echo $explorar; ?></span>
-			                           </a>  
-		            				</div>
-		            				<div class="swiper-slide">
-			                           <a href="detalle.php" class="sect3_item animacion">
-			                           		<img src="images/modelo4.jpg" alt="">
-			                           		<div class="sect3_item_title">
-			                           			<b>LISS INTENSE</b>
-			                           			<p>alisado <br>orgánico</p>
-			                           		</div>
-			                           		<span><?php echo $explorar; ?></span>
-			                           </a>  
-		            				</div>
 		            			</div>
 		            		</div>
 			            	<div class="flecha">
@@ -282,7 +243,7 @@ require 'requirelanguage.php';
 		</div>
 	</a>
 	<script src="function/config-function.js"></script>
-	<script src="js/languaje.js"></script>
+	<script src="js/languajeIndex.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/web.js"></script>

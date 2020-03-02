@@ -26,6 +26,48 @@ if(isset($_POST["listarProductoId"])){
     echo $rpta;
 }
 
+if(isset($_POST["listarProductoLang"])){
+    $rpta = "";
+    $lang = $configFunction::validarMetodos("POST","lang");
+    if($lang == "es"){
+        $procedure = "SELECT P.ID_PRODUCTO,P.TIPO_LANG_ES,P.TIPO_PRODUCTO_ES,P.NOMBRE_PRODUCTO_ES,I.IMAGEN FROM PRODUCTO_KERA_ESPANOL P LEFT JOIN IMAGEN_PRODUCTO_KERA I ON P.ID_PRODUCTO=I.ID_PRODUCTO GROUP BY P.ID_PRODUCTO";
+    }else if($lang == "en"){
+        $procedure = "SELECT P.ID_PRODUCTO,P.TIPO_LANG_EN,P.TIPO_PRODUCTO_EN,P.NOMBRE_PRODUCTO_EN,I.IMAGEN FROM PRODUCTO_KERA_INGLES P LEFT JOIN IMAGEN_PRODUCTO_KERA I ON P.ID_PRODUCTO=I.ID_PRODUCTO GROUP BY P.ID_PRODUCTO";
+    }else if($lang == "ru"){
+        $procedure = "SELECT P.ID_PRODUCTO,P.TIPO_LANG_RU,P.TIPO_PRODUCTO_RU,P.NOMBRE_PRODUCTO_RU,I.IMAGEN FROM PRODUCTO_KERA_RUSO P LEFT JOIN IMAGEN_PRODUCTO_KERA I ON P.ID_PRODUCTO=I.ID_PRODUCTO GROUP BY P.ID_PRODUCTO";
+    }else{
+        $procedure = "SELECT P.ID_PRODUCTO,P.TIPO_LANG_FR,P.TIPO_PRODUCTO_FR,P.NOMBRE_PRODUCTO_FR,I.IMAGEN FROM PRODUCTO_KERA_FRANCES P LEFT JOIN IMAGEN_PRODUCTO_KERA I ON P.ID_PRODUCTO=I.ID_PRODUCTO GROUP BY P.ID_PRODUCTO";
+    }
+    
+    $consulta = $configFunction::obtenerLista($procedure);
+
+    $rpta = $configFunction::convertirCadena($consulta);
+
+    echo $rpta;
+}
+
+if(isset($_POST["listarProductoDetalleLang"])){
+    $rpta = "";
+    $lang = $configFunction::validarMetodos("POST","lang");
+    $idProducto = $configFunction::validarMetodos("POST","idProducto");
+    
+    if($lang == "es"){
+        $procedure = "SELECT PE.*,P.IMAGEN_RESULTADO,P.RUTA_VIDEO FROM PRODUCTO_KERA_ESPANOL PE INNER JOIN PRODUCTO_KERA P ON P.ID_PRODUCTO = PE.ID_PRODUCTO WHERE P.ID_PRODUCTO = ".$idProducto." GROUP BY P.ID_PRODUCTO";
+    }else if($lang == "en"){
+        $procedure = "SELECT PE.*,P.IMAGEN_RESULTADO,P.RUTA_VIDEO FROM PRODUCTO_KERA_INGLES PE INNER JOIN PRODUCTO_KERA P ON P.ID_PRODUCTO = PE.ID_PRODUCTO WHERE P.ID_PRODUCTO = ".$idProducto." GROUP BY P.ID_PRODUCTO";
+    }else if($lang == "ru"){
+        $procedure = "SELECT PE.*,P.IMAGEN_RESULTADO,P.RUTA_VIDEO FROM PRODUCTO_KERA_RUSO PE INNER JOIN PRODUCTO_KERA P ON P.ID_PRODUCTO = PE.ID_PRODUCTO WHERE P.ID_PRODUCTO = ".$idProducto." GROUP BY P.ID_PRODUCTO";
+    }else{
+        $procedure = "SELECT PE.*,P.IMAGEN_RESULTADO,P.RUTA_VIDEO FROM PRODUCTO_KERA_FRANCES PE INNER JOIN PRODUCTO_KERA P ON P.ID_PRODUCTO = PE.ID_PRODUCTO WHERE P.ID_PRODUCTO = ".$idProducto." GROUP BY P.ID_PRODUCTO";
+    }
+    
+    $consulta = $configFunction::obtenerLista($procedure);
+
+    $rpta = $configFunction::convertirCadena($consulta);
+
+    echo $rpta;
+}
+
 if(isset($_POST["registrarProducto"])){
 
     $tipoProductoES = $configFunction::validarMetodos("POST","tipoProductoES");

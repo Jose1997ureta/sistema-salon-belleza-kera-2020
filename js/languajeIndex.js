@@ -91,17 +91,17 @@ let principalHome = {
 
     mostrarEnpanol: function(){
         let menu = "";
-            menu += "<li><a href='inicio' class='active'>INICIO</a></li>";
-            menu += "<li><a href='productos'>PRODUCTO</a></li>";
-            menu += "<li><a href='inicio#contacto'>CONTACTO</a></li>";
+            menu += "<li><a href='" + baseUrl() + "/inicio' class='active'>INICIO</a></li>";
+            menu += "<li><a href='" + baseUrl() + "/productos'>PRODUCTO</a></li>";
+            menu += "<li><a href='" + baseUrl() + "/inicio#contacto'>CONTACTO</a></li>";
         _id("containerMenu").innerHTML = menu;
     },
 
     mostrarIngles: function(){
         let menu = "";
-        menu += "<li><a href='inicio' class='active'>HOME</a></li>";
-        menu += "<li><a href='productos'>PRODUCT</a></li>";
-        menu += "<li><a href='inicio#contacto'>CONTACT</a></li>";
+        menu += "<li><a href='" + baseUrl() + "/inicio' class='active'>HOME</a></li>";
+        menu += "<li><a href='" + baseUrl() + "/productos'>PRODUCT</a></li>";
+        menu += "<li><a href='" + baseUrl() + "/inicio#contacto'>CONTACT</a></li>";
         _id("containerMenu").innerHTML = menu;
     },
 

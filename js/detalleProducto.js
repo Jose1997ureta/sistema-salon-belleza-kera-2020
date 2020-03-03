@@ -22,7 +22,8 @@ let principalProducto = {
         const obj = principalProducto;
         const link = obj.link;
 
-        sendDataAjax("POST",link.lenguajeController,false,"lang=es&listarProductoDetalleLang=true",obj.mostrarProductoLang);
+        let idProducto = _id("idProducto").value;
+        sendDataAjax("POST",link.lenguajeController,false,"lang=es&idProducto=" + idProducto + "&listarProductoDetalleLang=true",obj.mostrarProductoLang);
 
         obj.cambiarLenguaje();
     },
@@ -39,8 +40,8 @@ let principalProducto = {
                 e.preventDefault();
 
                 let languaje = _getAtrribute(btn,"data-lang");
-
-                sendDataAjax("POST",link.lenguajeController,false,"lang="+languaje+"&listarProductoDetalleLang=true",obj.mostrarProductoLang);
+                let idProducto = _id("idProducto").value;
+                sendDataAjax("POST",link.lenguajeController,false,"lang="+languaje+"&idProducto=" + idProducto + "&listarProductoDetalleLang=true",obj.mostrarProductoLang);
             })
         }
 
@@ -50,11 +51,13 @@ let principalProducto = {
         const obj = principalProducto;
 
         let html = "";
-        let lista = rpta.split("~");
+        let lista = rpta.split("^");
+        let producto = lista[0].split("~");
+        let imagenProducto = lista[1].split("~");
 
-        if(lista!= ""){
-            for(let i = 0; i < lista.length; i++){
-                let data = lista[i].split("|");
+        if(producto!= ""){
+            for(let i = 0; i < producto.length; i++){
+                let data = producto[i].split("|");
                 if(data[1] == "es"){
                     obj.mostrarEnpanol();
                 }else if(data[1] == "en"){
@@ -65,31 +68,38 @@ let principalProducto = {
                     obj.mostrarFrances();
                 }
 
-                let tituloProducto = "";
-                    tituloProducto += data[1];
-                    tituloProducto += data[2];
+                let tituloNombreProducto = "<h3>" + data[2] + "</h3>";
+                tituloNombreProducto += "<p>" + data[3] + "</p>";
 
-                let descripcionProducto = "";
-                    descripcionProducto += data[3];
-                    descripcionProducto += data[4];
+                let descripcionProducto = "<p>" + data[4] + "</p>";
                     descripcionProducto += data[5];
+                    descripcionProducto += "<b>" + data[6] + "</b>";
                     descripcionProducto += data[7];
-                    descripcionProducto += data[8];
+                    descripcionProducto += "<b>" + data[8] + "</b>";
+                    descripcionProducto += data[9];
 
-                let imagenResultado = "";
-                    imagenResultado += "<img src='" + data[10] + "' alt='" + data[1] + "'>";
+                let imagenResultado = "<img src='../imagenes/producto/" + data[10] + "' alt='" + data[1] + "'>";
 
                 let rutaVideo = "";
                     rutaVideo += "<iframe src='" + data[11] + "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 
-                _id("tituloNombreProducto").innerHTML = tituloProducto;
+                _id("tituloNombreProducto").innerHTML = tituloNombreProducto;
                 _id("descripcionProducto").innerHTML = descripcionProducto;
-                _id("conatinerImgResultado").innerHTML = imagenResultado;
-                _id("containerrutaVideo").innerHTML = rutaVideo;
+                _id("ImgResultado").innerHTML = imagenResultado;
+                _id("rutaVideo").innerHTML = rutaVideo;
+            }
+        }
+
+        if(imagenProducto !== ""){
+            let html = "";
+            for(let i = 0; i < imagenProducto.length; i++){
+                let data = imagenProducto[i].split("|");
+
+                html += "<div class='swiper-slide' style='background-image:url(../imagenes/producto/" + data[1] + ")'></div>";
             }
 
-            _id("containerListaProducto").innerHTML = html;
-
+            _id("containerImagenDetalle").innerHTML = html;
+            _id("containerImagenDetalleSmall").innerHTML = html;
             sliderProductoDetalle();
         }
         
@@ -97,17 +107,17 @@ let principalProducto = {
 
     mostrarEnpanol: function(){
         let menu = "";
-            menu += "<li><a href='inicio' class='active'>INICIO</a></li>";
-            menu += "<li><a href='productos'>PRODUCTO</a></li>";
-            menu += "<li><a href='inicio#contacto'>CONTACTO</a></li>";
+            menu += "<li><a href='" + baseUrl() + "/inicio' class='active'>INICIO</a></li>";
+            menu += "<li><a href='" + baseUrl() + "/productos'>PRODUCTO</a></li>";
+            menu += "<li><a href='" + baseUrl() + "/inicio#contacto'>CONTACTO</a></li>";
         _id("containerMenu").innerHTML = menu;
     },
 
     mostrarIngles: function(){
         let menu = "";
-        menu += "<li><a href='inicio' class='active'>HOME</a></li>";
-        menu += "<li><a href='productos'>PRODUCT</a></li>";
-        menu += "<li><a href='inicio#contacto'>CONTACT</a></li>";
+        menu += "<li><a href='" + baseUrl() + "/inicio' class='active'>HOME</a></li>";
+        menu += "<li><a href='" + baseUrl() + "/productos'>PRODUCT</a></li>";
+        menu += "<li><a href='" + baseUrl() + "/inicio#contacto'>CONTACT</a></li>";
         _id("containerMenu").innerHTML = menu;
     },
 

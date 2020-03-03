@@ -9,6 +9,12 @@ $configFunction = new config_function();
 
 session_start();
 
+if(isset($_POST["cerrarSession"])){
+    if(isset($_SESSION["idTrabajador"])){
+        session_destroy();
+    }
+}
+
 if(isset($_POST["listarTrabajadorId"])){
     $rpta = "";
     $idTrabajador = $configFunction::validarMetodos("SESSION","idTrabajador");

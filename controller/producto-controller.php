@@ -60,10 +60,13 @@ if(isset($_POST["listarProductoDetalleLang"])){
     }else{
         $procedure = "SELECT PE.*,P.IMAGEN_RESULTADO,P.RUTA_VIDEO FROM PRODUCTO_KERA_FRANCES PE INNER JOIN PRODUCTO_KERA P ON P.ID_PRODUCTO = PE.ID_PRODUCTO WHERE P.ID_PRODUCTO = ".$idProducto." GROUP BY P.ID_PRODUCTO";
     }
-    
-    $consulta = $configFunction::obtenerLista($procedure);
 
-    $rpta = $configFunction::convertirCadena($consulta);
+    $procedureImagen = "SELECT ID_IMAGEN,IMAGEN FROM IMAGEN_PRODUCTO_KERA WHERE ID_PRODUCTO = ". $idProducto;
+    
+    $consultaProducto = $configFunction::obtenerLista($procedure);
+    $consultaProductoImagen = $configFunction::obtenerLista($procedureImagen);
+
+    $rpta = $configFunction::convertirCadena($consultaProducto) ."^". $configFunction::convertirCadena($consultaProductoImagen);
 
     echo $rpta;
 }

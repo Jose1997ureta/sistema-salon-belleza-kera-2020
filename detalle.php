@@ -1,7 +1,7 @@
-<?php
+<!-- <?php
 session_start();
 require 'requirelanguage.php';
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="es">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -83,15 +83,16 @@ require 'requirelanguage.php';
 		</section>
 		<section>
 			<div class="detalle">
+			<input type="hidden" name="idProducto" id="idProducto" value="<?php echo $_GET["id"] ?>">
 				<div class="detalle_cont">
 					<div class="swiper-container gallery-top">
-					    <div class="swiper-wrapper">
+					    <div class="swiper-wrapper" id="containerImagenDetalle">
 					      <!-- <div class="swiper-slide" style="background-image:url(images/products/producto_detalle.jpg)"></div> -->
+					      <!-- <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div> -->
 					    </div>
 					    <!-- Add Arrows -->
 						 <div class="flecha detalle_flecha">
@@ -100,22 +101,22 @@ require 'requirelanguage.php';
 						 </div>
 					</div>
 					<div class="swiper-container gallery-thumbs">
-					    <div class="swiper-wrapper detalle_back">
+					    <div class="swiper-wrapper detalle_back" id="containerImagenDetalleSmall">
+					      <!-- <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
 					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
-					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div>
+					      <div class="swiper-slide" style="background-image:url(../images/products/producto_detalle.jpg)"></div> -->
 					    </div>
 					</div>
 				</div>
 				<div class="detalle_text">
 					<div class="title detalle_title" id="tituloNombreProducto">
-	    				<h3>PRODUCTS</h3>
-	    				<p>KERAESSÉNCE</p>
+	    				<!-- <h3 id="tipoProducto">PRODUCTS</h3>
+	    				<p id="nombreProducto">KERAESSÉNCE</p> -->
 	    			</div>
 	    			<div class="detalle_text_info" id="descripcionProducto">
-	    				<p>Deep cleansing shampoo, enriched with supreme Argan Cream (Argan Cream) and Quinoa Oil. This formulation contains the right balance of cleansing agents at the right pH to prepare hair for the straightening process but without drying it off or damaging it.</p>
+	    				<!-- <p>Deep cleansing shampoo, enriched with supreme Argan Cream (Argan Cream) and Quinoa Oil. This formulation contains the right balance of cleansing agents at the right pH to prepare hair for the straightening process but without drying it off or damaging it.</p>
 	    				<ul>
 	    					<li>PARABEN FREE</li>
 	    					<li>SODIUM CHLORIDE FREE</li>
@@ -140,7 +141,7 @@ require 'requirelanguage.php';
 	    					<li>Extracto natural de menta</li>
 	    					<li>Extracto natural de romero</li>
 	    					<li>Niacina (vitamina B3)</li>
-	    				</ul>
+	    				</ul> -->
 	    			</div>
 				</div>
 			</div>
@@ -205,11 +206,11 @@ require 'requirelanguage.php';
 					<!-- <p>TIEMPO DE SERVICIO(40 min)</p> -->
 				</div>
 				<div class="resultado">
-					<div id="conatinerImgResultado">
+					<div id="ImgResultado">
 						<!-- <img src="../images/resultado.jpg" alt=""> -->
 					</div>
 				</div>
-				<div class="video" id="containerrutaVideo">
+				<div class="video" id="rutaVideo">
 					<!-- <iframe src="https://www.youtube.com/embed/cs0Vy0sT-DE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 				</div>
 			</div>
@@ -225,11 +226,11 @@ require 'requirelanguage.php';
 		  <img src="../images/whatsapp-logo.png">
 		</div>
 	</a>
-	<script src="function/config-function.js"></script>
+	<script src="../function/config-function.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="../js/swiper.js"></script>
 	<script src="../js/web.js"></script>
-	<script src="js/detalleProducto.js"></script>
+	<script src="../js/detalleProducto.js"></script>
 <!-- 	
 	<script>
 		var galleryTop = new Swiper('.gallery-top', {

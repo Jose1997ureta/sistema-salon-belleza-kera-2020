@@ -22,7 +22,8 @@ let principalProducto = {
         const obj = principalProducto;
         const link = obj.link;
 
-        sendDataAjax("POST",link.lenguajeController,false,"lang=es&listarProductoLang=true",obj.mostrarProductoLang);
+        let idProducto = _id("idProducto").value;
+        sendDataAjax("POST",link.lenguajeController,false,"lang=es&idProducto=" + idProducto + "&listarProductoDetalleLang=true",obj.mostrarProductoLang);
 
         obj.cambiarLenguaje();
     },
@@ -40,7 +41,7 @@ let principalProducto = {
 
                 let languaje = _getAtrribute(btn,"data-lang");
 
-                sendDataAjax("POST",link.lenguajeController,false,"lang="+languaje+"&listarProductoLang=true",obj.mostrarProductoLang);
+                sendDataAjax("POST",link.lenguajeController,false,"lang="+languaje+"&listarProductoDetalleLang=true",obj.mostrarProductoLang);
             })
         }
 
@@ -91,17 +92,17 @@ let principalProducto = {
 
     mostrarEnpanol: function(){
         let menu = "";
-            menu += "<li><a href='" + baseUrl() + "/inicio' class='active'>INICIO</a></li>";
-            menu += "<li><a href='" + baseUrl() + "/productos'>PRODUCTO</a></li>";
-            menu += "<li><a href='" + baseUrl() + "/inicio#contacto'>CONTACTO</a></li>";
+            menu += "<li><a href='inicio' class='active'>INICIO</a></li>";
+            menu += "<li><a href='productos'>PRODUCTO</a></li>";
+            menu += "<li><a href='inicio#contacto'>CONTACTO</a></li>";
         _id("containerMenu").innerHTML = menu;
     },
 
     mostrarIngles: function(){
         let menu = "";
-        menu += "<li><a href='" + baseUrl() + "/inicio' class='active'>HOME</a></li>";
-        menu += "<li><a href='" + baseUrl() + "/productos'>PRODUCT</a></li>";
-        menu += "<li><a href='" + baseUrl() + "/inicio#contacto'>CONTACT</a></li>";
+        menu += "<li><a href='inicio' class='active'>HOME</a></li>";
+        menu += "<li><a href='productos'>PRODUCT</a></li>";
+        menu += "<li><a href='inicio#contacto'>CONTACT</a></li>";
         _id("containerMenu").innerHTML = menu;
     },
 

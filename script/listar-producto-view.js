@@ -91,3 +91,15 @@ let listarProductoView = {
 document.addEventListener("DOMContentLoaded", function () {
     listarProductoView.inicializarDom();
 })
+
+if(_id("cerrarSession") != undefined || _id("cerrarSession") != null){
+    _id("cerrarSession").addEventListener("click",function(e){
+        e.preventDefault();
+    
+        sendDataAjax("POST","controller/trabajador-controller.php",false,"cerrarSession=true",mostrarRespuesta());
+    })
+}
+
+function mostrarRespuesta(){
+        window.location = baseUrl() + "/view/sign-in";
+}

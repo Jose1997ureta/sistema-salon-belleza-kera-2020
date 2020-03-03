@@ -60,7 +60,7 @@
                         Perfil
                     </a>
                 <li>
-                <a href="<?php echo SERVER_URL; ?>/view/perfil">
+                <a href="#" id="cerrarSession">
                         <i class="metismenu-icon pe-7s-eyedropper">
                         </i>Cerrar Sesión
                     </a>

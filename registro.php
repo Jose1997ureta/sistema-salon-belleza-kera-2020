@@ -75,7 +75,7 @@ require 'requirelanguage.php';
     				<b>REGÍSTRATE</b>
     			</div>
     			<p>Completa tus datos para ser atendido por uno de nuestro especialistas:</p>
-				<form action="" class="form">
+				<form action="enviar2.php" class="form" method="post">
 					<div class="form_data">
 						<input class="input" type="text" id="nombre" required="" name="nombre" placeholder=" "/>
 						<label class="hola" for="nombre">Nombre y apellido:</label>
@@ -89,14 +89,14 @@ require 'requirelanguage.php';
 						<label class="hola" for="input-2">Nombre del salón:</label>
             		</div>
             		<div class="form_data">
-						<input pattern="[0-9]{11}" class="input" type="telf" id="input-3" required="" name="RUC" placeholder=" "/>
+						<input pattern="[0-9]{11}" class="input" type="telf" id="input-3" required="" name="ruc" placeholder=" "/>
 						<label class="hola" for="input-3">RUC:</label>
             		</div>
             		<div class="form_data">
 						<input class="input" type="text" id="input-4" required="" name="direccion" placeholder=" "/>
 						<label class="hola" for="input-4">Dirección:</label>
             		</div>
-            		<select name="soy" id="input-5" class="select" required="">
+            		<select name="soy" class="select" required="">
             			<option value="">--Seleccione una opción--</option>
             			<option value="distribuidor">Soy distribuidor</option>
             			<option value="usuario">Soy usuario final</option>
@@ -104,7 +104,6 @@ require 'requirelanguage.php';
             			<option value="estilista">Soy estilista</option>
             			<option value="estudiante">Soy estudiante</option>
             			<option value="importador">Soy importador</option>
-            			<label class="hola" for="input-5">Dirección:</label>
             		</select>
             		<div class=""><button value="enviar" type="submit" class="form_bottom">Finalizar registro</button></div>
 				</form>

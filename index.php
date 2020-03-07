@@ -138,7 +138,7 @@ require 'requirelanguage.php';
 		            			</div>
 		            			<p><?php echo $text1; ?></p>
 		            			<div class="sect2_info_button">
-                            		<a class="buttom" href="productos.php"><?php echo $verproductos; ?></a>
+                            		<a class="buttom" href="http://keraessence.com/detalle/3"><?php echo $verproductos; ?></a>
                             	</div>
                             	<h4>liss intense</h4>
 		            		</div>

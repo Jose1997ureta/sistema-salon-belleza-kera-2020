@@ -56,7 +56,7 @@ require 'requirelanguage.php';
 				</nav>
 			</div>
 			<div class="header_logo">
-				<a href="index.php">
+				<a href="http://keraessence.com/">
 					<img src="../icon/logo-blanco.svg" alt="">
 				</a>
 			</div>
@@ -155,7 +155,7 @@ require 'requirelanguage.php';
 			    <div class='inscripcion'>
 			        <p>Dejenos tus datos para que uno de nuestros especialistas pueda atenderlo</p>
 			        <div>
-			            <a href='registro.php' class="form_bottom">Regístrate</a>
+			            <a href='http://keraessence.com/registro' class="form_bottom">Regístrate</a>
 			        </div>
 			    </div>
     			<!--<div class="pasos">-->

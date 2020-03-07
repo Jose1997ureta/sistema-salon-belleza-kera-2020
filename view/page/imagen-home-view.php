@@ -44,6 +44,14 @@
                                             Ingresar una Imagen para el Home Español
                                         </div>
                                     </div>
+                                    <div class="col-md-12 form-group">
+                                        <label for="rutaimagenHomeES" class="">Ruta</label>
+                                        <input name="rutaimagenHome" id="rutaimagenHomeES" type="text"
+                                            class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            Ingresar Ruta de la Imagen
+                                        </div>
+                                    </div>
                                     <button class="btn btn-outline-primary" type="submit">
                                         <span class="btn-icon-wrapper pr-2 opacity-7">
                                             <i class="fa fa-save fa-w-20"></i>
@@ -78,6 +86,14 @@
                                             class="form-control-file" required>
                                         <div class="invalid-feedback">
                                             Ingresar una Imagen para el Home Ingles
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <label for="rutaimagenHomeEN" class="">Ruta</label>
+                                        <input name="rutaimagenHome" id="rutaimagenHomeEN" type="text"
+                                            class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            Ingresar Ruta de la Imagen
                                         </div>
                                     </div>
                                     <button class="btn btn-outline-primary" type="submit">
@@ -116,6 +132,14 @@
                                             Ingresar una Imagen para el Home Ruso
                                         </div>
                                     </div>
+                                    <div class="col-md-12 form-group">
+                                        <label for="rutaimagenHomeRU" class="">Ruta</label>
+                                        <input name="rutaimagenHome" id="rutaimagenHomeRU" type="text"
+                                            class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            Ingresar Ruta de la Imagen
+                                        </div>
+                                    </div>
                                     <button class="btn btn-outline-primary" type="submit">
                                         <span class="btn-icon-wrapper pr-2 opacity-7">
                                             <i class="fa fa-save fa-w-20"></i>
@@ -150,6 +174,14 @@
                                             class="form-control-file" required>
                                         <div class="invalid-feedback">
                                             Ingresar una Imagen para el Home Frances
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <label for="rutaimagenHomeFR" class="">Ruta</label>
+                                        <input name="rutaimagenHome" id="rutaimagenHomeFR" type="text"
+                                            class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            Ingresar Ruta de la Imagen
                                         </div>
                                     </div>
                                     <button class="btn btn-outline-primary" type="submit">

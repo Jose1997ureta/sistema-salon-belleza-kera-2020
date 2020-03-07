@@ -23,7 +23,7 @@ let principalProducto = {
         const link = obj.link;
 
         let idProducto = _id("idProducto").value;
-        sendDataAjax("POST",link.lenguajeController,false,"lang=es&idProducto=" + idProducto + "&listarProductoDetalleLang=true",obj.mostrarProductoLang);
+        sendDataAjax("POST",link.lenguajeController,false,"idProducto=" + idProducto + "&listarProductoDetalleLang=true",obj.mostrarProductoLang);
 
         obj.cambiarLenguaje();
     },
@@ -79,14 +79,17 @@ let principalProducto = {
                     descripcionProducto += data[9];
 
                 let imagenResultado = "<img src='../imagenes/producto/" + data[10] + "' alt='" + data[1] + "'>";
-
-                let rutaVideo = "";
+                if(data[11]){
+                    let rutaVideo = "";
                     rutaVideo += "<iframe src='" + data[11] + "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+                    _id("rutaVideo").innerHTML = rutaVideo;
+                }
+                
 
                 _id("tituloNombreProducto").innerHTML = tituloNombreProducto;
                 _id("descripcionProducto").innerHTML = descripcionProducto;
                 _id("ImgResultado").innerHTML = imagenResultado;
-                _id("rutaVideo").innerHTML = rutaVideo;
+                
             }
         }
 

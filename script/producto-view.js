@@ -310,5 +310,5 @@ if(_id("cerrarSession") != undefined || _id("cerrarSession") != null){
 }
 
 function mostrarRespuesta(){
-        window.location = baseUrl() + "/view/sign-in";
+        window.location = baseUrl() + "/view/login";
 }

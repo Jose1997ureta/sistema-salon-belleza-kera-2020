@@ -22,7 +22,7 @@ let principalProducto = {
         const obj = principalProducto;
         const link = obj.link;
 
-        sendDataAjax("POST",link.lenguajeController,false,"lang=es&listarProductoLang=true",obj.mostrarProductoLang);
+        sendDataAjax("POST",link.lenguajeController,false,"listarProductoLang=true",obj.mostrarProductoLang);
 
         obj.cambiarLenguaje();
     },

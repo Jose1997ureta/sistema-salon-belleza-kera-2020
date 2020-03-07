@@ -3,6 +3,8 @@ require_once '../model/imagen-home-model.php';
 require_once '../entity/imagen-home-entity.php';
 require_once '../function/config-function.php';
 
+session_start();
+
 $imagenHomeModel = new imagenHomeModel();
 $imagenHomeEntity = new imagenHomeEntity();
 $configFunction = new config_function();
@@ -18,9 +20,19 @@ if(isset($_POST["listarImagenHome"])){
 
 if(isset($_POST["listarImagenHomeLang"])){
     $rpta = "";
+    
     $lang = $configFunction::validarMetodos("POST","lang");
-
-    $imagenHomeEntity->setTipoLang($lang);
+    
+    if($lang == ""){
+        if(!isset($_SESSION["lang"])){
+            $_SESSION["lang"] = "es";
+        }
+        
+    }else{
+        $_SESSION["lang"] = $lang;
+    }
+    
+    $imagenHomeEntity->setTipoLang($_SESSION["lang"]);
 
     $lista = $imagenHomeModel::listarImagenHomeLang($imagenHomeEntity);
 
@@ -36,6 +48,8 @@ if(isset($_POST["registrarImagenHome"])){
 
     $tipoLang = $configFunction::validarMetodos("POST","tipoLang");
     $tituloImagen = $configFunction::validarMetodos("POST","tituloImagenR");
+    $rutaimagenHome = $configFunction::validarMetodos("POST","rutaimagenHome");
+    
 
     $imagenHome = "kera-".$configFunction::generarUrlDinamico("",$_FILES["imagenHome"]["name"]);
     $tmpImagenHome = $_FILES["imagenHome"]["tmp_name"];
@@ -44,6 +58,7 @@ if(isset($_POST["registrarImagenHome"])){
     $imagenHomeEntity->setTipoLang($tipoLang);
     $imagenHomeEntity->setTituloImagen($tituloImagen);
     $imagenHomeEntity->setImagen($imagenHome);
+    $imagenHomeEntity->setRutaImagen($rutaimagenHome);
     $validar = $imagenHomeModel::registrarImagenHome($imagenHomeEntity);
 
     if($validar){
@@ -66,6 +81,7 @@ if(isset($_POST["actualizarImagenHome"])){
     $tituloImagen = $configFunction::validarMetodos("POST","tituloImagenEditar");
     $imagenHomeActualizar = $configFunction::validarMetodos("FILES","imagenHomeActualizar");
     $imagenHomeActual = $configFunction::validarMetodos("POST","imagenHomeActual");
+    $rutaImagenActualizar = $configFunction::validarMetodos("POST","rutaImagenActualizar");
 
     if($imagenHomeActualizar == "" && $imagenHomeActual != ""){
         $imagenHomeEntity->setImagen($imagenHomeActual);
@@ -84,6 +100,7 @@ if(isset($_POST["actualizarImagenHome"])){
     
     $imagenHomeEntity->setIdImagen($idImagen);
     $imagenHomeEntity->setTituloImagen($tituloImagen);
+    $imagenHomeEntity->setRutaImagen($rutaImagenActualizar);
 
     $validarConsultaHome = $imagenHomeModel::actuaizarImagenHome($imagenHomeEntity);
 

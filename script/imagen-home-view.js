@@ -114,13 +114,13 @@ let imagenHomeView = {
             for(let i = 0; i < lista.length; i++){
                 let data = lista[i].split("|");
                 if(data[1] === "es"){
-                    propiedad.listarHomeES.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                    propiedad.listarHomeES.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '|' + data[4]);
                 }else if(data[1] === "en"){
-                    propiedad.listarHomeEN.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                    propiedad.listarHomeEN.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '|' + data[4]);
                 }else if(data[1] === "ru"){
-                    propiedad.listarHomeRU.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                    propiedad.listarHomeRU.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '|' + data[4]);
                 }else{
-                    propiedad.listarHomeFR.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]);
+                    propiedad.listarHomeFR.push(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '|' + data[4]);
                 }
             }
         }
@@ -150,14 +150,14 @@ let imagenHomeView = {
         }
         tabla += "</tr>"
         tabla += "<tbody class='text-center'>";
-        if(lista != ""){
+        if(lista !== ""){
             for(let i = 0; i < lista.length; i++){
                 let data = lista[i].split("|");
     
                 tabla += "<tr>";
-                tabla += "<td>";
+                tabla += "<td style='width: 150px;'>";
                 tabla += "<div class='d-flex justify-content-center'>";
-                tabla += "<button class='btn btn-outline-warning mr-2 modificar-elemento' data-id='" + data[0] + "' data-titulo='" + data[2] + "' data-src='" + data[3] + "' data-toggle='modal' data-target='#exampleModal'>";
+                tabla += "<button class='btn btn-outline-warning mr-2 modificar-elemento' data-id='" + data[0] + "' data-titulo='" + data[2] + "' data-src='" + data[3] + "'  data-ruta-imagen='" + data[4] + "' data-toggle='modal' data-target='#exampleModal'>";
                 tabla += "<span class='btn-icon-wrapper pr-2 opacity-7'>";
                 tabla += "<i class='fa fa-trash-alt fa-w-20'></i>";
                 tabla += "</span>Modificar";
@@ -201,22 +201,26 @@ let imagenHomeView = {
                 let idImage = _getAtrribute(btn,"data-id");
                 let tituloImagen = _getAtrribute(btn,"data-titulo");
                 let srcImagen = _getAtrribute(btn,"data-src");
+                let rutaImagen = _getAtrribute(btn,"data-ruta-imagen");
 
                 let html = "<form class='needs-validation' id='formActualizarImagenHome' novalidate='' autocomplete='off'>";
                     html += "<div class='form-row form-group'>";
                     html += "<div class='col-md-12'>";
-                    html += "<label for='tituloImagenEditar'>Categoria:</label>";
+                    html += "<label for='tituloImagenEditar'>Descripción:</label>";
                     html += "<input type='hidden' name='idImagenHome' value='" + idImage + "'>";
                     html += "<textarea class='form-control form-control-sm mb-3' id='tituloImagenEditar' required=''></textarea>";
                     html += "<div class='invalid-feedback'>Ingresar Título Imagen</div>";
                     html += "</div>";
-                    html += "<div class='col-md-12 form-group'>";
+                    html += "<div class='col-md-12 form-group mt-3'>";
                     html += "<label for='namecategory'>Imagen:</label>";
                     html += "<input type='file' class='form-control-file' name='imagenHomeActualizar' id='imagenHomeActualizar' required=''>";
                     html += "<div class='invalid-feedback'>Ingresar Imagen</div>";
                     html += "</div>";
-                    html += "<div class='col-md-12'>";
+                    html += "<div class='col-md-12 mb-3'>";
                     html += "<img style='width:400px' id='imagenHomeActual' data-img='" + srcImagen + "' src='" + baseUrl() + "/imagenes/imagen-home/" + srcImagen + "' />";
+                    html += "</div>";
+                    html += "<div class='col-md-12'>";
+                    html += "<input type='text' class='form-control' name='rutaImagenActualizar' id='rutaImagenActualizar' value='" + rutaImagen + "'/>";
                     html += "</div>";
                     html += "</div>";
                     html += "<button class='btn btn-outline-success' type='submit'>";
@@ -321,5 +325,5 @@ if(_id("cerrarSession") != undefined || _id("cerrarSession") != null){
 }
 
 function mostrarRespuesta(){
-        window.location = baseUrl() + "/view/sign-in";
+        window.location = baseUrl() + "/view/login";
 }

@@ -1,6 +1,7 @@
 <div class="app-header header-shadow bg-primary header-text-light">
     <div class="app-header__logo">
-        <div class="logo-src"></div>
+        <!-- <div class="logo-src"></div> -->
+        <div style="font-weight: bold;color: #fff;font-size: 18px;">KERAESSENCE</div>
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"

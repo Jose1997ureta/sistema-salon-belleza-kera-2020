@@ -81,7 +81,7 @@ let trabajadorView = {
         if (rpta == "1") {
             mostrarMensaje("success", "Se actualizó las contraseña");
             setTimeout(function(){
-                window.location = baseUrl() + "/view/sign-in";
+                window.location = baseUrl() + "/view/login";
             }, 2000);
         } else if(rpta == "2"){
             mostrarMensaje("error", "Las contraseñas no coinciden");
@@ -106,5 +106,5 @@ if(_id("cerrarSession") != undefined || _id("cerrarSession") != null){
 }
 
 function mostrarRespuesta(){
-        window.location = baseUrl() + "/view/sign-in";
+        window.location = baseUrl() + "/view/login";
 }

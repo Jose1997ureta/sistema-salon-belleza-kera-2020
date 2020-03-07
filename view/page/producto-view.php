@@ -65,7 +65,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloBeneficioES">Título Beneficio:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloBeneficioES"
-                                    id="tituloBeneficioES" required>
+                                    id="tituloBeneficioES">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Beneficio
                                 </div>
@@ -81,7 +81,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloPrincipiosActivosES">Título Principios Activos:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloPrincipiosActivosES"
-                                    id="tituloPrincipiosActivosES" required>
+                                    id="tituloPrincipiosActivosES">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Principios Activos
                                 </div>
@@ -140,7 +140,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloBeneficioEN">Título Beneficio:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloBeneficioEN"
-                                    id="tituloBeneficioEN" required>
+                                    id="tituloBeneficioEN">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Beneficio
                                 </div>
@@ -156,7 +156,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloPrincipiosActivosEN">Título Principios Activos:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloPrincipiosActivosEN"
-                                    id="tituloPrincipiosActivosEN" required>
+                                    id="tituloPrincipiosActivosEN">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Principios Activos
                                 </div>
@@ -215,7 +215,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloBeneficioRU">Título Beneficio:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloBeneficioRU"
-                                    id="tituloBeneficioRU" required>
+                                    id="tituloBeneficioRU">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Beneficio
                                 </div>
@@ -231,7 +231,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloPrincipiosActivosRU">Título Principios Activos:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloPrincipiosActivosRU"
-                                    id="tituloPrincipiosActivosRU" required>
+                                    id="tituloPrincipiosActivosRU">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Principios Activos
                                 </div>
@@ -290,7 +290,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloBeneficioFR">Título Beneficio:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloBeneficioFR"
-                                    id="tituloBeneficioFR" required>
+                                    id="tituloBeneficioFR">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Beneficio
                                 </div>
@@ -306,7 +306,7 @@
                             <div class="col-md-12 form-group">
                                 <label for="tituloPrincipiosActivosFR">Título Principios Activos:</label>
                                 <input type="text" class="form-control form-control-sm" name="tituloPrincipiosActivosFR"
-                                    id="tituloPrincipiosActivosFR" required>
+                                    id="tituloPrincipiosActivosFR">
                                 <div class="invalid-feedback">
                                     Ingresar Titulo Principios Activos
                                 </div>

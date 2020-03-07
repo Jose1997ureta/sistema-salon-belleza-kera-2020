@@ -22,7 +22,7 @@ let principalHome = {
         const obj = principalHome;
         const link = obj.link;
 
-        sendDataAjax("POST",link.lenguajeController,false,"lang=es&listarImagenHomeLang=true",obj.mostrarImagenHome);
+        sendDataAjax("POST",link.lenguajeController,false,"listarImagenHomeLang=true",obj.mostrarImagenHome);
 
         obj.cambiarLanguaje();
     },
@@ -53,7 +53,7 @@ let principalHome = {
         let html = "";
         let lista = rpta.split("~");
 
-        if(lista!= ""){
+        if(lista!== ""){
             for(let i = 0; i < lista.length; i++){
                 let data = lista[i].split("|");
                 let btn = "";
@@ -72,7 +72,7 @@ let principalHome = {
                 }
                 
                 html +="<div class='swiper-slide'>";
-                html +="<a href='#' class='sect3_item animacion'>";
+                html +="<a href='"+ data[3] +"' class='sect3_item animacion'>";
                 html +="<img src='"+ baseUrl() + "/imagenes/imagen-home/" + data[2] + "' alt=''>";
                 html +="<div class='sect3_item_title'>"
                 html +="<b>" + data[1] + "</b>";

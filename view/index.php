@@ -3,17 +3,17 @@
     require_once '../core/configuration-router.php';
 
     if(!isset($_SESSION["idTrabajador"])){
-        header("Location: sign-in");
+        header("Location: login");
     }
 ?>
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
@@ -44,10 +44,10 @@
                         if(is_file('./page/'.$view[0].'-view.php')){
                             include_once './page/'.$view[0].'-view.php';
                         }else{
-                            include_once './page/home-view.php';
+                            include_once './page/listar-producto-view.php';
                         }
                     }else{
-                        include_once './page/sign-in.php';
+                        include_once './page/login.php';
                     }
                 ?>
                 <!--  -->

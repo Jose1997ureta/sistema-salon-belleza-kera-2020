@@ -21,14 +21,14 @@ class imagenHomeModel {
 
     public static function registrarImagenHome(imagenHomeEntity $imagenHome){
         $configFunction = new config_function();
-        $procedure = "CALL REGISTRAR_IMAGEN_HOME('$imagenHome->tipoLang','$imagenHome->tituloImagen','$imagenHome->imagen')";
+        $procedure = "CALL REGISTRAR_IMAGEN_HOME('$imagenHome->tipoLang','$imagenHome->tituloImagen','$imagenHome->imagen','$imagenHome->rutaImagen')";
 
         return $configFunction::ejecutarConsulta($procedure);
     }
 
     public static function actuaizarImagenHome(imagenHomeEntity $imagenHome){
         $configFunction = new config_function();
-        $procedure = "CALL ACTUALIZAR_IMAGEN_HOME('$imagenHome->idImagen','$imagenHome->tituloImagen','$imagenHome->imagen')";
+        $procedure = "CALL ACTUALIZAR_IMAGEN_HOME('$imagenHome->idImagen','$imagenHome->tituloImagen','$imagenHome->imagen','$imagenHome->rutaImagen')";
 
         return $configFunction::ejecutarConsulta($procedure);
     }

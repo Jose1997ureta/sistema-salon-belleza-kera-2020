@@ -76,7 +76,7 @@ require 'requirelanguage.php';
 			<div class="sup">
 				<img src="images/bann.jpg" alt="">
 				<div class="sup_link">
-					<a href="index.php"><img src="icon/house.svg" alt=""></a>
+					<a href="http://keraessence.com/"><img src="icon/house.svg" alt=""></a>
 					<p>/ Products</p>
 				</div>
 			</div>
@@ -88,76 +88,7 @@ require 'requirelanguage.php';
     				<p>KERAESSÉNCE</p>
     			</div>
     			<div class="lista" id="containerListaProducto">
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>01</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>02</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>03</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>04</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>05</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>06</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
-    				<a href="detalle.php" class="lista_item">
-    					<div class="lista_item_img">
-    						<img src="images/products/repair2.png" alt="">
-    						<span>07</span>
-    					</div>
-    					<div class="lista_item_nombre">
-            				<b>LISS INTENSE</b>
-            				<p>CLARIFYING SHAMPOO</p>
-    					</div>
-    				</a>
+    				
     			</div>
 			</div>
 		</section>

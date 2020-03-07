@@ -1,3 +1,4 @@
+// let baseUrl = () => "http://keraessence.com";
 let baseUrl = () => "http://localhost/ProyectosWeb-2019/Sistema-Salon-Belleza-Kera-2020";
 
 let baseImagen = () => "../imagenes/";

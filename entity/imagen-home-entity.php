@@ -5,6 +5,7 @@ class imagenHomeEntity {
     public $tipoLang;
     public $tituloImagen;
     public $imagen;
+    public $rutaImagen;
     public $flagImagen;
     
     // GETTER
@@ -23,10 +24,15 @@ class imagenHomeEntity {
     public function getImagen(){
         return $this->imagen;
     }
+    
+    public function getRutaImagen(){
+        return $this->rutaImagen;
+    }
 
     public function getFlagImagen(){
         return $this->flagImagen;
     }
+    
 
     // SETTER
     public function setTipoLang($tipoLang){
@@ -44,8 +50,13 @@ class imagenHomeEntity {
     public function setImagen($imagen){
         return $this->imagen = $imagen;
     }
+    
+    public function setRutaImagen($rutaImagen){
+        return $this->rutaImagen = $rutaImagen;
+    }
 
     public function setFlagImagen($flagImagen){
         return $this->flagImagen = $flagImagen;
     }
+    
 }

@@ -5,27 +5,31 @@ require("class.phpmailer.php");
 require("class.smtp.php");
 
 // Valores enviados desde el formulario
-if ( !isset($_POST["nombre"]) || !isset($_POST["email"]) || !isset($_POST["mensaje"]) || !isset($_POST["telefono"])  ) {
+if ( !isset($_POST["nombre"]) || !isset($_POST["telefono"]) || !isset($_POST["salon"]) || !isset($_POST["ruc"]) || !isset($_POST["direccion"]) || !isset($_POST["soy"])  ) {
     die ("Es necesario completar todos los datos del formulario");
 }
 
 $nombre = $_POST["nombre"];
 
-$email = $_POST["email"];
-
 $telefono = $_POST["telefono"];
 
-$mensaje = $_POST["mensaje"];
+$salon = $_POST["salon"];
+
+$ruc = $_POST["ruc"];
+
+$direccion = $_POST["direccion"];
+
+$soy = $_POST["soy"];
 
 
 $destinatario = "contacto@johandurand.com";
 $otro = "contacto@johandurand.com";
 $johan = "hola@johandurand.com";
 
-// Datos de la cuenta de correo utilizada para enviar vÌa SMTP
+// Datos de la cuenta de correo utilizada para enviar v√≠a SMTP
 $smtpHost = "mail.keraessence.com";  // Dominio alternativo brindado en el email de alta 
 $smtpUsuario = "contacto@keraessence.com";  // Mi cuenta de correo
-$smtpClave = "kerasilk";  // Mi contraseÒa
+$smtpClave = "kerasilk";  // Mi contrase√±a
 
 
 
@@ -43,13 +47,13 @@ $mail->Username = $smtpUsuario;
 $mail->Password = $smtpClave;
 
 
-$mail->From = $otro; // Email desde donde envÌo el correo.
-$mail->FromName = "keraessence";
-$mail->AddAddress($destinatario); // Esta es la direcciÛn a donde enviamos los datos del formulario
+$mail->From = $otro; // Email desde donde env√≠o el correo.
+$mail->FromName = "web keraessence";
+$mail->AddAddress($destinatario); // Esta es la direcci√≥n a donde enviamos los datos del formulario
 $mail->addAddress($email);
 $mail->addAddress($johan);
 
-$mail->Subject = "Datos de contacto enviado"; // Este es el titulo del email.
+$mail->Subject = "Registro completado"; // Este es el titulo del email.
 $mensajeHtml = nl2br($mensaje);
 $mail->Body = "
 <html>
@@ -70,12 +74,12 @@ $mail->Body = "
 									</tr>
 									<tr style='width: 100%;'>
 										<td style='width: 100%; text-align: center; padding-top: 40px;'>
-											<b style='color: #fff !important; font-family: nunito sans, Arial, Helvetica; font-weight: 300; font-size: 28px; text-transform: uppercase;'>°gracias por inscribirte <br>en keraessÈnce!</b>
+											<b style='color: #fff !important; font-family: nunito sans, Arial, Helvetica; font-weight: 300; font-size: 28px; text-transform: uppercase;'>¬°gracias por inscribirte <br>en keraess√©nce!</b>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<p style='padding: 20px 50px; color: #fff !important; font-family: nunito sans, Arial, Helvetica; margin: 0;'>Sus datos fueron enviados correctamente, uno de nuestros especialistas se pondr· en contacto con usted a la brevedad posible.</p>
+											<p style='padding: 20px 50px; color: #fff !important; font-family: nunito sans, Arial, Helvetica; margin: 0;'>Sus datos fueron enviados correctamente, uno de nuestros especialistas se pondr√° en contacto con usted a la brevedad posible.</p>
 										</td>
 									</tr>
 									<tr>
@@ -83,7 +87,7 @@ $mail->Body = "
 											<table style='width: 100%; padding: 50px; display: block; border-collapse: collapse; border: none; color: #fff !important; font-family: nunito sans, Arial, Helvetica;'>
 												<tbody>
 													<tr>
-														<td style='width: 60%;'>
+														<td style='width: 40%;'>
 															<p style='color: #D49D00; margin: 0; font-family: nunito sans, Arial, Helvetica;'>DATOS:</p>
 														</td>
 														<td></td>
@@ -93,16 +97,24 @@ $mail->Body = "
 														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: {$nombre}</td>
 													</tr>
 													<tr>
-														<td style='font-weight: 300; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>Correo</td>
-														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: <a style='color: #fff !important; text-decoration: none;' href='mailto:gestiondeltalento@gdt.com.pe' target='_blank'>{$email}</a></td>
-													</tr>
-													<tr>
-														<td style='font-weight: 300; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>TelÈfono</td>
+														<td style='font-weight: 300; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>Tel√©fono</td>
 														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: {$telefono}</td>
 													</tr>
 													<tr>
-														<td style='font-weight: 300; vertical-align: top; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>¡rea laboral</td>
-														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important !important;'>: {$mensaje}</td>
+														<td style='font-weight: 300; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>Nombre de sal√≥n</td>
+														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: {$salon}</td>
+													</tr>
+													<tr>
+														<td style='font-weight: 300; vertical-align: top; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>RUC</td>
+														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: {$ruc}</td>
+													</tr>
+													<tr>
+														<td style='font-weight: 300; vertical-align: top; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>Direcci√≥n</td>
+														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: {$direccion}</td>
+													</tr>
+													<tr>
+														<td style='font-weight: 300; vertical-align: top; font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>Soy</td>
+														<td style='font-family: nunito sans, Arial, Helvetica; color: #fff !important;'>: {$soy}</td>
 													</tr>
 												</tbody>
 											</table>
@@ -151,7 +163,7 @@ if($estadoEnvio){
     header("Location:http://www.keraessence.com");
     // echo "El correo fue enviado correctamente.";
 } else {
-    echo "OcurriÛ un error inesperado.";
+    echo "Ocurri√≥ un error inesperado.";
 } 
 
 ?>
